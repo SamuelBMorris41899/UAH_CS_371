@@ -3,29 +3,25 @@
 -- main.lua
 --
 -----------------------------------------------------------------------------------------
-
+--display.setStatusBar(display.hiddenStatusBar);
 
 require("planet")
 require("planets")
 
-planet2 = planet:clone()
+planet1 = planet:init(200,200,10)
+planet2 = planet:init(100,100,60)
+print("Planet",planet)
+planet.path.radius = 100
+planet:move()
+-- returns the radius of the cirlce
+--print(circle.path.radius)
 
-planets:add(planet)
-planets:add(planet2)
-
-planets:new()
-
+for i,v in pairs(planet) do
+    print(i,v)
+end
 
 local function gameLoop()
-    planet:move(1)
-    --print(planet.xPosition)
-    planet2:move(-1)
-    --print(planet2.xPosition)
 
-    for i,v in ipairs(planets:getList()) do
-        print(i,v.xPosition)
-    end
-    
 end
 
 gameLoopTimer = timer.performWithDelay( 500, gameLoop, 0 )
