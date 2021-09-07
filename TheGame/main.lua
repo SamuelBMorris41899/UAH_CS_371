@@ -8,20 +8,19 @@
 require("planet")
 require("planets")
 
-planet1 = planet:init(200,200,10)
-planet2 = planet:init(100,100,60)
-print("Planet",planet)
-planet.path.radius = 100
-planet:move()
--- returns the radius of the cirlce
---print(circle.path.radius)
 
-for i,v in pairs(planet) do
-    print(i,v)
-end
+planet2 = planet:init("planet 1",200,200,60,1000000,0,0)
+planet1 = planet:init("planet 1",200,275,10, 100,50,0)
+
+planet1:setFillColor(0,0.5,0.5);
+
+testList = {planet2}
+
+-- planets.add(planet1)
+-- planets.add(planet2)
 
 local function gameLoop()
-
+    planet1:move(testList)
 end
 
 gameLoopTimer = timer.performWithDelay( 500, gameLoop, 0 )

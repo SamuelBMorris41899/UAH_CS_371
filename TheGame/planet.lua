@@ -1,95 +1,56 @@
--- planet = {
---     xPosition=200,
---     yPosition=200,
---     size = 10,
---     velocityX = 0,
---     velocityY = 100,
---     isMovable = true,
---     testTable={}
--- }
-
 require("utility")
-planet = display.newCircle(0,0,30);
+--Mpn wed fri 940
+--Here to initalize the table
+planet = {}
+planet.name = "bob"
 planet.velocityX = 0
 planet.velocityY = 0
-planet.isMovable = true
+planet.mass = 10
 
-
-function planet.init(self,aXPos,aYPos,aSize)
-    local copy = self:clone()
-    copy.x = aXPos
-    copy.y = aYPos
-    --copy.path.radius = aSize
+--constructor
+function planet.init(self,name,aXPos,aYPos,aSize,mass,velX,velY)
+    --Start out by making a circle
+    local copy = display.newCircle(aXPos,aYPos,aSize);
+    copy = deepAppend(self,copy)
+    copy.name = name
+    copy.mass = mass
+    copy.velocityX = velX
+    copy.velocityY = velY
     return copy
 end
 
-function planet.clone(self)
-    local copy = {}
-    for key, value in pairs(self) do
-        copy[key] = value
-        if(type(value) == "table") then
-           copy[key] = self:__clone(value)     
-       end
-        
-    end
-    return copy
+
+function planet.move(self,otherObjectList)
+    self:calculateGravity(otherObjectList)
 end
 
---Clone a table from the table
-function planet.__clone(self,tableToClone)
-    local copy = {}
-    for key, value in pairs(self) do
-        copy[key] = value
-    end
-    return copy
-end
-
-function planet.deepCopy(self)
-    local copy
-    if orig_type == 'table' then
-        copy = {}
-        for orig_key, orig_value in next, orig, nil do
-            copy[deepcopy(orig_key)] = deepcopy(orig_value)
-        end
-        setmetatable(copy, deepcopy(getmetatable(orig)))
-    else -- number, string, boolean, etc
-        copy = orig
-    end
-    return copy
-end
-
--- function planet.move(self,otherObjectList)
---     if(self.isMovable) then
---         self:calculateGravity(otherObjectList)
---         self.x = self.x + self.velocityX 
---         self.y = self.x + self.velocityY
---     end
--- end
-
-function planet.move(self)
-    self.x = 10
-    self.y = 100
-end
 
 function planet.calculateGravity(self,otherObjectList)
     --constants
-    local G = 6.67408 * 10 ^ -11
-    local myMass = self.size
+    local G = 6.67408 * 10 ^ 11
+    local myMass = self.mass
     local addAccelX,addAccelY = 0,0 
-    
-    for i,v in ipairs(otherObjectList) do
-        local otherMass = v.size 
-        local deltaX,deltaY = self.xPosition - v.xPosition,self.yPosition - v.yPosition
-        local distanceBetweenSquared = deltaX * deltaX + deltaY * deltaY
-        local angleBetween = acos(deltaX)
-        F = 0
-        if(distanceBetweenSquared ~= 0) then
-            F = G * myMass * otherMass / distanceBetweenSquared
+
+    for i,v in pairs(otherObjectList) do
+        local otherMass = v.mass 
+        local deltaX = self.x - v.x
+        local deltaY = self.y - v.y
+        local distanceInPixels = math.sqrt(deltaX * deltaX + deltaY * deltaY) --distance in pixels
+        local distance = pixelsToMeters(distanceInPixels)
+
+        local F = 0
+        local angle = 0
+
+        if(distance ~= 0) then
+            angle  = math.acos(deltaX/math.sqrt(distance))
+            print(self.name,v.name,angle,distance)
+            F = G * myMass * otherMass / ((distance)^2) 
         end
-        addAccelX = F * cos(angleBetween)/ myMass
-        addAccelY = F * sin(angleBetween)/ myMass
+        addAccelX = F * math.cos(angle)/ myMass
+        addAccelY = F * math.sin(angle)/ myMass
         self.velocityX = self.velocityX + addAccelX
         self.velocityY =self.velocityY + addAccelY
     end
-    print(self.velocityX)
+    self.x = self.x + self.velocityX 
+    self.y = self.y + self.velocityY
 end
