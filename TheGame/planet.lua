@@ -19,7 +19,6 @@ function planet.init(self,name,aXPos,aYPos,aSize,mass,velX,velY)
     return copy
 end
 
-
 function planet.move(self,otherObjectList)
     self:calculateGravity(otherObjectList)
 end
@@ -33,24 +32,27 @@ function planet.calculateGravity(self,otherObjectList)
 
     for i,v in pairs(otherObjectList) do
         local otherMass = v.mass 
-        local deltaX = self.x - v.x
-        local deltaY = self.y - v.y
-        local distanceInPixels = math.sqrt(deltaX * deltaX + deltaY * deltaY) --distance in pixels
-        local distance = pixelsToMeters(distanceInPixels)
+        local deltaX = pixelsToMeters(v.x - self.x)
+        local deltaY = pixelsToMeters(v.y - self.y)
+        local distance = math.sqrt(deltaX * deltaX + deltaY * deltaY) --distance in pixels
 
         local F = 0
         local angle = 0
 
         if(distance ~= 0) then
-            angle  = math.acos(deltaX/math.sqrt(distance))
-            print(self.name,v.name,angle,distance)
-            F = G * myMass * otherMass / ((distance)^2) 
+            angle  = math.atan2(deltaY,deltaX)
+            
+            print(self.name,v.name,math.deg(angle),distance)
+            F = G * myMass * otherMass / (distance^2) 
         end
         addAccelX = F * math.cos(angle)/ myMass
         addAccelY = F * math.sin(angle)/ myMass
         self.velocityX = self.velocityX + addAccelX
         self.velocityY =self.velocityY + addAccelY
     end
+
+    print(self.velocityX,self.velocityY)
     self.x = self.x + self.velocityX 
     self.y = self.y + self.velocityY
 end
+
