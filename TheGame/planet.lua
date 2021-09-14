@@ -26,7 +26,7 @@ end
 
 function planet.calculateGravity(self,otherObjectList)
     --constants
-    local G = 6.67408 * 10 ^ 11
+    
     local myMass = self.mass
     local addAccelX,addAccelY = 0,0 
 
@@ -34,25 +34,34 @@ function planet.calculateGravity(self,otherObjectList)
         local otherMass = v.mass 
         local deltaX = pixelsToMeters(v.x - self.x)
         local deltaY = pixelsToMeters(v.y - self.y)
-        local distance = math.sqrt(deltaX * deltaX + deltaY * deltaY) --distance in pixels
+        local distance = math.sqrt(deltaX * deltaX + deltaY * deltaY)
 
         local F = 0
         local angle = 0
 
         if(distance ~= 0) then
             angle  = math.atan2(deltaY,deltaX)
-            
-            print(self.name,v.name,math.deg(angle),distance)
-            F = G * myMass * otherMass / (distance^2) 
+            F = calculateForceBetweenObjects(self,v,distance)
         end
-        addAccelX = F * math.cos(angle)/ myMass
-        addAccelY = F * math.sin(angle)/ myMass
+
+        addAccelX = F * math.cos(angle)/ self.mass
+        addAccelY = F * math.sin(angle)/ self.mass
         self.velocityX = self.velocityX + addAccelX
         self.velocityY =self.velocityY + addAccelY
     end
-
-    print(self.velocityX,self.velocityY)
-    self.x = self.x + self.velocityX 
-    self.y = self.y + self.velocityY
+    self.x = self.x +  self.velocityX
+    self.y = self.y +  self.velocityY
 end
 
+
+function planet.updateVelocity(self,Force,angle)
+    addAccelX = Force * math.cos(angle)/ self.mass
+    addAccelY = Force * math.sin(angle)/ self.mass
+    self.velocityX = self.velocityX + addAccelX
+    self.velocityY =self.velocityY + addAccelY
+end
+
+function planet.updatePosition(deltaX,deltaY)
+    self.x = self.x + deltaX
+    self.y = self.y + deltaY
+end
