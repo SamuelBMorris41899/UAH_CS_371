@@ -1,5 +1,4 @@
 
-
 function deepCopy (orgional)
     local copy = {}
     for key, value in pairs(orgional) do
@@ -28,10 +27,6 @@ function deepAppend(from,to)
     return copy
 end
 
-function pixelsToMeters(pixels) 
-    return pixels * 300000000
-end
-
 function calculateForceBetweenObjects(object1,object2,distance)
     G = 6.67408 * 10 ^ 11
     return G * object1.mass * object2.mass / (distance^2) 
@@ -42,4 +37,14 @@ function getDistance(x1,y1,x2,y2)
     local deltaX = x2-x1
     local deltaY = y2-y1
     return math.sqrt(deltaX * deltaX + deltaY * deltaY)
+end
+
+scaleFactor = 300000000
+
+function pixelsToMeters(pixels) 
+    return pixels * scaleFactor
+end
+
+function metersToPixels (meters) 
+    return meters / scaleFactor
 end

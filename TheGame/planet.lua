@@ -1,5 +1,5 @@
 require("utility")
---Mpn wed fri 940
+--Mon wed fri 940
 --Here to initalize the table
 planet = {}
 planet.name = "bob"
@@ -35,7 +35,6 @@ function planet.calculateGravity(self,otherObjectList)
         local deltaX = pixelsToMeters(v.x - self.x)
         local deltaY = pixelsToMeters(v.y - self.y)
         local distance = math.sqrt(deltaX * deltaX + deltaY * deltaY)
-
         local F = 0
         local angle = 0
 
@@ -51,6 +50,7 @@ function planet.calculateGravity(self,otherObjectList)
     end
     self.x = self.x +  self.velocityX
     self.y = self.y +  self.velocityY
+    
 end
 
 
