@@ -18,11 +18,9 @@ function deepAppend(from,to)
     local copy = to
     for key,value in pairs(from) do 
         copy[key] = value
-        
         if(type(value) == "table") then
             copy[key] = deepCopy(value)     
         end
-        
     end
     return copy
 end
@@ -39,7 +37,7 @@ function getDistance(x1,y1,x2,y2)
     return math.sqrt(deltaX * deltaX + deltaY * deltaY)
 end
 
-scaleFactor = 300000000
+scaleFactor = 1002533333 / 10000
 
 function pixelsToMeters(pixels) 
     return pixels * scaleFactor
