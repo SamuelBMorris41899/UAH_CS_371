@@ -25,24 +25,8 @@ function deepAppend(from,to)
     return copy
 end
 
-function calculateForceBetweenObjects(object1,object2,distance)
-    G = 6.67408 * 10 ^ 11
-    return G * object1.mass * object2.mass / (distance^2) 
-
-end
-
 function getDistance(x1,y1,x2,y2)
     local deltaX = x2-x1
     local deltaY = y2-y1
     return math.sqrt(deltaX * deltaX + deltaY * deltaY)
-end
-
-scaleFactor = 1002533333 / 10000
-
-function pixelsToMeters(pixels) 
-    return pixels * scaleFactor
-end
-
-function metersToPixels (meters) 
-    return meters / scaleFactor
 end
