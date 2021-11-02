@@ -10,4 +10,7 @@
 
 
 local widget = require("widget")
+require("butter")
 
+
+butter:init()
