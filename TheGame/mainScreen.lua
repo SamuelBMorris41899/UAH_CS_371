@@ -41,7 +41,7 @@ function scene:create( event )
     bg1.height = display.contentHeight
     sceneGroup:insert(bg1)
 
-    bgButterMeltText = display.newText(
+    local bgButterMeltText = display.newText(
       {
         x = display.contentCenterX + 7,
         y = display.contentCenterY - 200,
@@ -53,7 +53,7 @@ function scene:create( event )
      bgButterMeltText:setFillColor( 0.36, 0.36, 0.36)
      sceneGroup:insert(bgButterMeltText)
 
-   butterMeltText = display.newText(
+   local butterMeltText = display.newText(
       {
         x = display.contentCenterX,
         y = display.contentCenterY - 200,
@@ -66,7 +66,7 @@ function scene:create( event )
      sceneGroup:insert(butterMeltText)
 
 
-    playGameButton = widget.newButton(
+    local playGameButton = widget.newButton(
         {
             label = "Play Game",
             fontSize = 35,
@@ -84,7 +84,7 @@ function scene:create( event )
     )
     sceneGroup:insert(playGameButton)
 
-    settingsButton = widget.newButton(
+    local settingsButton = widget.newButton(
         {
             label = "Settings",
             fontSize = 40,
@@ -102,7 +102,7 @@ function scene:create( event )
     )
     sceneGroup:insert(settingsButton)
 
-    howToPlayButton = widget.newButton(
+    local howToPlayButton = widget.newButton(
         {
             label = "How To Play",
             fontSize = 30,
@@ -120,7 +120,7 @@ function scene:create( event )
     )
     sceneGroup:insert(howToPlayButton)
 
-    exitButton = widget.newButton(
+    local exitButton = widget.newButton(
         {
             label = "Exit",
             fontSize = 40,
