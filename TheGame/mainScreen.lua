@@ -62,7 +62,7 @@ function scene:create( event )
         fontSize = 55,
       }
      )
-     butterMeltText:setFillColor( 0.99, 1, 0.61)
+     butterMeltText:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(butterMeltText)
 
 
