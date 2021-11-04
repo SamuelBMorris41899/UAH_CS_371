@@ -45,25 +45,17 @@ end
           fontSize = 60,
         }
        )
-       settingsText:setFillColor( 0.99, 1, 0.61)
+       settingsText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(settingsText)
     
-    musicVolumeRect = display.newRoundedRect(
-        {
-            x = display.contentCenterX,
-            y = display.contentCenterY - 100,
-            width = 250,
-            height = 100,
-            cornerRadius= 5,
-        }
-    )
+    musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
     musicVolumeRect:setFillColor( 0.51 )
     sceneGroup:insert(musicVolumeRect)
         
     musicVolumeSlider = widget.newSlider(
         {
           x = display.contentCenterX,
-          y = display.contentCenterY  - 50,
+          y = display.contentCenterY - 90,
           width = 250,
           value = 100,
           listener = musicVolumeListener
@@ -71,46 +63,25 @@ end
     )
     sceneGroup:insert(musicVolumeSlider)
 
-    
-    bgMusicVolumeText = display.newText(
-        {
-          x = display.contentCenterX + 2,
-          y = display.contentCenterY - 100,
-          text = "Music Volume", 
-          font = native.systemFontBold,
-          fontSize = 38,
-        }
-       )
-       bgMusicVolumeText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgMusicVolumeText)
-
     musicVolumeText = display.newText(
         {
           x = display.contentCenterX,
-          y = display.contentCenterY - 100,
+          y = display.contentCenterY - 115,
           text = "Music Volume", 
           font = native.systemFont,
-          fontSize = 40,
+          fontSize = 30,
         }
        )
        sceneGroup:insert(musicVolumeText)
 
-       soundVolumeRect = display.newRoundedRect(
-        {
-            x = display.contentCenterX,
-            y = display.contentCenterY,
-            width = 250,
-            height = 100,
-            cornerRadius= 5,
-        }
-    )
+    soundVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 5, 300, 75, 10)
     soundVolumeRect:setFillColor( 0.51 )
     sceneGroup:insert(soundVolumeRect)
 
     soundVolumeSlider = widget.newSlider(
         {
-          x = display.contentCenterX + 2,
-          y = display.contentCenterY + 50,
+          x = display.contentCenterX,
+          y = display.contentCenterY + 15,
           width = 250,
           value = 100,
           listener = soundVolumeListener
@@ -118,28 +89,16 @@ end
     )
     sceneGroup:insert(soundVolumeSlider)
 
-    bgSoundVolumeText = display.newText(
-        {
-          x = display.contentCenterX + 3,
-          y = display.contentCenterY,
-          text = "Sound Volume", 
-          font = native.systemFontBold,
-          fontSize = 38,
-        }
-       )
-       bgSoundVolumeText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgSoundVolumeText)
 
     soundVolumeText = display.newText(
         {
           x = display.contentCenterX,
-          y = display.contentCenterY,
+          y = display.contentCenterY - 5,
           text = "Sound Volume", 
           font = native.systemFont,
-          fontSize = 40,
+          fontSize = 30,
         }
        )
-       soundVolumeText:setFillColor( 0.85, 0.85, 0.85)
        sceneGroup:insert(soundVolumeText)
 
        creditsButton = widget.newButton(
