@@ -4,7 +4,39 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 
 local function backEvent( event )
+   if event.phase == "began" then
    composer.gotoScene( "mainScreen" )
+   end
+end
+
+local function level0Listener(event)
+   if event.phase == "began" then
+   composer.gotoScene("level0")
+   end
+end
+
+local function level1Listener(event)
+   if event.phase == "began" then
+   composer.gotoScene("level1")
+   end
+end
+
+local function level2Listener(event)
+   if event.phase == "began" then
+   composer.gotoScene("level2")
+   end
+end
+
+local function level3Listener(event)
+   if event.phase == "began" then
+   composer.gotoScene("level3")
+   end
+end
+
+local function level4Listener(event)
+   if event.phase == "began" then
+   composer.gotoScene("level4")
+   end
 end
 
  -- "scene:create()"
@@ -27,6 +59,8 @@ end
        level0.y = display.contentCenterY + 100
        sceneGroup:insert(level0)
 
+       rect0:addEventListener("touch", level0Listener)
+
        local rect1 = display.newRoundedRect(display.contentCenterX + 71, display.contentCenterY - 98, 91, 91, 5)
        rect1:setFillColor(0.36)
        sceneGroup:insert(rect1)
@@ -35,6 +69,8 @@ end
        level1.x = display.contentCenterX + 130
        level1.y = display.contentCenterY + 210
        sceneGroup:insert(level1)
+
+       rect1:addEventListener("touch", level1Listener)
 
        local rect2 = display.newRoundedRect(display.contentCenterX  - 74, display.contentCenterY + 2, 91, 91, 5)
        rect2:setFillColor(0.36)
@@ -45,6 +81,8 @@ end
        level2.y = display.contentCenterY + 310
        sceneGroup:insert(level2)
 
+       rect2:addEventListener("touch", level2Listener)
+
        local rect3 = display.newRoundedRect(display.contentCenterX + 71, display.contentCenterY + 2, 91, 91, 5)
        rect3:setFillColor(0.36)
        sceneGroup:insert(rect3)
@@ -53,6 +91,8 @@ end
        level3.x = display.contentCenterX + 130
        level3.y = display.contentCenterY + 310
        sceneGroup:insert(level3)
+
+       rect3:addEventListener("touch", level3Listener)
 
        local rect4 = display.newRoundedRect(display.contentCenterX - 74, display.contentCenterY + 101, 91, 91, 5)
        rect4:setFillColor(0.36)
@@ -63,9 +103,11 @@ end
        level4.y = display.contentCenterY + 410
        sceneGroup:insert(level4)
 
+       rect4:addEventListener("touch", level4Listener)
 
 
-     bgLevelSelectionText = display.newText(
+
+     local bgLevelSelectionText = display.newText(
         {
           x = display.contentCenterX + 7,
           y = display.contentCenterY - 200,
@@ -77,7 +119,7 @@ end
        bgLevelSelectionText:setFillColor( 0.36, 0.36, 0.36)
        sceneGroup:insert(bgLevelSelectionText)
 
-       levelSelection = display.newText(
+       local levelSelection = display.newText(
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 200,

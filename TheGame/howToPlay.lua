@@ -4,7 +4,9 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 
 local function backEvent( event )
+   if event.phase == "began" then
    composer.gotoScene( "mainScreen" )
+   end
 end
 
 
@@ -19,7 +21,7 @@ end
      bg1.height = display.contentHeight
      sceneGroup:insert(bg1)
 
-     bgHowToPlayText = display.newText(
+     local bgHowToPlayText = display.newText(
         {
           x = display.contentCenterX + 7,
           y = display.contentCenterY - 200,
@@ -31,7 +33,7 @@ end
        bgHowToPlayText:setFillColor( 0.36, 0.36, 0.36)
        sceneGroup:insert(bgHowToPlayText)
 
-     howToPlayText = display.newText(
+     local howToPlayText = display.newText(
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 200,
@@ -44,7 +46,7 @@ end
        sceneGroup:insert(howToPlayText)
 
 
-       backButton = widget.newButton(
+       local backButton = widget.newButton(
          {
              label = "Go Back",
              fontSize = 35,
@@ -85,7 +87,6 @@ end
 
     if ( phase == "will" ) then
 
-       transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
     end
