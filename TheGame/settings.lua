@@ -5,11 +5,15 @@ local scene = composer.newScene()
 
 
 local function backEvent( event )
+  if event.phase == "began" then
     composer.gotoScene( "mainScreen" )
+  end
 end
 
 local function creditsEvent( event )
+  if event.phase == "began" then
     composer.gotoScene( "credits" )
+  end
 end
 
 

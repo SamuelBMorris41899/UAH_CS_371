@@ -5,11 +5,15 @@ local scene = composer.newScene()
 
 
 local function backEvent( event )
-   composer.gotoScene( "settings" )
-end
+  if event.phase == "began" then
+    composer.hideOverlay("fade", 400)
+  end
+ end
 
 local function exitLevelEvent(event)
+  if event.phase == "began" then
     composer.gotoScene("levelSelection")
+  end
 end
 
  -- "scene:create()"
@@ -17,7 +21,8 @@ end
    local sceneGroup = self.view
 
     local rect = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-    rect:setFillColor(0.51, 0.51, 0.51, 0.3)
+    rect:setFillColor(0.36, 0.36, 0.36, 0.5)
+    sceneGroup:insert(rect)
 
     local bgPauseText = display.newText(
         {
@@ -28,7 +33,7 @@ end
           fontSize = 60,
         }
        )
-       bgPauseText:setFillColor( 0.36, 0.36, 0.36, 0.7)
+       bgPauseText:setFillColor( 0.36, 0.36, 0.36)
        sceneGroup:insert(bgPauseText)
 
      local pauseText = display.newText(
@@ -40,7 +45,7 @@ end
           fontSize = 60,
         }
        )
-       pauseText:setFillColor( 0.98, 0.99, 0.45, 0.7)
+       pauseText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(pauseText)
     
     local musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
@@ -107,8 +112,8 @@ end
              x = display.contentCenterX,
              y = display.contentCenterY + 200,
              cornerRadius= 10,
-             fillColor= { default={0.51, 0.51, 0.51, 0.7}, over={0.36, 0.36, 0.36, 0.7} },
-             labelColor= { default={ 1, 1, 1 , 0.7}, over={ 0.8, 0.8, 0.8 , 0.7} },
+             fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
+             labelColor= { default={ 1, 1, 1}, over={ 0.8, 0.8, 0.8} },
              onEvent = backEvent,
              }
          )
@@ -123,10 +128,10 @@ end
                 width = 200,
                 height = 60,
                 x = display.contentCenterX,
-                y = display.contentCenterY + 200,
+                y = display.contentCenterY + 100,
                 cornerRadius= 10,
-                fillColor= { default={0.51, 0.51, 0.51, 0.7}, over={0.36, 0.36, 0.36, 0.7} },
-                labelColor= { default={ 1, 1, 1 , 0.7}, over={ 0.8, 0.8, 0.8 , 0.7} },
+                fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
+                labelColor= { default={ 1, 1, 1}, over={ 0.8, 0.8, 0.8} },
                 onEvent = exitLevelEvent,
                 }
             )

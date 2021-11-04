@@ -14,16 +14,28 @@ local scene = composer.newScene()
  
 
 local function playGameEvent( event )
+  if event.phase == "began" then
    composer.gotoScene( "levelSelection" )
+  end
  end
 
  local function settingsEvent( event )
+  if event.phase == "began" then
    composer.gotoScene( "settings" )
+  end
  end
 
  local function howToPlayEvent( event )
+  if event.phase == "began" then
    composer.gotoScene( "howToPlay" )
+  end
  end
+
+ local function exitEvent(event)
+  if event.phase == "began" then
+    os.exit()
+  end
+end
 
 
 

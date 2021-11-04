@@ -3,6 +3,16 @@ local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
 
+local function pauseListener( event )
+    if event.phase == "began" then
+        local options = {
+        isModal = true,
+        effect = "fade",
+        time = 400,
+        }  
+       composer.showOverlay( "pause", options )
+    end
+end 
 
  -- "scene:create()"
  function scene:create( event )
@@ -39,14 +49,111 @@ local scene = composer.newScene()
     pauseIcon.y = display.contentCenterY - 210
     pauseIcon.width = pauseIcon.width/2
     pauseIcon.height = pauseIcon.height/2
+    pauseIcon:addEventListener("touch", pauseListener)
     sceneGroup:insert(pauseIcon) 
 
-    local tempRect = display.newRoundedRect(display.contentCenterX - 10, display.contentCenterY + 200, 250, 50, 10)
+    local bgTempRangeText = display.newText(
+        {
+          x = display.contentCenterX + 112,
+          y = display.contentCenterY - 165,
+          text = "Temperature\n     Range:", 
+          font = native.systemFontBold,
+          fontSize = 15,
+        }
+       )
+       bgTempRangeText:setFillColor( 0.36, 0.36, 0.36)
+       sceneGroup:insert(bgTempRangeText)
+  
+     local tempRangeText = display.newText(
+        {
+          x = display.contentCenterX + 110,
+          y = display.contentCenterY - 165,
+          text = "Temperature\n     Range:", 
+          font = native.systemFontBold,
+          fontSize = 15,
+        }
+    )
+    tempRangeText:setFillColor( 0.98, 0.99, 0.45)
+    sceneGroup:insert(tempRangeText)
+
+    local bgTempRangeNum = display.newText(
+      {
+        x = display.contentCenterX + 112,
+        y = display.contentCenterY - 130,
+        text = "90F-60F", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+     )
+     bgTempRangeNum:setFillColor( 0.36, 0.36, 0.36)
+     sceneGroup:insert(bgTempRangeNum)
+
+     local tempRangeNum = display.newText(
+      {
+        x = display.contentCenterX + 110,
+        y = display.contentCenterY - 130,
+        text = "90F-60F", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+     )
+     tempRangeNum:setFillColor( 0.98, 0.99, 0.45)
+     sceneGroup:insert(tempRangeNum)
+
+    local bgPerfectTempText = display.newText(
+     {
+        x = display.contentCenterX - 117,
+        y = display.contentCenterY - 165,
+        text = "     Perfect\n Tempeature:",
+        font = native.systemFontBold,
+        fontSize = 15
+     }
+  )
+  bgPerfectTempText:setFillColor( 0.36, 0.36, 0.36)
+  sceneGroup:insert(bgPerfectTempText)
+
+  local perfectTempText = display.newText(
+     {
+        x = display.contentCenterX - 115,
+        y = display.contentCenterY - 165,
+        text = "     Perfect\n Tempeature:",
+        font = native.systemFontBold,
+        fontSize = 15
+     }
+  )
+  perfectTempText:setFillColor( 0.98, 0.99, 0.45)
+  sceneGroup:insert(perfectTempText)
+
+  local bgPerfectTempNum = display.newText(
+      {
+        x = display.contentCenterX - 115,
+        y = display.contentCenterY - 130,
+        text = "75F", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+     )
+     bgPerfectTempNum:setFillColor( 0.36, 0.36, 0.36)
+     sceneGroup:insert(bgPerfectTempNum)
+
+     local perfectTempNum = display.newText(
+      {
+        x = display.contentCenterX - 113,
+        y = display.contentCenterY - 130,
+        text = "75F", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+     )
+     perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
+     sceneGroup:insert(perfectTempNum)
+
+    local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 200, 300, 50, 10)
     tempRect:setFillColor( 0.51 )
     sceneGroup:insert(tempRect)
     local bgTempText = display.newText(
         {
-            x = display.contentCenterX - 28,
+            x = display.contentCenterX - 37,
             y = display.contentCenterY + 200,
             text = "Temperature: ",
             font = native.systemFontBold,
@@ -55,10 +162,11 @@ local scene = composer.newScene()
     
     )
     bgTempText:setFillColor( 0.36, 0.36, 0.36)
+    sceneGroup:insert(bgTempText)
 
     local tempText = display.newText(
         {
-            x = display.contentCenterX - 30,
+            x = display.contentCenterX - 40,
             y = display.contentCenterY + 200,
             text = "Temperature: ",
             font = native.systemFontBold,
@@ -66,6 +174,8 @@ local scene = composer.newScene()
         }
     )
     tempText:setFillColor( 0.98, 0.99, 0.45)
+    sceneGroup:insert(tempText)
+
  end
 
 

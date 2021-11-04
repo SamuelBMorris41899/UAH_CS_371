@@ -5,7 +5,9 @@ local scene = composer.newScene()
 
 
 local function backEvent( event )
+   if event.phase == "began" then
    composer.gotoScene( "settings" )
+   end
 end
 
  -- "scene:create()"
