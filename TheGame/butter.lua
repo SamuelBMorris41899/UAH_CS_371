@@ -107,5 +107,9 @@ end
 
 function butter.tick(self) 
 
+end
 
+function butter.setState(self,state)
+    self:setSequence(state)
+    self:play()
 end
