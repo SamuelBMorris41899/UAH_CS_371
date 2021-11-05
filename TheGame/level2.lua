@@ -1,4 +1,4 @@
-print("Level 0")
+print("Level 2")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -13,6 +13,17 @@ local function pauseListener( event )
        composer.showOverlay( "pause", options )
     end
 end 
+
+local function shopListener( event )
+   if event.phase == "began" then
+      local options = {
+         isModal = true,
+         effect = "fade",
+         time = 400,
+      }  
+         composer.showOverlay( "shop", options )
+   end
+ end 
 
  -- "scene:create()"
  function scene:create( event )
@@ -32,17 +43,53 @@ end
     bg2.height = display.contentHeight
     sceneGroup:insert(bg2)
 
+    local bgDogeCoinText = display.newText(
+        {
+          x = display.contentCenterX - 98,
+          y = display.contentCenterY - 225,
+          text = "DogeCoin: ", 
+          font = native.systemFontBold,
+          fontSize = 15,
+        }
+       )
+       bgDogeCoinText:setFillColor( 0.36, 0.36, 0.36)
+       sceneGroup:insert(bgDogeCoinText)
+
     local dogeCoinText = display.newText(
         {
           x = display.contentCenterX - 100,
           y = display.contentCenterY - 225,
           text = "DogeCoin: ", 
           font = native.systemFontBold,
-          fontSize = 20,
+          fontSize = 15,
         }
     )
     dogeCoinText:setFillColor( 0.98, 0.99, 0.45)
     sceneGroup:insert(dogeCoinText)
+
+    local bgDogeCoinNum = display.newText(
+      {
+        x = display.contentCenterX - 108,
+        y = display.contentCenterY - 200,
+        text = "100", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+     )
+     bgDogeCoinNum:setFillColor( 0.36, 0.36, 0.36)
+     sceneGroup:insert(bgDogeCoinNum)
+
+   local dogeCoinNum = display.newText(
+      {
+        x = display.contentCenterX - 110,
+        y = display.contentCenterY - 200,
+        text = "100", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+  )
+  dogeCoinNum:setFillColor( 0.98, 0.99, 0.45)
+  sceneGroup:insert(dogeCoinNum)
 
     local pauseIcon = display.newImage("PauseIcon.png")
     pauseIcon.x = display.contentCenterX + 125
@@ -51,6 +98,14 @@ end
     pauseIcon.height = pauseIcon.height/2
     pauseIcon:addEventListener("touch", pauseListener)
     sceneGroup:insert(pauseIcon) 
+
+    local shopIcon = display.newImage("ShopIcon.png")
+    shopIcon.x = display.contentCenterX + 80
+    shopIcon.y = display.contentCenterY - 215
+    shopIcon.width = shopIcon.width/2
+    shopIcon.height = shopIcon.height/2
+    shopIcon:addEventListener("touch", shopListener)
+    sceneGroup:insert(shopIcon)
 
     local bgTempRangeText = display.newText(
         {

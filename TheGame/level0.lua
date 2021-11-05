@@ -15,6 +15,17 @@ local function pauseListener( event )
    end
  end 
 
+ local function shopListener( event )
+   if event.phase == "began" then
+      local options = {
+         isModal = true,
+         effect = "fade",
+         time = 400,
+      }  
+         composer.showOverlay( "shop", options )
+   end
+ end 
+
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
@@ -32,7 +43,7 @@ local function pauseListener( event )
           y = display.contentCenterY - 225,
           text = "DogeCoin: ", 
           font = native.systemFontBold,
-          fontSize = 20,
+          fontSize = 15,
         }
        )
        bgDogeCoinText:setFillColor( 0.36, 0.36, 0.36)
@@ -44,11 +55,35 @@ local function pauseListener( event )
           y = display.contentCenterY - 225,
           text = "DogeCoin: ", 
           font = native.systemFontBold,
-          fontSize = 20,
+          fontSize = 15,
         }
     )
     dogeCoinText:setFillColor( 0.98, 0.99, 0.45)
     sceneGroup:insert(dogeCoinText)
+
+    local bgDogeCoinNum = display.newText(
+        {
+          x = display.contentCenterX - 108,
+          y = display.contentCenterY - 200,
+          text = "100", 
+          font = native.systemFontBold,
+          fontSize = 23,
+        }
+       )
+       bgDogeCoinNum:setFillColor( 0.36, 0.36, 0.36)
+       sceneGroup:insert(bgDogeCoinNum)
+
+     local dogeCoinNum = display.newText(
+        {
+          x = display.contentCenterX - 110,
+          y = display.contentCenterY - 200,
+          text = "100", 
+          font = native.systemFontBold,
+          fontSize = 23,
+        }
+    )
+    dogeCoinNum:setFillColor( 0.98, 0.99, 0.45)
+    sceneGroup:insert(dogeCoinNum)
 
     local pauseIcon = display.newImage("PauseIcon.png")
     pauseIcon.x = display.contentCenterX + 125
@@ -58,6 +93,14 @@ local function pauseListener( event )
     pauseIcon.height = pauseIcon.height/2
     pauseIcon:addEventListener("touch", pauseListener)
     sceneGroup:insert(pauseIcon)
+
+    local shopIcon = display.newImage("ShopIcon.png")
+    shopIcon.x = display.contentCenterX + 80
+    shopIcon.y = display.contentCenterY - 215
+    shopIcon.width = shopIcon.width/2
+    shopIcon.height = shopIcon.height/2
+    shopIcon:addEventListener("touch", shopListener)
+    sceneGroup:insert(shopIcon)
 
     local bgTempRangeText = display.newText(
       {

@@ -1,4 +1,4 @@
-print("Credits")
+print("Pause")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -47,6 +47,14 @@ end
        )
        pauseText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(pauseText)
+
+       local pauseIcon = display.newImage("PauseIcon.png")
+       pauseIcon.x = display.contentCenterX + 125
+       pauseIcon.y = display.contentCenterY - 210
+       pauseIcon.width = pauseIcon.width/2
+       pauseIcon.height = pauseIcon.height/2
+       pauseIcon:addEventListener("touch", backEvent)
+       sceneGroup:insert(pauseIcon) 
     
     local musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
     musicVolumeRect:setFillColor( 0.51 )
