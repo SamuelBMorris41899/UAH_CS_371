@@ -26,6 +26,17 @@ local function pauseListener( event )
    end
  end 
 
+ local function TEMPWin(event)
+   if event.phase == "began" then
+      local options = {
+         isModal = true,
+         effect = "fade",
+         time = 400,
+      }  
+         composer.showOverlay( "levelWon", options )
+   end
+end
+
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
@@ -42,6 +53,7 @@ local function pauseListener( event )
      dogeCoin.y = display.contentCenterY - 210
      dogeCoin.width = dogeCoin.width/25
      dogeCoin.height = dogeCoin.height/25
+     dogeCoin:addEventListener("touch", TEMPWin)
      sceneGroup:insert(dogeCoin)
 
      local bgDogeCoinX = display.newText(

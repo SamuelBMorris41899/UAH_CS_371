@@ -109,6 +109,25 @@ end
        )
        sceneGroup:insert(soundVolumeText)
 
+       local exitLevelButton = widget.newButton(
+        {
+            label = "Exit Level",
+            fontSize = 35,
+            emboss = false, --Properties for a rounded rectangle button
+            shape = "roundedRect",
+            width = 200,
+            height = 60,
+            x = display.contentCenterX,
+            y = display.contentCenterY + 100,
+            cornerRadius= 10,
+            fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
+            labelColor= { default={ 1, 1, 1}, over={ 0.8, 0.8, 0.8} },
+            onEvent = exitLevelEvent,
+            }
+        )
+        sceneGroup:insert(exitLevelButton)
+
+
        local backButton = widget.newButton(
          {
              label = "Go Back",
@@ -127,23 +146,6 @@ end
          )
          sceneGroup:insert(backButton)
 
-         local exitLevelButton = widget.newButton(
-            {
-                label = "Exit Level",
-                fontSize = 35,
-                emboss = false, --Properties for a rounded rectangle button
-                shape = "roundedRect",
-                width = 200,
-                height = 60,
-                x = display.contentCenterX,
-                y = display.contentCenterY + 100,
-                cornerRadius= 10,
-                fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
-                labelColor= { default={ 1, 1, 1}, over={ 0.8, 0.8, 0.8} },
-                onEvent = exitLevelEvent,
-                }
-            )
-            sceneGroup:insert(exitLevelButton)
 
          
 
