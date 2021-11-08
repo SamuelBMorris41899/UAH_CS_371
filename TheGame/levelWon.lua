@@ -1,4 +1,4 @@
-print("Pause")
+print("Level Won")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -21,40 +21,40 @@ end
    local sceneGroup = self.view
 
     local rect = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-    rect:setFillColor(0.15, 0.15, 0.15, 0.8)
+    rect:setFillColor(0.36, 0.36, 0.36, 0.5)
     sceneGroup:insert(rect)
 
-    local bgPauseText = display.newText(
+    local bgLevelWonText = display.newText(
         {
-          x = display.contentCenterX - 13,
+          x = display.contentCenterX + 7,
           y = display.contentCenterY - 200,
-          text = "Paused", 
+          text = "Level Won!!", 
           font = native.systemFontBold,
           fontSize = 60,
         }
        )
-       bgPauseText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgPauseText)
+       bgLevelWonText:setFillColor( 0.36, 0.36, 0.36)
+       sceneGroup:insert(bgLevelWonText)
 
-     local pauseText = display.newText(
+     local levelWonText = display.newText(
         {
-          x = display.contentCenterX - 20,
+          x = display.contentCenterX,
           y = display.contentCenterY - 200,
-          text = "Paused", 
+          text = "Level Won!!", 
           font = native.systemFontBold,
           fontSize = 60,
         }
        )
-       pauseText:setFillColor( 0.98, 0.99, 0.45)
-       sceneGroup:insert(pauseText)
+       levelWonText:setFillColor( 0.98, 0.99, 0.45)
+       sceneGroup:insert(levelWonText)
 
-       local exitPause = display.newImage("x.png")
-       exitPause.x = display.contentCenterX + 125
-       exitPause.y = display.contentCenterY - 200
-       exitPause.width = exitPause.width*2
-       exitPause.height = exitPause.height*2
-       exitPause:addEventListener("touch", backEvent)
-       sceneGroup:insert(exitPause)
+       local pauseIcon = display.newImage("PauseIcon.png")
+       pauseIcon.x = display.contentCenterX + 125
+       pauseIcon.y = display.contentCenterY - 210
+       pauseIcon.width = pauseIcon.width/2
+       pauseIcon.height = pauseIcon.height/2
+       pauseIcon:addEventListener("touch", backEvent)
+       sceneGroup:insert(pauseIcon) 
     
     local musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
     musicVolumeRect:setFillColor( 0.51 )

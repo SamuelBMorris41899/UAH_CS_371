@@ -37,34 +37,42 @@ local function pauseListener( event )
      bg1.height = display.contentHeight
      sceneGroup:insert(bg1)
 
-     local bgDogeCoinText = display.newText(
-        {
-          x = display.contentCenterX - 98,
-          y = display.contentCenterY - 225,
-          text = "DogeCoin: ", 
-          font = native.systemFontBold,
-          fontSize = 15,
-        }
-       )
-       bgDogeCoinText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgDogeCoinText)
+     local dogeCoin = display.newImage("Coin.png")
+     dogeCoin.x = display.contentCenterX - 130
+     dogeCoin.y = display.contentCenterY - 210
+     dogeCoin.width = dogeCoin.width/25
+     dogeCoin.height = dogeCoin.height/25
+     sceneGroup:insert(dogeCoin)
 
-     local dogeCoinText = display.newText(
-        {
-          x = display.contentCenterX - 100,
-          y = display.contentCenterY - 225,
-          text = "DogeCoin: ", 
-          font = native.systemFontBold,
-          fontSize = 15,
-        }
-    )
-    dogeCoinText:setFillColor( 0.98, 0.99, 0.45)
-    sceneGroup:insert(dogeCoinText)
+     local bgDogeCoinX = display.newText(
+      {
+        x = display.contentCenterX - 98,
+        y = display.contentCenterY - 210,
+        text = "x", 
+        font = native.systemFontBold,
+        fontSize = 23,
+      }
+     )
+     bgDogeCoinX:setFillColor( 0.36, 0.36, 0.36)
+     sceneGroup:insert(bgDogeCoinX)
+
+   local dogeCoinX = display.newText(
+      {
+        x = display.contentCenterX - 100,
+        y = display.contentCenterY - 210,
+        text = "x", 
+        font = native.systemFontBold,
+
+        fontSize = 23,
+      }
+  )
+  dogeCoinX:setFillColor( 0.98, 0.99, 0.45)
+  sceneGroup:insert(dogeCoinX)
 
     local bgDogeCoinNum = display.newText(
         {
-          x = display.contentCenterX - 108,
-          y = display.contentCenterY - 200,
+         x = display.contentCenterX - 68,
+         y = display.contentCenterY - 210,
           text = "100", 
           font = native.systemFontBold,
           fontSize = 23,
@@ -75,8 +83,8 @@ local function pauseListener( event )
 
      local dogeCoinNum = display.newText(
         {
-          x = display.contentCenterX - 110,
-          y = display.contentCenterY - 200,
+         x = display.contentCenterX - 70,
+         y = display.contentCenterY - 210,
           text = "100", 
           font = native.systemFontBold,
           fontSize = 23,

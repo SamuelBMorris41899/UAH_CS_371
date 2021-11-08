@@ -42,53 +42,68 @@ local function shopListener( event )
     bg2.height = display.contentHeight
     sceneGroup:insert(bg2)
 
-    local bgDogeCoinText = display.newText(
-        {
-          x = display.contentCenterX - 98,
-          y = display.contentCenterY - 225,
-          text = "DogeCoin: ", 
-          font = native.systemFontBold,
-          fontSize = 15,
-        }
-       )
-       bgDogeCoinText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgDogeCoinText)
+    local dogeCoin = display.newImage("Coin.png")
+    dogeCoin.x = display.contentCenterX - 130
+    dogeCoin.y = display.contentCenterY - 210
+    dogeCoin.width = dogeCoin.width/25
+    dogeCoin.height = dogeCoin.height/25
+    sceneGroup:insert(dogeCoin)
 
-    local dogeCoinText = display.newText(
-        {
-          x = display.contentCenterX - 100,
-          y = display.contentCenterY - 225,
-          text = "DogeCoin: ", 
-          font = native.systemFontBold,
-          fontSize = 15,
-        }
+    local dogeCoin = display.newImage("Coin.png")
+    dogeCoin.x = display.contentCenterX - 130
+    dogeCoin.y = display.contentCenterY - 210
+    dogeCoin.width = dogeCoin.width/25
+    dogeCoin.height = dogeCoin.height/25
+    sceneGroup:insert(dogeCoin)
+
+    local bgDogeCoinX = display.newText(
+     {
+       x = display.contentCenterX - 98,
+       y = display.contentCenterY - 210,
+       text = "x", 
+       font = native.systemFontBold,
+       fontSize = 23,
+     }
     )
-    dogeCoinText:setFillColor( 0.98, 0.99, 0.45)
-    sceneGroup:insert(dogeCoinText)
+    bgDogeCoinX:setFillColor( 0.36, 0.36, 0.36)
+    sceneGroup:insert(bgDogeCoinX)
 
-    local bgDogeCoinNum = display.newText(
-      {
-        x = display.contentCenterX - 108,
-        y = display.contentCenterY - 200,
-        text = "100", 
-        font = native.systemFontBold,
-        fontSize = 23,
-      }
-     )
-     bgDogeCoinNum:setFillColor( 0.36, 0.36, 0.36)
-     sceneGroup:insert(bgDogeCoinNum)
+  local dogeCoinX = display.newText(
+     {
+       x = display.contentCenterX - 100,
+       y = display.contentCenterY - 210,
+       text = "x", 
+       font = native.systemFontBold,
 
-   local dogeCoinNum = display.newText(
-      {
-        x = display.contentCenterX - 110,
-        y = display.contentCenterY - 200,
-        text = "100", 
-        font = native.systemFontBold,
-        fontSize = 23,
-      }
-  )
-  dogeCoinNum:setFillColor( 0.98, 0.99, 0.45)
-  sceneGroup:insert(dogeCoinNum)
+       fontSize = 23,
+     }
+ )
+ dogeCoinX:setFillColor( 0.98, 0.99, 0.45)
+ sceneGroup:insert(dogeCoinX)
+
+   local bgDogeCoinNum = display.newText(
+       {
+        x = display.contentCenterX - 68,
+        y = display.contentCenterY - 210,
+         text = "100", 
+         font = native.systemFontBold,
+         fontSize = 23,
+       }
+      )
+      bgDogeCoinNum:setFillColor( 0.36, 0.36, 0.36)
+      sceneGroup:insert(bgDogeCoinNum)
+
+    local dogeCoinNum = display.newText(
+       {
+        x = display.contentCenterX - 70,
+        y = display.contentCenterY - 210,
+         text = "100", 
+         font = native.systemFontBold,
+         fontSize = 23,
+       }
+   )
+   dogeCoinNum:setFillColor( 0.98, 0.99, 0.45)
+   sceneGroup:insert(dogeCoinNum)
 
     local pauseIcon = display.newImage("PauseIcon.png")
     pauseIcon.x = display.contentCenterX + 125
