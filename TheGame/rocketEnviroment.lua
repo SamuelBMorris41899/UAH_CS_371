@@ -1,18 +1,19 @@
 globalTemp = 105
+currentLevelGroup = ""
 
 require("butter")
 butter = butterBuilder:init()
+butter.xScale = .1
+butter.yScale = .1
 
+effects = require("effects")
 
 --TEST AREA
 coolerBuilder = require("cooler")
 
-coolerBuilder:init(200,200)
-
-coolerBuilder:init(100,200)
-
 function tick()
     butter:tick()
+    effects:globalTick()
 end
 
 gameLoopTimer = timer.performWithDelay( 1000, tick, 0)

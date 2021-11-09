@@ -4,10 +4,6 @@ butterBuilder.temp = 10
 
 butterBuilder.inited = false
 
-
-
-
-
 local frameInfo = { 
     frames = {
         
@@ -96,19 +92,6 @@ function butterBuilder.init(self)
 
 end
 
-
-function butterBuilder.changeButterState(self,COLDERHOTTER) 
-    if(COLDERHOTTER == "COLDER") then 
-        self.life = self.life - 1  
-    elseif (COLDERHOTTER == "HOTTER") then 
-        self.life = self.life + 1  
-    else
-        print("ERROR! ERROR! INVALID ARGUMENT FOR CHAINGING BUTTER STATE: OPTIONS ARE COLDER or HOTTER")
-    end
-end
-
-
-
 function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
@@ -145,7 +128,6 @@ function butterBuilder.tick(self)
     elseif(between(self.temp,100,105)) then --melt 6 ALL IS LOST ANYWAY
         self.life = 14
     end
-    print(self.life)
     print(self.temp)
 
     butterState = mapButter(self.life)

@@ -2,7 +2,7 @@ require("utility")
 builder = {}
 
 builder.On = true
-
+builder.effect = -1
 
 local frameInfo = { 
     frames = {
@@ -13,7 +13,6 @@ local frameInfo = {
 }
 local butterSheet = graphics.newImageSheet( "Cooler.png", frameInfo )
 
-
 --This is the controller for the sprite animations
 local butterStateManager ={
     {name="off", start=1, count=1, time=1, loopCount=1},
@@ -22,11 +21,8 @@ local butterStateManager ={
 
 
 
-function builder.init(self,x,y) 
-    
-
+function builder.init(self,x,y)
     new = display.newSprite(butterSheet, butterStateManager)
-    
     new = deepAppend(builder,new)
     new:changeAnim()
     new.x = x
@@ -49,6 +45,5 @@ end
 function builder.turnOnOff(self) 
     self.On = not self.On
 end
-
 
 return builder

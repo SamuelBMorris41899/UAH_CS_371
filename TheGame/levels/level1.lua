@@ -28,6 +28,7 @@ local function shopListener( event )
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
+   currentLevelGroup = sceneGroup
 
     local bg1 = display.newImage("Background level 1.png")
     bg1.x = display.contentCenterX
