@@ -8,8 +8,6 @@ display.setStatusBar(display.hiddenStatusBar);
 
 
 local widget = require("widget")
-require("butter")
-
 
 local composer = require( "composer" )
 --Code to initialize your app
