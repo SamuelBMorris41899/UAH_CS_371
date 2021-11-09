@@ -11,14 +11,8 @@
 
 
 local widget = require("widget")
-require("butter")
-
---Here Testing
-butter:init()
 
 
-
-globalTemp = 72
 
 local composer = require( "composer" )
 --Code to initialize your app

@@ -1,6 +1,6 @@
 require("utility")
 butter = {}
-
+butter.temp = globalTemp
 
 
 
@@ -79,8 +79,9 @@ function butter.init(self)
     newButter = display.newSprite(butterSheet, butterStateManager)
     
     newButter = deepAppend(butter,newButter)
+
     newButter.life = 8
-    newBUtter.temp = 70
+
 
     butterState = mapButter(newButter.life)
     newButter:setSequence( butterState )  
@@ -109,13 +110,10 @@ function butter.tick(self)
     end
 end
 
-<<<<<<< Updated upstream
-=======
 MIN_TARGET_TEMP = 65
 MAX_TARGET_TEMP = 67
 function butter.isIdealTemp(self) 
     return (self.temp > MIN_TARGET_TEMP and self.temp < MAX_TARGET_TEMP))
 end
->>>>>>> Stashed changes
 
 end
