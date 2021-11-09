@@ -10,7 +10,6 @@ Cat = {
     amount=5,
     cost=42,
     action=function (event) itemBought(event,{printValue = name .. " bough"}) end,
-    --action = itemBought,
     tapAction="tap",
     spriteLocation = "",
 }
@@ -22,7 +21,6 @@ Dodge = {
     amount=2,
     cost=10,
     action=function (event) itemBought(event,{printValue = name .. " bough"}) end,
-    --action = itemBought,
     tapAction="tap",
     spriteLocation = "",
 
