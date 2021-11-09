@@ -23,7 +23,7 @@ end
      bg1.width = display.contentWidth
      bg1.height = display.contentHeight
      sceneGroup:insert(bg1)
-
+    --  Text with sldiers
      bgsettingsText = display.newText(
         {
           x = display.contentCenterX + 7,
@@ -48,17 +48,9 @@ end
        settingsText:setFillColor( 0.99, 1, 0.61)
        sceneGroup:insert(settingsText)
     
-    musicVolumeRect = display.newRoundedRect(
-        {
-            x = display.contentCenterX,
-            y = display.contentCenterY - 100,
-            width = 250,
-            height = 100,
-            cornerRadius= 5,
-        }
-    )
-    musicVolumeRect:setFillColor( 0.51 )
-    sceneGroup:insert(musicVolumeRect)
+    --   musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 250,100, 5)
+    -- musicVolumeRect:setFillColor( 0.51 )
+    -- sceneGroup:insert(musicVolumeRect)
         
     musicVolumeSlider = widget.newSlider(
         {
@@ -95,17 +87,17 @@ end
        )
        sceneGroup:insert(musicVolumeText)
 
-       soundVolumeRect = display.newRoundedRect(
-        {
-            x = display.contentCenterX,
-            y = display.contentCenterY,
-            width = 250,
-            height = 100,
-            cornerRadius= 5,
-        }
-    )
-    soundVolumeRect:setFillColor( 0.51 )
-    sceneGroup:insert(soundVolumeRect)
+    --    soundVolumeRect = display.newRoundedRect(
+    --     {
+    --         x = display.contentCenterX,
+    --         y = display.contentCenterY,
+    --         width = 250,
+    --         height = 100,
+    --         cornerRadius= 5,
+    --     }
+    -- )
+    -- soundVolumeRect:setFillColor( 0.51 )
+    -- sceneGroup:insert(soundVolumeRect)
 
     soundVolumeSlider = widget.newSlider(
         {
