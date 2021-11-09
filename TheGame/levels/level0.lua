@@ -219,6 +219,10 @@ end
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(perfectTempNum)
 
+     local b = butter:init()
+     b.x = display.contentCenterX + 100
+     b.y = display.contentCenterY + 100
+     sceneGroup:insert(b)
 
     local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 200, 300, 50, 10)
     tempRect:setFillColor( 0.51 )
@@ -233,6 +237,7 @@ end
         }
     
     )
+
     bgTempText:setFillColor( 0.36, 0.36, 0.36)
     sceneGroup:insert(bgTempText)
 
@@ -247,6 +252,30 @@ end
     )
     tempText:setFillColor( 0.98, 0.99, 0.45)
     sceneGroup:insert(tempText)
+
+    local bgTempNum = display.newText(
+       {
+          x = display.contentCenterX + 103,
+          y = display.contentCenterY + 200,
+          text = "75",
+          font = native.systemFontBold,
+          fontSize = 30
+       }
+    )
+    bgTempNum:setFillColor(0.36)
+    sceneGroup:insert(bgTempNum)
+
+    local tempNum = display.newText(
+       {
+          x = display.contentCenterX + 100,
+          y = display.contentCenterY + 200,
+          text = "75",
+          font = native.systemFontBold,
+          fontSize = 30
+       }
+    )
+    tempNum:setFillColor(0.98, 0.99, 0.45)
+    sceneGroup:insert(tempNum)
 
 
  end
