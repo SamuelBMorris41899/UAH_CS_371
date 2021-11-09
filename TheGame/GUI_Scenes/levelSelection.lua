@@ -5,37 +5,37 @@ local scene = composer.newScene()
 
 local function backEvent( event )
    if event.phase == "began" then
-   composer.gotoScene( "mainScreen" )
+   composer.gotoScene( "GUI_Scenes.mainScreen" )
    end
 end
 
 local function level0Listener(event)
    if event.phase == "began" then
-   composer.gotoScene("level0")
+   composer.gotoScene("levels.level0")
    end
 end
 
 local function level1Listener(event)
    if event.phase == "began" then
-   composer.gotoScene("level1")
+   composer.gotoScene("levels.level1")
    end
 end
 
 local function level2Listener(event)
    if event.phase == "began" then
-   composer.gotoScene("level2")
+   composer.gotoScene("levels.level2")
    end
 end
 
 local function level3Listener(event)
    if event.phase == "began" then
-   composer.gotoScene("level3")
+   composer.gotoScene("levels.level3")
    end
 end
 
 local function level4Listener(event)
    if event.phase == "began" then
-   composer.gotoScene("level4")
+   composer.gotoScene("levels.level4")
    end
 end
 
