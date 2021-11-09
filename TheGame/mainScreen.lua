@@ -43,7 +43,8 @@ end
 
 -- "scene:create()"
 function scene:create( event )
- 
+  local backgroundSong=audio.loadSound("snailhousesong.mp3");
+  audio.play( backgroundSong )
    local sceneGroup = self.view
  
    local bg1 = display.newImage("Background_startScreen_with_Button_bigger.png")
