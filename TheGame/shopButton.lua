@@ -9,7 +9,7 @@ function shopButton.newButton(self,params)
     
 
     local objectName = params.name or "NO NAME"
-    local amount = params.amonut or -1
+    local amount = params.amount or -1
     local cost = params.cost or -1
     local action = params.action or function (event) print("No action defined"); end
     local tapAction= params.tapAction or "tap" 
