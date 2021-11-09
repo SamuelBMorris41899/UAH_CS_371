@@ -1,8 +1,8 @@
 require("utility")
-butter = {}
-butter.temp = globalTemp
+butterBuilder = {}
+butterBuilder.temp = 10
 
-
+butterBuilder.inited = false
 
 
 
@@ -52,13 +52,13 @@ local butterStateManager ={
 
 
 local function mapButter(number)
-    if     number == 1 then return "freeze1"
-    elseif number == 2 then return "freeze2"
-    elseif number == 3 then return "freeze3"
+    if     number == 1 then return "freeze7"
+    elseif number == 2 then return "freeze6"
+    elseif number == 3 then return "freeze5"
     elseif number == 4 then return "freeze4"
-    elseif number == 5 then return "freeze5"
-    elseif number == 6 then return "freeze6"
-    elseif number == 7 then return "freeze7"
+    elseif number == 5 then return "freeze3"
+    elseif number == 6 then return "freeze2"
+    elseif number == 7 then return "freeze1"
     elseif number == 8 then return "full"
     elseif number == 9 then return "melt1"
     elseif number == 10 then return "melt2"
@@ -72,13 +72,15 @@ end
 
 
 
-function butter.init(self) 
+function butterBuilder.init(self) 
     
-
+    if(self.inited == true) then 
+        return self
+    end
 
     newButter = display.newSprite(butterSheet, butterStateManager)
     
-    newButter = deepAppend(butter,newButter)
+    newButter = deepAppend(butterBuilder,newButter)
 
     newButter.life = 8
 
@@ -88,10 +90,14 @@ function butter.init(self)
     newButter:play()  -- play the new sequence
     newButter.x = 100
     newButter.y = 100
+    self = newButter
+    self.inited = true
+    return self
+
 end
 
 
-function butter.changeButterState(self,COLDERHOTTER) 
+function butterBuilder.changeButterState(self,COLDERHOTTER) 
     if(COLDERHOTTER == "COLDER") then 
         self.life = self.life - 1  
     elseif (COLDERHOTTER == "HOTTER") then 
@@ -102,16 +108,59 @@ function butter.changeButterState(self,COLDERHOTTER)
 end
 
 
-function butter.tick(self) 
-    if(self.temp > globalTemp) then 
+
+function butterBuilder.tick(self) 
+    if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
-    elseif (self.temp < globalTemp) then 
+    elseif (self.temp > globalTemp) then 
         self.temp = self.temp - 1
     end
+
+    if(between(self.temp,0,20)) then --frozen 7 ALL IS LOST ANYWAY
+        self.life = 1
+    elseif(between(self.temp,20,30)) then --frozen 6
+        self.life = 2
+    elseif(between(self.temp,30,40)) then --frozen 5
+        self.life = 3
+    elseif(between(self.temp,40,50)) then --frozen 4
+        self.life = 4
+    elseif(between(self.temp,50,55)) then --frozen 3
+        self.life = 5
+    elseif(between(self.temp,55,60)) then --frozen 2
+        self.life = 6
+    elseif(between(self.temp,60,65)) then --frozen 1
+        self.life = 7
+    elseif(between(self.temp,65,70)) then --perfect
+        self.life = 8
+    elseif(between(self.temp,70,75)) then --melt 1
+        self.life = 9
+    elseif(between(self.temp,75,80)) then --melt 2
+        self.life = 10
+    elseif(between(self.temp,80,85)) then --melt 3
+        self.life = 11
+    elseif(between(self.temp,90,95)) then --melt 4
+        self.life = 12
+    elseif(between(self.temp,95,100)) then --melt 5
+        self.life = 13
+    elseif(between(self.temp,100,105)) then --melt 6 ALL IS LOST ANYWAY
+        self.life = 14
+    end
+    print(self.life)
+    print(self.temp)
+
+    butterState = mapButter(self.life)
+    self:setSequence(butterState)
 end
 
 MIN_TARGET_TEMP = 65
 MAX_TARGET_TEMP = 67
-function butter.isIdealTemp(self) 
-    return (self.temp > MIN_TARGET_TEMP and self.temp < MAX_TARGET_TEMP)
+PERFECT_TEMP = 66
+
+function butterBuilder.isIdealTemp(self) 
+    return between(self.temp, MIN_TARGET_TEMP, MAX_TARGET_TEMP)
 end
+
+function butterBuilder.isPerfectTemp(self) 
+    return (self.temp == PERFECT_TEMP)
+end
+
