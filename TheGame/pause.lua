@@ -1,4 +1,4 @@
-print("Settings")
+print("Pause")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -6,55 +6,56 @@ local scene = composer.newScene()
 
 local function backEvent( event )
   if event.phase == "began" then
-    composer.gotoScene( "mainScreen" )
+    composer.hideOverlay("fade", 400)
   end
-end
+ end
 
-local function creditsEvent( event )
+local function exitLevelEvent(event)
   if event.phase == "began" then
-    composer.gotoScene( "credits" )
+    composer.gotoScene("levelSelection")
   end
 end
-
 
  -- "scene:create()"
  function scene:create( event )
-    local sceneGroup = self.view
+   local sceneGroup = self.view
 
-    local bg1 = display.newImage("Background_startScreen_with_Button_bigger.png")
-    bg1.x = display.contentCenterX
-    bg1.y = display.contentCenterY
-     bg1.width = display.contentWidth
-     bg1.height = display.contentHeight
-     sceneGroup:insert(bg1)
+    local rect = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+    rect:setFillColor(0.15, 0.15, 0.15, 0.8)
+    sceneGroup:insert(rect)
 
-    local  bgsettingsText = display.newText(
+    local bgPauseText = display.newText(
         {
-          x = display.contentCenterX + 7,
+          x = display.contentCenterX - 13,
           y = display.contentCenterY - 200,
-          text = "Settings", 
+          text = "Paused", 
           font = native.systemFontBold,
           fontSize = 60,
         }
        )
-       bgsettingsText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgsettingsText)
+       bgPauseText:setFillColor( 0.36, 0.36, 0.36)
+       sceneGroup:insert(bgPauseText)
 
-     local settingsText = display.newText(
+     local pauseText = display.newText(
         {
-          x = display.contentCenterX,
+          x = display.contentCenterX - 20,
           y = display.contentCenterY - 200,
-          text = "Settings", 
+          text = "Paused", 
           font = native.systemFontBold,
           fontSize = 60,
         }
        )
-       settingsText:setFillColor( 0.98, 0.99, 0.45)
-       sceneGroup:insert(settingsText)
+       pauseText:setFillColor( 0.98, 0.99, 0.45)
+       sceneGroup:insert(pauseText)
+
+       local exitPause = display.newImage("x.png")
+       exitPause.x = display.contentCenterX + 125
+       exitPause.y = display.contentCenterY - 200
+       exitPause.width = exitPause.width*2
+       exitPause.height = exitPause.height*2
+       exitPause:addEventListener("touch", backEvent)
+       sceneGroup:insert(exitPause)
     
-    --   musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 250,100, 5)
-    -- musicVolumeRect:setFillColor( 0.51 )
-    -- sceneGroup:insert(musicVolumeRect)
     local musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
     musicVolumeRect:setFillColor( 0.51 )
     sceneGroup:insert(musicVolumeRect)
@@ -81,17 +82,6 @@ end
        )
        sceneGroup:insert(musicVolumeText)
 
-    --    soundVolumeRect = display.newRoundedRect(
-    --     {
-    --         x = display.contentCenterX,
-    --         y = display.contentCenterY,
-    --         width = 250,
-    --         height = 100,
-    --         cornerRadius= 5,
-    --     }
-    -- )
-    -- soundVolumeRect:setFillColor( 0.51 )
-    -- sceneGroup:insert(soundVolumeRect)
     local soundVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 5, 300, 75, 10)
     soundVolumeRect:setFillColor( 0.51 )
     sceneGroup:insert(soundVolumeRect)
@@ -119,9 +109,9 @@ end
        )
        sceneGroup:insert(soundVolumeText)
 
-      local creditsButton = widget.newButton(
+       local exitLevelButton = widget.newButton(
         {
-            label = "Credits",
+            label = "Exit Level",
             fontSize = 35,
             emboss = false, --Properties for a rounded rectangle button
             shape = "roundedRect",
@@ -131,30 +121,33 @@ end
             y = display.contentCenterY + 100,
             cornerRadius= 10,
             fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
-            labelColor= { default={ 1, 1, 1 }, over={ 0.8, 0.8, 0.8 } },
-            onEvent = creditsEvent,
-        }
-    )
-    sceneGroup:insert(creditsButton)
-    
-    
-    local backButton = widget.newButton(
-    {
-        label = "Go Back",
-        fontSize = 35,
-        emboss = false, --Properties for a rounded rectangle button
-        shape = "roundedRect",
-        width = 200,
-        height = 60,
-        x = display.contentCenterX,
-        y = display.contentCenterY + 200,
-        cornerRadius= 10,
-        fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
-        labelColor= { default={ 1, 1, 1 }, over={ 0.8, 0.8, 0.8 } },
-        onEvent = backEvent,
-        }
-    )
-    sceneGroup:insert(backButton)
+            labelColor= { default={ 1, 1, 1}, over={ 0.8, 0.8, 0.8} },
+            onEvent = exitLevelEvent,
+            }
+        )
+        sceneGroup:insert(exitLevelButton)
+
+
+       local backButton = widget.newButton(
+         {
+             label = "Go Back",
+             fontSize = 35,
+             emboss = false, --Properties for a rounded rectangle button
+             shape = "roundedRect",
+             width = 200,
+             height = 60,
+             x = display.contentCenterX,
+             y = display.contentCenterY + 200,
+             cornerRadius= 10,
+             fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
+             labelColor= { default={ 1, 1, 1}, over={ 0.8, 0.8, 0.8} },
+             onEvent = backEvent,
+             }
+         )
+         sceneGroup:insert(backButton)
+
+
+         
 
  end
 
@@ -204,5 +197,3 @@ end
  ---------------------------------------------------------------------------------
 
  return scene
-
-

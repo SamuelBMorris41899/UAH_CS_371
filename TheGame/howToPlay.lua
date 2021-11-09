@@ -1,8 +1,13 @@
 print("How To Play")
-
+local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
 
+local function backEvent( event )
+   if event.phase == "began" then
+   composer.gotoScene( "mainScreen" )
+   end
+end
 
 
  -- "scene:create()"
@@ -16,7 +21,7 @@ local scene = composer.newScene()
      bg1.height = display.contentHeight
      sceneGroup:insert(bg1)
 
-     bgHowToPlayText = display.newText(
+     local bgHowToPlayText = display.newText(
         {
           x = display.contentCenterX + 7,
           y = display.contentCenterY - 200,
@@ -28,7 +33,7 @@ local scene = composer.newScene()
        bgHowToPlayText:setFillColor( 0.36, 0.36, 0.36)
        sceneGroup:insert(bgHowToPlayText)
 
-     howToPlayText = display.newText(
+     local howToPlayText = display.newText(
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 200,
@@ -37,9 +42,27 @@ local scene = composer.newScene()
           fontSize = 50,
         }
        )
-       howToPlayText:setFillColor( 0.99, 1, 0.61)
+       howToPlayText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(howToPlayText)
 
+
+       local backButton = widget.newButton(
+         {
+             label = "Go Back",
+             fontSize = 35,
+             emboss = false, --Properties for a rounded rectangle button
+             shape = "roundedRect",
+             width = 200,
+             height = 60,
+             x = display.contentCenterX,
+             y = display.contentCenterY + 200,
+             cornerRadius= 10,
+             fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
+             labelColor= { default={ 1, 1, 1 }, over={ 0.8, 0.8, 0.8 } },
+             onEvent = backEvent,
+             }
+         )
+         sceneGroup:insert(backButton)
  end
 
 
@@ -64,7 +87,6 @@ local scene = composer.newScene()
 
     if ( phase == "will" ) then
 
-       transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
     end
