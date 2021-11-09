@@ -11,16 +11,13 @@ butter = {}
 local frameInfo = { 
     frames = {
         
-        {x = 1, y = 2, width = 198, height = 98}, --full        1
-        {x = 1, y = 102, width = 198, height = 98},--melt 2     2
-        {x = 1, y = 202, width = 198, height = 98},--melt 4     3
-        {x = 1, y = 302, width = 198, height = 98},--melt 6     4
-        {x = 1, y = 402, width = 198, height = 98},--melt 1     5
-        {x = 1, y = 502, width = 198, height = 98},--melt 3     6
-        {x = 1, y = 602, width = 198, height = 98},--melt 5     7
-
-
-                
+        {x = 1, y = 2, width = 198, height = 98}, --full            1
+        {x = 1, y = 102, width = 198, height = 98},--melt 2         2
+        {x = 1, y = 202, width = 198, height = 98},--melt 4         3      
+        {x = 1, y = 302, width = 198, height = 98},--melt 6         4
+        {x = 1, y = 402, width = 198, height = 98},--melt 1         5
+        {x = 1, y = 502, width = 198, height = 98},--melt 3         6
+        {x = 1, y = 602, width = 198, height = 98},--melt 5         7                
         {x = 201, y = 102, width = 198, height = 98},-- Freeze 7    8
         {x = 201, y = 202, width = 198, height = 98},-- Freeze 6    9  
         {x = 201, y = 302, width = 198, height = 98},-- Freeze 5    10
@@ -83,12 +80,15 @@ function butter.init(self)
     
     newButter = deepAppend(butter,newButter)
     newButter.life = 8
+    newBUtter.temp = 70
+
     butterState = mapButter(newButter.life)
     newButter:setSequence( butterState )  
     newButter:play()  -- play the new sequence
     newButter.x = 100
     newButter.y = 100
 end
+
 
 function butter.changeButterState(self,COLDERHOTTER) 
     if(COLDERHOTTER == "COLDER") then 
@@ -98,14 +98,24 @@ function butter.changeButterState(self,COLDERHOTTER)
     else
         print("ERROR! ERROR! INVALID ARGUMENT FOR CHAINGING BUTTER STATE: OPTIONS ARE COLDER or HOTTER")
     end
-
 end
 
 
-
-
-
 function butter.tick(self) 
+    if(self.temp > globalTemp) then 
+        self.temp = self.temp + 1
+    elseif (self.temp < globalTemp) 
+        self.temp = self.temp - 1
+    end
+end
 
+<<<<<<< Updated upstream
+=======
+MIN_TARGET_TEMP = 65
+MAX_TARGET_TEMP = 67
+function butter.isIdealTemp(self) 
+    return (self.temp > MIN_TARGET_TEMP and self.temp < MAX_TARGET_TEMP))
+end
+>>>>>>> Stashed changes
 
 end
