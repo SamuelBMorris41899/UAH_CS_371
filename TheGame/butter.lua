@@ -1,8 +1,8 @@
 require("utility")
-b = {}
-b.temp = 10
+butterBuilder = {}
+butterBuilder.temp = 10
 
-
+butterBuilder.inited = false
 
 
 
@@ -72,13 +72,15 @@ end
 
 
 
-function b.init(self) 
+function butterBuilder.init(self) 
     
-
+    if(self.inited == true) then 
+        return self
+    end
 
     newButter = display.newSprite(butterSheet, butterStateManager)
     
-    newButter = deepAppend(b,newButter)
+    newButter = deepAppend(butterBuilder,newButter)
 
     newButter.life = 8
 
@@ -89,11 +91,13 @@ function b.init(self)
     newButter.x = 100
     newButter.y = 100
     self = newButter
+    self.inited = true
     return self
+
 end
 
 
-function b.changeButterState(self,COLDERHOTTER) 
+function butterBuilder.changeButterState(self,COLDERHOTTER) 
     if(COLDERHOTTER == "COLDER") then 
         self.life = self.life - 1  
     elseif (COLDERHOTTER == "HOTTER") then 
@@ -105,7 +109,7 @@ end
 
 
 
-function b.tick(self) 
+function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
     elseif (self.temp > globalTemp) then 
@@ -152,11 +156,11 @@ MIN_TARGET_TEMP = 65
 MAX_TARGET_TEMP = 67
 PERFECT_TEMP = 66
 
-function b.isIdealTemp(self) 
+function butterBuilder.isIdealTemp(self) 
     return between(self.temp, MIN_TARGET_TEMP, MAX_TARGET_TEMP)
 end
 
-function b.isPerfectTemp(self) 
+function butterBuilder.isPerfectTemp(self) 
     return (self.temp == PERFECT_TEMP)
 end
 

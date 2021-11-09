@@ -1,7 +1,7 @@
 globalTemp = 105
 
 require("butter")
-butter = b:init()
+butter = butterBuilder:init()
 
 function tick() 
     butter:tick()    
