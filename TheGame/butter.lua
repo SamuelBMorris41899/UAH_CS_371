@@ -105,7 +105,7 @@ end
 function butter.tick(self) 
     if(self.temp > globalTemp) then 
         self.temp = self.temp + 1
-    elseif (self.temp < globalTemp) 
+    elseif (self.temp < globalTemp) then 
         self.temp = self.temp - 1
     end
 end
@@ -113,7 +113,5 @@ end
 MIN_TARGET_TEMP = 65
 MAX_TARGET_TEMP = 67
 function butter.isIdealTemp(self) 
-    return (self.temp > MIN_TARGET_TEMP and self.temp < MAX_TARGET_TEMP))
-end
-
+    return (self.temp > MIN_TARGET_TEMP and self.temp < MAX_TARGET_TEMP)
 end

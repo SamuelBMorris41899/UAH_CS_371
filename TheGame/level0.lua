@@ -2,6 +2,7 @@ print("Level 0")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
+require("butter")
 
 
 local function pauseListener( event )
