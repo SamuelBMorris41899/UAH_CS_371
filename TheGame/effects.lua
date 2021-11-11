@@ -10,8 +10,9 @@ function effects.addCooler(self)
 end
 
 function effects.addHeater(self)
-    newCooler = coolerBuilder:init(100,100)
-    table.insert(effects.list,newCooler)
+    newHeater = heaterBuilder:init(100,100)
+    table.insert(self.list,newHeater)
+    return newHeater
 end
 
 function effects.addEvent (self,event)

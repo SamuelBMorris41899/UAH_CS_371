@@ -5,10 +5,11 @@ builder.On = true
 
 local frameInfo = { 
     frames = {
-        {x = 1, y = 2, width = 87, height = 131}, --1
-        {x = 91, y = 2, width = 87, height = 131},--2
+        {x = 1, y = 2, width = 111, height = 138},      --off
+        {x = 122, y = 2, width = 111, height = 138},    --on
     }
 }
+
 local spriteSheetData = graphics.newImageSheet( "Items\\heater.png", frameInfo )
 
 --This is the controller for the sprite animations
@@ -42,6 +43,7 @@ end
 
 function builder.turnOnOff(self) 
     self.On = not self.On
+    self:changeAnim()
 end
 
 function builder.effect(self) 

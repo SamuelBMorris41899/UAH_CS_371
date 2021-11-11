@@ -10,6 +10,7 @@ effects = require("effects")
 
 --TEST AREA
 coolerBuilder = require("items.cooler")
+heaterBuilder = require("items.heater")
 
 function tick()
     butter:tick()

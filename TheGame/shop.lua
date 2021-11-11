@@ -3,7 +3,7 @@ local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
 local buttonComposer = require("shopButton")
-local itemList = require("items")
+local itemList = require("Items.items")
 
 
 shopGroup = ""

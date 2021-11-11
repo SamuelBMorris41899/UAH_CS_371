@@ -43,6 +43,7 @@ end
 
 function builder.turnOnOff(self) 
     self.On = not self.On
+    self:changeAnim()
 end
 
 function builder.effect(self) 
