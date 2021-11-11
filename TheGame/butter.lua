@@ -7,20 +7,20 @@ butterBuilder.inited = false
 local frameInfo = { 
     frames = {
         
-        {x = 1, y = 2, width = 198, height = 98}, --full            1
-        {x = 1, y = 102, width = 198, height = 98},--melt 2         2
-        {x = 1, y = 202, width = 198, height = 98},--melt 4         3      
-        {x = 1, y = 302, width = 198, height = 98},--melt 6         4
-        {x = 1, y = 402, width = 198, height = 98},--melt 1         5
-        {x = 1, y = 502, width = 198, height = 98},--melt 3         6
-        {x = 1, y = 602, width = 198, height = 98},--melt 5         7                
-        {x = 201, y = 102, width = 198, height = 98},-- Freeze 7    8
-        {x = 201, y = 202, width = 198, height = 98},-- Freeze 6    9  
-        {x = 201, y = 302, width = 198, height = 98},-- Freeze 5    10
-        {x = 201, y = 402, width = 198, height = 98},-- Freeze 4    11
-        {x = 201, y = 502, width = 198, height = 98},-- Freeze 3    12  
-        {x = 201, y = 602, width = 198, height = 98},-- Freeze 2    13
-        {x = 201, y = 702, width = 198, height = 98}, -- Freeze 1   14
+        {x = 2, y = 2, width = 195, height = 97}, --full            1
+        {x = 2, y = 102, width = 195, height = 97},--melt 2         2
+        {x = 2, y = 202, width = 195, height = 97},--melt 4         3      
+        {x = 2, y = 302, width = 195, height = 97},--melt 6         4
+        {x = 2, y = 402, width = 195, height = 97},--melt 1         5
+        {x = 2, y = 502, width = 195, height = 97},--melt 3         6
+        {x = 2, y = 602, width = 195, height = 97},--melt 5         7                
+        {x = 201, y = 102, width = 195, height = 97},-- Freeze 7    8
+        {x = 201, y = 202, width = 195, height = 97},-- Freeze 6    9  
+        {x = 201, y = 302, width = 195, height = 97},-- Freeze 5    10
+        {x = 201, y = 402, width = 195, height = 97},-- Freeze 4    11
+        {x = 201, y = 502, width = 195, height = 97},-- Freeze 3    12  
+        {x = 201, y = 602, width = 195, height = 97},-- Freeze 2    13
+        {x = 201, y = 702, width = 195, height = 97}, -- Freeze 1   14
     }
 }
 local butterSheet = graphics.newImageSheet( "Butter_Stages.png", frameInfo )

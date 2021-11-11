@@ -52,6 +52,9 @@ end
        settingsText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(settingsText)
     
+    --   musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 250,100, 5)
+    -- musicVolumeRect:setFillColor( 0.51 )
+    -- sceneGroup:insert(musicVolumeRect)
     local musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
     musicVolumeRect:setFillColor( 0.51 )
     sceneGroup:insert(musicVolumeRect)
@@ -78,6 +81,17 @@ end
        )
        sceneGroup:insert(musicVolumeText)
 
+    --    soundVolumeRect = display.newRoundedRect(
+    --     {
+    --         x = display.contentCenterX,
+    --         y = display.contentCenterY,
+    --         width = 250,
+    --         height = 100,
+    --         cornerRadius= 5,
+    --     }
+    -- )
+    -- soundVolumeRect:setFillColor( 0.51 )
+    -- sceneGroup:insert(soundVolumeRect)
     local soundVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 5, 300, 75, 10)
     soundVolumeRect:setFillColor( 0.51 )
     sceneGroup:insert(soundVolumeRect)
