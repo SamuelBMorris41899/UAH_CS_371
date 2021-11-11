@@ -1,7 +1,7 @@
 event = {}
 
-function event.effect(self,severity) 
-    globalTemp = globalTemp - 10 * severity
+function event.effect(self) 
+    globalTemp = globalTemp - 10
 end
 
 return event

@@ -1,8 +1,8 @@
 event = {}
 
-function event.effect(self,severity) 
-    globalTemp = globalTemp + 10 * severity
-    butter.temp = butter.temp + severity
+function event.effect(self) 
+    globalTemp = globalTemp + 10
+    butter.temp = butter.temp + 5
 end
 
 return event
