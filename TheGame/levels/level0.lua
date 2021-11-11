@@ -41,7 +41,7 @@ end
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
-
+   currentLevelGroup = sceneGroup
     local bg1 = display.newImage("level0_lab.png")
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY

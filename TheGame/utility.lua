@@ -30,3 +30,7 @@ function getDistance(x1,y1,x2,y2)
     local deltaY = y2-y1
     return math.sqrt(deltaX * deltaX + deltaY * deltaY)
 end
+
+function between(number,min,max) 
+    return (number > min and number < max);
+end

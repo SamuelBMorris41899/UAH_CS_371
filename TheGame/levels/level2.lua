@@ -29,7 +29,7 @@ local function shopListener( event )
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
-
+   currentLevelGroup = sceneGroup
     local bg1 = display.newImage("Level 2 Earth Orbit.png")
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY

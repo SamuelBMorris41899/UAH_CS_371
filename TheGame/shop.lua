@@ -5,6 +5,9 @@ local scene = composer.newScene()
 local buttonComposer = require("shopButton")
 local itemList = require("items")
 
+
+shopGroup = ""
+
 local function exitListener( event )
   if event.phase == "began" then
     composer.hideOverlay("fade", 400)
@@ -14,14 +17,14 @@ local function exitListener( event )
 
  -- "scene:create()"
  function scene:create( event )
-   local sceneGroup = self.view
+    shopGroup = self.view   
 
     local bg1 = display.newImage("ShopBackground.png")
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY
     bg1.width = display.contentWidth
     bg1.height = display.contentHeight
-    sceneGroup:insert(bg1)
+    shopGroup:insert(bg1)
 
 
     local bgShopText = display.newText(
@@ -34,7 +37,7 @@ local function exitListener( event )
         }
        )
        bgShopText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgShopText)
+       shopGroup:insert(bgShopText)
 
      local shopText = display.newText(
         {
@@ -46,7 +49,7 @@ local function exitListener( event )
         }
        )
        shopText:setFillColor( 0.98, 0.99, 0.45)
-       sceneGroup:insert(shopText)
+       shopGroup:insert(shopText)
     
        local exitShop = display.newImage("x.png")
        exitShop.x = display.contentCenterX + 125
@@ -54,7 +57,7 @@ local function exitListener( event )
        exitShop.width = exitShop.width*2
        exitShop.height = exitShop.height*2
        exitShop:addEventListener("touch", exitListener)
-       sceneGroup:insert(exitShop)
+       shopGroup:insert(exitShop)
 
 
 
@@ -83,7 +86,7 @@ local function exitListener( event )
         itemButton.anchorX = 0
         itemButton.anchorY = 0
         count = count + 1
-        sceneGroup:insert(itemButton)
+        shopGroup:insert(itemButton)
       end 
 
     
@@ -96,7 +99,7 @@ local function exitListener( event )
  -- "scene:show()"
  function scene:show( event )
 
-    local sceneGroup = self.view
+    local shopGroup = self.view
     local phase = event.phase
 
     if ( phase == "will" ) then
@@ -109,7 +112,7 @@ local function exitListener( event )
  -- "scene:hide()"
  function scene:hide( event )
 
-    local sceneGroup = self.view
+    local shopGroup = self.view
     local phase = event.phase
 
     if ( phase == "will" ) then
@@ -123,7 +126,7 @@ local function exitListener( event )
  -- "scene:destroy()"
  function scene:destroy( event )
 
-    local sceneGroup = self.view
+    local shopGroup = self.view
 
  end
 

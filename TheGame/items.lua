@@ -43,8 +43,13 @@ itemList = {}
 
 local function itemBought(event,item)
     print(item.printValue)
+    if(item.item == "Cooler") then 
+        
+    end
 end
-  
+function coolerBought(event) 
+    currentLevelGroup:insert(effects:addCooler())
+end 
 
 Cat = {
     name="Peanut",
@@ -62,7 +67,7 @@ Dodge = {
     name="Dodge",
     amount = -1,
     cost=10,
-    action=function (event) itemBought(event,{printValue = " bought"}) end,
+    action=function (event) itemBought(event,{printValue = " bought",item = "Dodge"}) end,
     tapAction="tap",
     spriteLocation = "",
 
@@ -73,7 +78,7 @@ Heater = {
     name = "Heater",
     amount = "+"..5,
     cost = 50,
-    action=function (event) itemBought(event,{printValue = " bought"}) end,
+    action=function (event) itemBought(event,{printValue = " bought",item = "Heater"}) end,
     tapAction = "tap",
     spriteLocation = "",
    -- itemSheet = heaterSheet,
@@ -85,7 +90,7 @@ Cooler = {
     name = "Cooler",
     amount = -5,
     cost = 50,
-    action=function (event) itemBought(event,{printValue = " bought"}) end,
+    action= coolerBought,
     tapAction = "tap",
     spriteLocation = "",
    -- itemSheet = coolerSheet,
