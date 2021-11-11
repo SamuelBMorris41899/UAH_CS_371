@@ -6,7 +6,7 @@ local scene = composer.newScene()
 
 local function backEvent( event )
    if event.phase == "began" then
-   composer.gotoScene( "settings" )
+   composer.gotoScene( "GUI_Scenes.settings" )
    end
 end
 
@@ -44,6 +44,90 @@ end
        )
        creditsText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(creditsText)
+
+       local samRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 50, 10)
+       samRect:setFillColor(0.51)
+       sceneGroup:insert(samRect)
+
+       local bgSamText = display.newText(
+          {
+             x = display.contentCenterX + 5,
+             y = display.contentCenterY - 100,
+             text = "Sam Morris",
+             font = native.systemFontBold,
+             fontSize = 40,
+          }
+       )
+       bgSamText:setFillColor(0.36, 0.36, 0.36)
+       sceneGroup:insert(bgSamText)
+
+       local samText = display.newText(
+          {
+             x = display.contentCenterX,
+             y = display.contentCenterY - 100,
+             text = "Sam Morris",
+             font = native.systemFontBold,
+             fontSize = 40,
+          }
+       )
+       samText:setFillColor(0.98, 0.99, 0.45)
+       sceneGroup:insert(samText)
+
+       local luisRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY, 300, 50, 10)
+       luisRect:setFillColor(0.51)
+       sceneGroup:insert(luisRect)
+
+       local bgLuisText = display.newText(
+          {
+             x = display.contentCenterX + 5,
+             y = display.contentCenterY,
+             text = "Luis Porras",
+             font = native.systemFontBold,
+             fontSize = 40,
+          }
+       )
+       bgLuisText:setFillColor(0.36, 0.36, 0.36)
+       sceneGroup:insert(bgLuisText)
+
+       local luisText = display.newText(
+          {
+             x = display.contentCenterX,
+             y = display.contentCenterY,
+             text = "Luis Porras",
+             font = native.systemFontBold,
+             fontSize = 40,
+          }
+       )
+       luisText:setFillColor(0.98, 0.99, 0.45)
+       sceneGroup:insert(luisText)
+
+       local faithRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 100, 300, 50, 10)
+       faithRect:setFillColor(0.51)
+       sceneGroup:insert(faithRect)
+
+       local bgFaithText = display.newText(
+          {
+             x = display.contentCenterX + 5,
+             y = display.contentCenterY + 100,
+             text = "Faith Grimmeisen",
+             font = native.systemFontBold,
+             fontSize = 33,
+          }
+       )
+       bgFaithText:setFillColor(0.36, 0.36, 0.36)
+       sceneGroup:insert(bgFaithText)
+
+       local faithText = display.newText(
+          {
+             x = display.contentCenterX,
+             y = display.contentCenterY + 100,
+             text = "Faith Grimmeisen",
+             font = native.systemFontBold,
+             fontSize = 33,
+          }
+       )
+       faithText:setFillColor(0.98, 0.99, 0.45)
+       sceneGroup:insert(faithText)
 
       local backButton = widget.newButton(
          {

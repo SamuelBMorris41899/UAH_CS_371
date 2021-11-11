@@ -6,13 +6,13 @@ local scene = composer.newScene()
 
 local function backEvent( event )
   if event.phase == "began" then
-    composer.gotoScene( "mainScreen" )
+    composer.gotoScene( "GUI_Scenes.mainScreen" )
   end
 end
 
 local function creditsEvent( event )
   if event.phase == "began" then
-    composer.gotoScene( "credits" )
+    composer.gotoScene( "GUI_Scenes.credits" )
   end
 end
 

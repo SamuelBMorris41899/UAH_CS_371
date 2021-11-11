@@ -5,7 +5,7 @@ local scene = composer.newScene()
 
 local function backEvent( event )
    if event.phase == "began" then
-   composer.gotoScene( "mainScreen" )
+   composer.gotoScene( "GUI_Scenes.mainScreen" )
    end
 end
 
@@ -45,7 +45,40 @@ end
        howToPlayText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(howToPlayText)
 
+      --  local bodyTxtBg = ;
+      --  sceneGroup:insert(bodyTxtBg)
+      
+      local bodyTextBg = display.newRoundedRect(display.contentCenterX,display.contentCenterY,display.contentWidth - 5,350,10);
+      bodyTextBg:setFillColor(0.51) 
+      sceneGroup:insert(bodyTextBg)
 
+      local bodyText = display.newText(
+         {
+           x = 10,
+           y = 75,
+           text = "You are tasked with bringing\n"..
+            "butter to the moon for Elon's\n"..
+            "birthday to do this you must\n"..
+            "keep the butter at the perfect\n"..
+            "temperature\n"..
+            "If you keep the butter's \n"..
+            "temp in a specific range\n"..
+            "you will earn dodge coin \n"..
+            "which you can spend at\n"..
+            "the shop to make your \n"..
+            "task easier if you have\n"..
+            "the butter at the perfect\n"..
+            "temperature  then you can \n"..
+            "earn double the dodge coin!\n"
+            , 
+           font = native.systemFontBold,
+           fontSize = 20,
+         }
+        )
+        bodyText.anchorX = 0
+        bodyText.anchorY = 0
+        sceneGroup:insert(bodyText)
+      
        local backButton = widget.newButton(
          {
              label = "Go Back",
@@ -55,7 +88,7 @@ end
              width = 200,
              height = 60,
              x = display.contentCenterX,
-             y = display.contentCenterY + 200,
+             y = display.contentCenterY + 225,
              cornerRadius= 10,
              fillColor= { default={0.51, 0.51, 0.51}, over={0.36, 0.36, 0.36} },
              labelColor= { default={ 1, 1, 1 }, over={ 0.8, 0.8, 0.8 } },
