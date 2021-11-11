@@ -2,6 +2,7 @@ print("Level 3")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
+require("butter")
 
 local function pauseListener( event )
     if event.phase == "began" then
@@ -28,7 +29,7 @@ local function shopListener( event )
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
-
+   currentLevelGroup = sceneGroup
     local bg1 = display.newImage("Deep Space.png")
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY
@@ -211,6 +212,11 @@ local function shopListener( event )
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(perfectTempNum)
 
+     local b = butter:init()
+     b.x = display.contentCenterX + 20
+     b.y = display.contentCenterY + 50
+     sceneGroup:insert(b)
+
     local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 200, 300, 50, 10)
     tempRect:setFillColor( 0.51 )
     sceneGroup:insert(tempRect)
@@ -238,6 +244,30 @@ local function shopListener( event )
     )
     tempText:setFillColor( 0.98, 0.99, 0.45)
     sceneGroup:insert(tempText)
+
+    local bgTempNum = display.newText(
+      {
+         x = display.contentCenterX + 103,
+         y = display.contentCenterY + 200,
+         text = "75",
+         font = native.systemFontBold,
+         fontSize = 30
+      }
+   )
+   bgTempNum:setFillColor(0.36)
+   sceneGroup:insert(bgTempNum)
+
+   local tempNum = display.newText(
+      {
+         x = display.contentCenterX + 100,
+         y = display.contentCenterY + 200,
+         text = "75",
+         font = native.systemFontBold,
+         fontSize = 30
+      }
+   )
+   tempNum:setFillColor(0.98, 0.99, 0.45)
+   sceneGroup:insert(tempNum)
 
  end
 

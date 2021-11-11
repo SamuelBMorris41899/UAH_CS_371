@@ -9,10 +9,12 @@ function shopButton.newButton(self,params)
     
 
     local objectName = params.name or "NO NAME"
-    local amount = params.amonut or -1
+    local amount = params.amount or -1
     local cost = params.cost or -1
     local action = params.action or function (event) print("No action defined"); end
     local tapAction= params.tapAction or "tap" 
+    --local itemSheet = params.itemSheet or function (event) print("No action defined"); end
+    --local itemStateManager = params.itemStateManager or function (event) print("No action defined"); end
 
     local newButton = display.newGroup();
 
@@ -31,17 +33,22 @@ function shopButton.newButton(self,params)
     objectNameLabel.anchorX = 0
     objectNameLabel.anchorY = 0
     newButton:insert(objectNameLabel)
+    
     --Qnty
-    local amountLabel = display.newText( "Qnty:" .. amount, 10, 30, native.systemFont, 15)
-    amountLabel.anchorX = 0
-    amountLabel.anchorY = 0
-    newButton:insert(amountLabel)
+    local effectLabel = display.newText( "Effect: " .. amount .. " temp points", 10, 30, native.systemFont, 15)
+    effectLabel.anchorX = 0
+    effectLabel.anchorY = 0
+    newButton:insert(effectLabel)
+    
     --cost label
     local costLabel = display.newText(cost .. " Dodge", display.contentWidth - 20, 0, native.systemFont, 30)
     costLabel.anchorX = 1
     costLabel.anchorY = 0
     costLabel:setFillColor(0,1,0);
     newButton:insert(costLabel)
+
+    -- local itemIcon = display.newSprite(itemSheet, itemStateManager)
+    -- newButton:insert(itemIcon)
 
     newButton:addEventListener( tapAction , action)
 

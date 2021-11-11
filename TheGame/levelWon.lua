@@ -94,7 +94,7 @@ anim.y = display.contentCenterY - 25 -- Change the sprite y location
 anim.xScale = 1.35
 anim.yScale = 1.35
 anim:play()
-
+sceneGroup:insert(anim)
        
        local totalPtsRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY, 310, 50, 10)
        totalPtsRect:setFillColor( 0.51 )
