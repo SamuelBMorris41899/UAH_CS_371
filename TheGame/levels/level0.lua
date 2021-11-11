@@ -12,7 +12,7 @@ local function pauseListener( event )
          effect = "fade",
          time = 400,
       }  
-         composer.showOverlay( "pause", options )
+         composer.showOverlay( "levels.pause", options )
    end
  end 
 
@@ -34,7 +34,7 @@ local function pauseListener( event )
          effect = "fade",
          time = 400,
       }  
-         composer.showOverlay( "levelWon", options )
+         composer.showOverlay( "levels.levelWon", options )
    end
 end
 

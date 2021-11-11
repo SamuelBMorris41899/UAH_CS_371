@@ -12,7 +12,7 @@ local function backEvent( event )
 
 local function exitLevelEvent(event)
   if event.phase == "began" then
-    composer.gotoScene("levelSelection")
+    composer.gotoScene("GUI_Scenes.levelSelection")
   end
 end
 
