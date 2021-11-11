@@ -16,6 +16,12 @@ local function exitLevelEvent(event)
   end
 end
 
+local function musicVolumeListener(event)
+  musicVolume = event.value/ 100
+  audio.setVolume(musicVolume)
+  print(musicVolume)
+end
+
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
@@ -65,7 +71,7 @@ end
           x = display.contentCenterX,
           y = display.contentCenterY - 90,
           width = 250,
-          value = 100,
+          value = musicVolume,
           listener = musicVolumeListener
         }
     )

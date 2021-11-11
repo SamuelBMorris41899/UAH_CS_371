@@ -4,6 +4,7 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 
 
+
 local function backEvent( event )
   if event.phase == "began" then
     composer.gotoScene( "mainScreen" )
@@ -14,6 +15,12 @@ local function creditsEvent( event )
   if event.phase == "began" then
     composer.gotoScene( "credits" )
   end
+end
+
+local function musicVolumeListener(event)
+        musicVolume = event.value/ 100
+        audio.setVolume(musicVolume)
+        print(musicVolume)
 end
 
 
@@ -64,7 +71,7 @@ end
           x = display.contentCenterX,
           y = display.contentCenterY - 90,
           width = 250,
-          value = 100,
+          value = musicVolume,
           listener = musicVolumeListener
         }
     )

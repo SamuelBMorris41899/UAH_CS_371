@@ -2,6 +2,8 @@ local widget = require( "widget" )
 
 local composer = require( "composer" )
 local scene = composer.newScene()
+musicVolume = 100
+soundVolume = 1
  
 ---------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE
@@ -47,6 +49,7 @@ function scene:create( event )
   audio.play( backgroundSong )
    local sceneGroup = self.view
  
+   
    local bg1 = display.newImage("Background_startScreen_with_Button_bigger.png")
    bg1.x = display.contentCenterX
    bg1.y = display.contentCenterY
