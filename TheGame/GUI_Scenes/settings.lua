@@ -18,8 +18,9 @@ local function creditsEvent( event )
 end
 
 local function musicVolumeListener(event)
-        musicVolume = event.value/ 100
-        audio.setVolume(musicVolume)
+        musicVolume = event.value
+        trueSong=musicVolume/100
+        audio.setVolume(trueSong)
         print(musicVolume)
 end
 
