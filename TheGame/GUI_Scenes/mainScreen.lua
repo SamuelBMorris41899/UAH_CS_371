@@ -43,9 +43,17 @@ end
 
 -- "scene:create()"
 function scene:create( event )
- 
+  backgroundSong=audio.loadSound("snailhouseSong.mp3");
+  local backgroundMusicChannel = audio.play( backgroundSong, { channel=1, loops=-1, fadein=5000 } )
    local sceneGroup = self.view
- 
+   local channel1Volume = audio.getVolume( { channel=1 } ) -- get the volume on channel 1
+   local channel1MinVolume = audio.getMinVolume( { channel=1 } )
+   local channel1MaxVolume = audio.getMaxVolume( { channel=1 } )
+
+   print(channel1MaxVolume)
+   print(cannel1MinVolume);
+  print(channel1Volume);
+
    local bg1 = display.newImage("Background_startScreen_with_Button_bigger.png")
    bg1.x = display.contentCenterX
    bg1.y = display.contentCenterY
@@ -149,7 +157,7 @@ function scene:create( event )
         }
     )
     sceneGroup:insert(exitButton)
-
+    
 end
 
  
