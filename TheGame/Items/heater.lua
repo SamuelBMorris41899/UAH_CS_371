@@ -47,7 +47,7 @@ function builder.turnOnOff(self)
 end
 
 function builder.effect(self) 
-    globalTemp = globalTemp - 5
+    globalTemp = globalTemp + 5
 end
 
 return builder
