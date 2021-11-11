@@ -9,7 +9,7 @@ butter.yScale = .1
 effects = require("effects")
 
 --TEST AREA
-coolerBuilder = require("cooler")
+coolerBuilder = require("items.cooler")
 
 function tick()
     butter:tick()
