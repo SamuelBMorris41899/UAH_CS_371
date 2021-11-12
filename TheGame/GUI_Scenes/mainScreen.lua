@@ -2,6 +2,8 @@ local widget = require( "widget" )
 
 local composer = require( "composer" )
 local scene = composer.newScene()
+musicVolume = 100
+soundVolume = 1
  
 ---------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE
@@ -46,6 +48,8 @@ function scene:create( event )
   backgroundSong=audio.loadSound("snailhouseSong.mp3");
   local backgroundMusicChannel = audio.play( backgroundSong, { channel=1, loops=-1, fadein=5000 } )
    local sceneGroup = self.view
+ 
+   
    local channel1Volume = audio.getVolume( { channel=1 } ) -- get the volume on channel 1
    local channel1MinVolume = audio.getMinVolume( { channel=1 } )
    local channel1MaxVolume = audio.getMaxVolume( { channel=1 } )
