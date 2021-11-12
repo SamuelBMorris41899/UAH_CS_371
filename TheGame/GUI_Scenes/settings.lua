@@ -22,6 +22,7 @@ local function musicVolumeListener(event)
         trueSong=musicVolume/100
         audio.setVolume(trueSong)
         print(musicVolume)
+        
 end
 
 
