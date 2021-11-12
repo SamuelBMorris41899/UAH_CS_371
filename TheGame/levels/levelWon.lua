@@ -2,7 +2,7 @@ print("Level Won")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-
+local dancingDoge = require("GUI_Objects.dancingDoge")
 
 local function backEvent( event )
   if event.phase == "began" then
@@ -57,46 +57,20 @@ end
        sceneGroup:insert(exitOverlay)
 
        -- The options and frames of the Ryu sprite sheet.
-local doge_opt = {
-  frames = {
-       -- Dancing
-       {x = 31, y = 20, width = 66, height = 108}, -- frame 1
-       {x = 161, y = 4, width = 66, height = 111}, -- frame 2
-       {x = 287, y = 9, width = 69, height = 114}, -- frame 3
-       {x = 413, y = 13, width = 75, height = 114}, -- frame 4
-       {x = 546, y = 21, width = 71, height = 106}, -- frame 5
-       {x = 29, y = 148, width = 72, height = 108}, -- frame 6
-       {x = 155, y = 144, width = 73, height = 112},-- frame 7
-       {x = 286, y = 131, width = 67, height = 114}, -- frame 8
-       {x = 421, y = 135, width = 60, height = 115}, -- frame 9
-       {x = 550, y = 145, width = 63, height = 110}, -- frame 10
-       {x = 29, y = 288, width = 67, height = 96}, -- frame 11
-       {x = 159, y = 286, width = 67, height = 99}, -- frame 12
-  }
-}
 
-local doge_sheet = graphics.newImageSheet("dogeSpriteT.png", doge_opt)
+       dancingDoge.anchorX = 0 -- Anchor the sprite to the left x
+       dancingDoge.anchorY = 1 -- Anchor the sprite to the right x
+       
+       dancingDoge.x = display.contentCenterX - 45 -- Change the sprite x location
+       dancingDoge.y = display.contentCenterY - 25 -- Change the sprite y location
+       dancingDoge.xScale = 1.35
+       dancingDoge.yScale = 1.35
 
--- Setting each animation according to their frames as well as giving them each a time and correct loop count.
-local doge_sequenceData = {
-    {name = "dancing", start = 1, count = 12, time = 1520, loopCount = 0},
-}
-
--- Creating the sprite and setting correct options.
-local sheet = doge_sheet;
-local sequenceData = doge_sequenceData;
-anim = display.newSprite(sheet, sequenceData)
-anim:setSequence("dancing") -- Set first animation to idle
-anim.anchorX = 0 -- Anchor the sprite to the left x
-anim.anchorY = 1 -- Anchor the sprite to the right x
-anim.x = display.contentCenterX - 45 -- Change the sprite x location
-anim.y = display.contentCenterY - 25 -- Change the sprite y location
-anim.xScale = 1.35
-anim.yScale = 1.35
-anim:play()
-sceneGroup:insert(anim)
+      sceneGroup:insert(dancingDoge)
        
        local totalPtsRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY, 310, 50, 10)
+
+       
        totalPtsRect:setFillColor( 0.51 )
        sceneGroup:insert(totalPtsRect)
 

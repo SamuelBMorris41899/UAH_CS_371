@@ -10,4 +10,5 @@ table.insert( events, solarFlare )
 function getRandomEvent()
     return events[math.random(#myTable)]
 end
+
 return events;
