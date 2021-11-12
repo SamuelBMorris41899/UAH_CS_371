@@ -4,6 +4,9 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 require("butter")
 
+dogeCoinTotal = 100
+currentTemp = 75
+
 local function pauseListener( event )
     if event.phase == "began" then
         local options = {
@@ -75,11 +78,11 @@ local function shopListener( event )
  dogeCoinX:setFillColor( 0.98, 0.99, 0.45)
  sceneGroup:insert(dogeCoinX)
 
-   local bgDogeCoinNum = display.newText(
+   bgDogeCoinNum = display.newText(
        {
         x = display.contentCenterX - 68,
         y = display.contentCenterY - 210,
-         text = "100", 
+         text = tostring(dogeCoinTotal), 
          font = native.systemFontBold,
          fontSize = 23,
        }
@@ -87,11 +90,11 @@ local function shopListener( event )
       bgDogeCoinNum:setFillColor( 0.36, 0.36, 0.36)
       sceneGroup:insert(bgDogeCoinNum)
 
-    local dogeCoinNum = display.newText(
+   dogeCoinNum = display.newText(
        {
         x = display.contentCenterX - 70,
         y = display.contentCenterY - 210,
-         text = "100", 
+         text = tostring(dogeCoinTotal), 
          font = native.systemFontBold,
          fontSize = 23,
        }
@@ -244,11 +247,11 @@ local function shopListener( event )
     tempText:setFillColor( 0.98, 0.99, 0.45)
     sceneGroup:insert(tempText)
 
-    local bgTempNum = display.newText(
+    bgTempNum = display.newText(
       {
          x = display.contentCenterX + 103,
          y = display.contentCenterY + 200,
-         text = "75",
+         text = tostring(currentTemp),
          font = native.systemFontBold,
          fontSize = 30
       }
@@ -256,11 +259,11 @@ local function shopListener( event )
    bgTempNum:setFillColor(0.36)
    sceneGroup:insert(bgTempNum)
 
-   local tempNum = display.newText(
+   tempNum = display.newText(
       {
          x = display.contentCenterX + 100,
          y = display.contentCenterY + 200,
-         text = "75",
+         text = tostring(currentTemp),
          font = native.systemFontBold,
          fontSize = 30
       }

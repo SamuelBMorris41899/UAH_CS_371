@@ -6,7 +6,7 @@ builder.On = true
 local frameInfo = { 
     frames = {
         {x = 1, y = 2, width = 111, height = 138},      --off
-        {x = 122, y = 2, width = 111, height = 138},    --on
+        {x = 122, y = 2, width = 110, height = 138},    --on
     }
 }
 

@@ -117,7 +117,6 @@ local function exitListener( event )
 
     if ( phase == "will" ) then
 
-       transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
     end
