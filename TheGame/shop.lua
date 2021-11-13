@@ -14,7 +14,6 @@ shopGroup = ""
 
 local function exitListener( event )
   if event.phase == "began" then
-    coolerRect.isVisible = false
     composer.hideOverlay("fade", 400)
   end
  end

@@ -3,8 +3,8 @@ currentLevelGroup = ""
 
 require("butter")
 butter = butterBuilder:init()
-butter.xScale = .1
-butter.yScale = .1
+butter.xScale = 1
+butter.yScale = 1
 
 effects = require("effects")
 
