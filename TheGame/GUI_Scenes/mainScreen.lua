@@ -2,8 +2,8 @@ local widget = require( "widget" )
 
 local composer = require( "composer" )
 local scene = composer.newScene()
-musicVolume = 100
-soundVolume = 1
+musicVolume = 50
+soundVolume = 50
  
 ---------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE
@@ -46,13 +46,9 @@ end
 -- "scene:create()"
 function scene:create( event )
   backgroundSong=audio.loadSound("snailhouseSong.mp3");
+  tappingSound=audio.loadSound("boopSound.wav");
   local backgroundMusicChannel = audio.play( backgroundSong, { channel=1, loops=-1, fadein=5000 } )
    local sceneGroup = self.view
- 
-   
-   local channel1Volume = audio.getVolume( { channel=1 } ) -- get the volume on channel 1
-   local channel1MinVolume = audio.getMinVolume( { channel=1 } )
-   local channel1MaxVolume = audio.getMaxVolume( { channel=1 } )
 
    print(channel1MaxVolume)
    print(cannel1MinVolume);
@@ -160,7 +156,11 @@ function scene:create( event )
             onEvent = exitEvent,
         }
     )
+    local function tapSound(event)
+      local tapToSound = audio.play( tappingSound, {channel=2,} )
+    end
     sceneGroup:insert(exitButton)
+    Runtime:addEventListener("tap",tapSound)
     
 end
 
