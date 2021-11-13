@@ -18,9 +18,16 @@ end
 
 local function musicVolumeListener(event)
   musicVolume = event.value
-  trueSong=musicVolume/100
-  audio.setVolume(trueSong)
-  print(musicVolume)
+  backgroundMusicChannel=musicVolume
+  trueSong=backgroundMusicChannel/100
+  backgroundMusicChannel=audio.setVolume(trueSong,{channel=1})
+end
+
+local function soundVolumeListener(event)
+  soundVolume=event.value
+  tapToSound=soundVolume
+  trueSound=tapToSound/100
+  tapToSound=audio.setVolume(trueSound,{channel=2});
 end
 
  -- "scene:create()"
@@ -98,7 +105,7 @@ end
           x = display.contentCenterX,
           y = display.contentCenterY + 15,
           width = 250,
-          value = 100,
+          value = soundVolume,
           listener = soundVolumeListener
         }
     )
