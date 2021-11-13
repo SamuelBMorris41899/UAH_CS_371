@@ -5,11 +5,16 @@ local scene = composer.newScene()
 local buttonComposer = require("shopButton")
 local itemList = require("Items.items")
 
+coolerIsVisible = false
+heaterIsVisible = false
+
+
 
 shopGroup = ""
 
 local function exitListener( event )
   if event.phase == "began" then
+    coolerRect.isVisible = false
     composer.hideOverlay("fade", 400)
   end
  end
@@ -87,6 +92,10 @@ local function exitListener( event )
         itemButton.anchorY = 0
         count = count + 1
         shopGroup:insert(itemButton)
+
+
+
+  
       end 
 
     

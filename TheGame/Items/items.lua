@@ -4,45 +4,109 @@ itemList = {}
 function coolerBought(event) 
 
     local g = display.newGroup()
-    local bgCoolerText = display.newText(
-        {
-            x = display.contentCenterX + 2,
-            y = display.contentCenterY - 100,
-            text = "Cooler Purchased!",
-            font = display.systemFontBold,
-            fontSize = 20,
-        }
-    )
-    bgCoolerText:setFillColor(0.36, 0.36, 0.36)
-    g:insert(bgCoolerText)
 
-    local coolerText = display.newText(
-        {
-            x = display.contentCenterX,
-            y = display.contentCenterY - 100,
-            text = "Cooler Purchased!",
-            font = display.systemFontBold,
-            fontSize = 20,
-        }
-    )
-    coolerText:setFillColor( 0.98, 0.99, 0.45)
-    g:insert(coolerText)
+    if(dogeCoinTotal - 50 < 0) then
+        local noMoneyGroup = display.newGroup()
 
-    transition.fadeOut( g, {time = 750} )
+        local bgNoMoneyText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 100,
+                text = "Not enough Doge Coin!",
+                font = display.systemFontBold,
+                fontSize = 20
+            }
+        )
+        bgNoMoneyText:setFillColor(0.36)
+        noMoneyGroup:insert(bgNoMoneyText)
+        
+        local noMoneyText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 100,
+                text = "Not enough DogeCoin!",
+                font = display.systemFontBold,
+                fontSize = 20
+            }
+        )
+        noMoneyText:setFillColor(0.98, 0.99, 0.45)
+        noMoneyGroup:insert(noMoneyText)
+        transition.fadeOut( noMoneyGroup, {time = 750} )
+    else
+        local bgCoolerText = display.newText(
+            {
+                x = display.contentCenterX + 2,
+                y = display.contentCenterY - 100,
+                text = "Cooler Purchased!",
+                font = display.systemFontBold,
+                fontSize = 20,
+            }
+        )
+        bgCoolerText:setFillColor(0.36, 0.36, 0.36)
+        g:insert(bgCoolerText)
 
-    dogeCoinTotal = dogeCoinTotal - 50
-    bgDogeCoinNum.text = tostring(dogeCoinTotal)
-    dogeCoinNum.text = tostring(dogeCoinTotal)
+        local coolerText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 100,
+                text = "Cooler Purchased!",
+                font = display.systemFontBold,
+                fontSize = 20,
+            }
+        )
+        coolerText:setFillColor( 0.98, 0.99, 0.45)
+        g:insert(coolerText)
 
-    coolerRect = display.newRect(display.contentCenterX, 433, display.contentWidth + 5, 45)
-    coolerRect:setFillColor(0.36, 0.36, 0.36, 0.9)
+        transition.fadeOut( g, {time = 750} )
 
-    currentLevelGroup:insert(effects:addCooler())
+        dogeCoinTotal = dogeCoinTotal - 50
+        bgDogeCoinNum.text = tostring(dogeCoinTotal)
+        dogeCoinNum.text = tostring(dogeCoinTotal)
+
+        coolerRect = display.newRect(display.contentCenterX, 433, display.contentWidth + 5, 45)
+        coolerRect:setFillColor(0.36, 0.36, 0.36, 0.9)
+        shopGroup:insert(coolerRect)
+
+
+
+        currentLevelGroup:insert(effects:addCooler())
+    end
 end 
 
 function heaterBought(event) 
     local g = display.newGroup()
-    local bgHeaterText = display.newText(
+    
+
+    if(dogeCoinTotal - 50 < 0) then
+        local noMoneyGroup = display.newGroup()
+
+        local bgNoMoneyText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 100,
+                text = "Not enough Doge Coin!",
+                font = display.systemFontBold,
+                fontSize = 20
+            }
+        )
+        bgNoMoneyText:setFillColor(0.36)
+        noMoneyGroup:insert(bgNoMoneyText)
+        
+        local noMoneyText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 100,
+                text = "Not enough DogeCoin!",
+                font = display.systemFontBold,
+                fontSize = 20
+            }
+        )
+        noMoneyText:setFillColor(0.98, 0.99, 0.45)
+        noMoneyGroup:insert(noMoneyText)
+        transition.fadeOut( noMoneyGroup, {time = 750} )
+
+    else
+        local bgHeaterText = display.newText(
         {
             x = display.contentCenterX + 2,
             y = display.contentCenterY - 100,
@@ -50,33 +114,37 @@ function heaterBought(event)
             font = display.systemFontBold,
             fontSize = 20,
         }
-    )
-    bgHeaterText:setFillColor(0.36, 0.36, 0.36)
-    g:insert(bgHeaterText)
+        )
+        bgHeaterText:setFillColor(0.36, 0.36, 0.36)
+        g:insert(bgHeaterText)
 
-    local heaterText = display.newText(
-        {
-            x = display.contentCenterX,
-            y = display.contentCenterY - 100,
-            text = "Heater Purchased!",
-            font = display.systemFontBold,
-            fontSize = 20,
-        }
-    )
-    heaterText:setFillColor( 0.98, 0.99, 0.45)
-    g:insert(heaterText)
+        local heaterText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 100,
+                text = "Heater Purchased!",
+                font = display.systemFontBold,
+                fontSize = 20,
+            }
+        )
+        heaterText:setFillColor( 0.98, 0.99, 0.45)
+        g:insert(heaterText)
 
-    transition.fadeOut( g, {time = 750} )
+        transition.fadeOut( g, {time = 750} )
 
-    dogeCoinTotal = dogeCoinTotal - 50
-    bgDogeCoinNum.text = tostring(dogeCoinTotal)
-    dogeCoinNum.text = tostring(dogeCoinTotal)
+        dogeCoinTotal = dogeCoinTotal - 50
+        bgDogeCoinNum.text = tostring(dogeCoinTotal)
+        dogeCoinNum.text = tostring(dogeCoinTotal)
 
-    heaterRect = display.newRect(display.contentCenterX, 383, display.contentWidth + 5, 45)
-    heaterRect:setFillColor(0.36, 0.36, 0.36, 0.9)
+        heaterRect = display.newRect(display.contentCenterX, 383, display.contentWidth + 5, 45)
+        heaterRect:setFillColor(0.36, 0.36, 0.36, 0.9)
+        print("test")
+        shopGroup:insert(heaterRect)
 
 
-    currentLevelGroup:insert(effects:addHeater())
+        currentLevelGroup:insert(effects:addHeater())
+    end
+    
 end 
 
 

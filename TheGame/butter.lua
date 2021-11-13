@@ -86,6 +86,7 @@ function butterBuilder.init(self)
     newButter:play()  -- play the new sequence
     newButter.x = 100
     newButter.y = 100
+    newButter.width = newButter.width*2
     self = newButter
     self.inited = true
     return self
