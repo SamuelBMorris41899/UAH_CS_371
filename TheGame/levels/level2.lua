@@ -2,7 +2,7 @@ print("Level 2")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-require("butter")
+
 
 dogeCoinTotal = 100
 currentTemp = 75
@@ -19,7 +19,7 @@ local function pauseListener( event )
         effect = "fade",
         time = 400,
         }  
-       composer.showOverlay( "pause", options )
+       composer.showOverlay( "levels.pause", options )
     end
 end 
 

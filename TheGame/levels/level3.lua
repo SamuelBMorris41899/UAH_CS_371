@@ -2,7 +2,6 @@ print("Level 3")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-require("butter")
 
 dogeCoinTotal = 100
 currentTemp = 75
@@ -19,7 +18,7 @@ local function pauseListener( event )
         effect = "fade",
         time = 400,
         }  
-       composer.showOverlay( "pause", options )
+       composer.showOverlay( "levels.pause", options )
     end
 end 
 
@@ -236,12 +235,13 @@ end
      rect:addEventListener("touch", goToAstroSmash)
      sceneGroup:insert(rect)
 
+     butter.x = display.contentCenterX + 20
+     butter.y = display.contentCenterY + 50
+     sceneGroup:insert(butter)
+     butter:show()
 
-     local b = butter:init()
-     b.x = display.contentCenterX + 20
-     b.y = display.contentCenterY + 50
-     sceneGroup:insert(b)
 
+     
      local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
      globalTempRect:setFillColor( 0.51 )
      sceneGroup:insert(globalTempRect)

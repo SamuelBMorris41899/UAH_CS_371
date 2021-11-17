@@ -147,3 +147,12 @@ function butterBuilder.isPerfectTemp(self)
     return (self.temp == PERFECT_TEMP)
 end
 
+function butterBuilder.hide(self) 
+    self.isVisible = false;
+end
+
+function butterBuilder.show(self) 
+    self.isVisible = true;
+end
+
+return butterBuilder
