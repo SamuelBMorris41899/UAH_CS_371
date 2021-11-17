@@ -2,7 +2,6 @@ print("Level 0")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-require("butter")
 
 dogeCoinTotal = 100
 currentTemp = 75
@@ -221,11 +220,11 @@ end
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(perfectTempNum)
 
-     local b = butter:init()
-     b.x = display.contentCenterX + 100
-     b.y = display.contentCenterY + 80
-     sceneGroup:insert(b)
 
+     butter.x = display.contentCenterX + 100
+     butter.y = display.contentCenterY + 80
+     sceneGroup:insert(butter)
+     butter:show()
 
     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
     globalTempRect:setFillColor( 0.51 )
