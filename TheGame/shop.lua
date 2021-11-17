@@ -2,8 +2,12 @@ print("Shop")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-local buttonComposer = require("shopButton")
-local itemList = require("items")
+local buttonComposer = require("GUI_Objects.shopButton")
+local itemList = require("Items.items")
+
+coolerIsVisible = false
+heaterIsVisible = false
+
 
 
 shopGroup = ""
@@ -87,6 +91,10 @@ local function exitListener( event )
         itemButton.anchorY = 0
         count = count + 1
         shopGroup:insert(itemButton)
+
+
+
+  
       end 
 
     
@@ -117,7 +125,6 @@ local function exitListener( event )
 
     if ( phase == "will" ) then
 
-       transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
     end

@@ -1,15 +1,15 @@
 globalTemp = 105
 currentLevelGroup = ""
 
-require("butter")
+butterBuilder = require("butter")
 butter = butterBuilder:init()
-butter.xScale = .1
-butter.yScale = .1
+butter:hide()
 
 effects = require("effects")
 
 --TEST AREA
-coolerBuilder = require("cooler")
+coolerBuilder = require("items.cooler")
+heaterBuilder = require("items.heater")
 
 function tick()
     butter:tick()

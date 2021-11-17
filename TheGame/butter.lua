@@ -86,6 +86,7 @@ function butterBuilder.init(self)
     newButter:play()  -- play the new sequence
     newButter.x = 100
     newButter.y = 100
+    newButter.width = newButter.width*2
     self = newButter
     self.inited = true
     return self
@@ -146,3 +147,12 @@ function butterBuilder.isPerfectTemp(self)
     return (self.temp == PERFECT_TEMP)
 end
 
+function butterBuilder.hide(self) 
+    self.isVisible = false;
+end
+
+function butterBuilder.show(self) 
+    self.isVisible = true;
+end
+
+return butterBuilder
