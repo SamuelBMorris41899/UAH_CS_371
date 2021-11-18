@@ -1,4 +1,6 @@
 print("Level 3")
+
+require("utility")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -33,16 +35,7 @@ local function shopListener( event )
    end
  end 
 
- local function goToAstroSmash (event)
-   if event.phase == "began" then
-      local options = {
-         isModal = true,
-         effect = "fade",
-         time = 400
-      }
-      composer.showOverlay("astroSmash", options)
-   end
-end
+
 
  -- "scene:create()"
  function scene:create( event )

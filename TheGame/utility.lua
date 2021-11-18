@@ -1,4 +1,6 @@
 
+local composer = require("composer")
+
 function deepCopy (orgional)
     local copy = {}
     for key, value in pairs(orgional) do
@@ -34,3 +36,14 @@ end
 function between(number,min,max) 
     return (number > min and number < max);
 end
+
+function goToAstroSmash (event)
+    if event.phase == "began" then
+       local options = {
+          isModal = true,
+          effect = "fade",
+          time = 400
+       }
+       composer.showOverlay("Astrosmash.astroSmash", options)
+    end
+ end

@@ -2,8 +2,10 @@ print("AstroSmash")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local entity = require("entity")
-local asteroid = require("asteroids")
+local asteroid = require("Astrosmash.asteroids")
 local scene = composer.newScene()
+
+local playerBuilder = require("Astrosmash.playerBuilder")
 
 local score = 0
 local timeLimit = 3 * 60000
@@ -28,14 +30,14 @@ local function backEvent( event )
         timer.pause(updateTimer)
       composer.hideOverlay("fade", 400)
     end
-   end
+end
 
-   function scoreUp ()
-    score = score + 1
-    dogeCoinTotal = dogeCoinTotal + 1
-    scene.scoreText.text = "DogeCoin Earned: " .. score
-    scene.bgScoreText.text = "DogeCoin Earned: " .. score
-  end
+function scoreUp ()
+  score = score + 1
+  dogeCoinTotal = dogeCoinTotal + 1
+  scene.scoreText.text = "DogeCoin Earned: " .. score
+  scene.bgScoreText.text = "DogeCoin Earned: " .. score
+end
 
   
 
@@ -68,24 +70,7 @@ local function update ()
     if math.random() < rt or t - lastAst > 500 then spawnAsteroid() end
 end
 
-local function move ( event )
 
-    local cube = scene.player.shape
-    if event.phase == "began" then
-        cube.markX = cube.x
-    elseif event.phase == "moved" then
-        local x = (event.x - event.xStart) + cube.markX
-
-        if (x <= 20 + cube.width / 2) then
-            cube.x = 20 + cube.width / 2;
-        elseif (x >= display.contentWidth - 20 - cube.width / 2) then
-            cube.x = display.contentWidth - 20 - cube.width / 2;
-        else
-            cube.x = x;
-        end
-
-    end
-end
 
  -- "scene:create()"
  function scene:create( event )
@@ -133,14 +118,13 @@ end
     physics.addBody( left, "static" )
     physics.addBody( right, "static" )
     physics.addBody( top, "static")
-
+    
+    self.player = playerBuilder:init(sceneGroup)
+    
     local controlBar = display.newRect (sceneGroup, display.contentCenterX, display.contentHeight- 25, display.contentWidth, 50)
     controlBar:setFillColor(1, 1, 1, 0.01)
-    controlBar:addEventListener("touch", move)
+    controlBar:addEventListener("touch", self.player.move)
 
-    self.player = entity:new({ x = display.contentCenterX, y = display.contentHeight - 25, tag = "player" })
-    self.player:spawn(sceneGroup)
-    self.player.shape.markX = self.player.x
     
 
     self.bgScoreText = display.newText(

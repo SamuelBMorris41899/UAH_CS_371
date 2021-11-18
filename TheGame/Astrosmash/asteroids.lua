@@ -25,17 +25,16 @@ function Asteroid:setup(args)
     end
 end
 
-
 function Asteroid:onPathFinished()
   if self.shape and self.shape.removeSelf then
     self.shape:removeSelf()
   end
-    self.shape = nil
+  self.shape = nil
 end
 
 function Asteroid:bringToFront()
-        Asteroid:toFront()
-        print("to front")
+    Asteroid:toFront()
+    print("to front")
     return true
 end
 
