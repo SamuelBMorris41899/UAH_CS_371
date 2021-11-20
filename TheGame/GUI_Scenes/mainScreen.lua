@@ -49,6 +49,11 @@ function scene:create( event )
   tappingSound=audio.loadSound("boopSound.wav");
   local backgroundMusicChannel = audio.play( backgroundSong, { channel=1, loops=-1, fadein=5000 } )
    local sceneGroup = self.view
+    
+   
+   local channel1Volume = audio.getVolume( { channel=1 } ) -- get the volume on channel 1
+   local channel1MinVolume = audio.getMinVolume( { channel=1 } )
+   local channel1MaxVolume = audio.getMaxVolume( { channel=1 } )
 
    print(channel1MaxVolume)
    print(cannel1MinVolume);

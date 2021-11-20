@@ -19,6 +19,8 @@ end
 
 local function musicVolumeListener(event)
         musicVolume = event.value
+        trueSong=musicVolume/100
+        audio.setVolume(trueSong)
         backgroundMusicChannel=musicVolume
         trueSong=backgroundMusicChannel/100
         backgroundMusicChannel=audio.setVolume(trueSong,{channel=1})
