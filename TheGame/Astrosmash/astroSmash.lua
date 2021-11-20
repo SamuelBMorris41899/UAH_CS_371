@@ -8,7 +8,7 @@ local scene = composer.newScene()
 local playerBuilder = require("Astrosmash.playerBuilder")
 
 local score = 0
-local timeLimit = 3 * 60000
+local timeLimit = 180000
 local runtime = 0
 local lastAst = 0
 local astChance = 0.0035
