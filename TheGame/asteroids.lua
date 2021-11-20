@@ -20,8 +20,16 @@ if not Asteroid then
 end
 
 function Asteroid:setup(args)
+    -- if not self.path or #self.path < 1 then
+    --     self.path = {{x = args.destX or self.x , y = args.destY or display.actualContentHeight, time = args.time or 500}}
+    -- end
     if not self.path or #self.path < 1 then
-        self.path = {{x = args.destX or self.x , y = args.destY or display.actualContentHeight, time = args.time or 500}}
+        if args.target then
+            args.destX = args.target.x
+            args.destY = args.target.y
+        end
+
+        self.path = {{x = args.destX or self.x, y = args.destY or display.actualContentHeight, time = args.time or 1000}}
     end
 end
 

@@ -40,7 +40,7 @@ local function backEvent( event )
   
 
 local function spawnAsteroid()
-    local ast = asteroid:new({ x = math.random(25, display.contentWidth - 25), y = 135 }, { destY = scene.player.y })
+    local ast = asteroid:new({ x = math.random(25, display.contentWidth - 25), y = 135 }, { target = scene.player.shape })
     ast:spawn(scene.view)
     ast:move()
 
@@ -65,26 +65,28 @@ local function update ()
 
     local rt = astChance * dt
 
-    if math.random() < rt or t - lastAst > 500 then spawnAsteroid() end
+    if math.random() < rt or t - lastAst > 300 then spawnAsteroid() end
 end
 
 local function move ( event )
 
-    local cube = scene.player.shape
-    if event.phase == "began" then
-        cube.markX = cube.x
-    elseif event.phase == "moved" then
-        local x = (event.x - event.xStart) + cube.markX
+    -- local cube = scene.player.shape
+    -- if event.phase == "began" then
+    --     cube.markX = cube.x
+    -- elseif event.phase == "moved" then
+    --     local x = (event.x - event.xStart) + cube.markX
 
-        if (x <= 20 + cube.width / 2) then
-            cube.x = 20 + cube.width / 2;
-        elseif (x >= display.contentWidth - 20 - cube.width / 2) then
-            cube.x = display.contentWidth - 20 - cube.width / 2;
-        else
-            cube.x = x;
-        end
+    --     if (x <= 20 + cube.width / 2) then
+    --         cube.x = 20 + cube.width / 2;
+    --     elseif (x >= display.contentWidth - 20 - cube.width / 2) then
+    --         cube.x = display.contentWidth - 20 - cube.width / 2;
+    --     else
+    --         cube.x = x;
+    --     end
 
-    end
+    -- end
+
+
 end
 
  -- "scene:create()"
@@ -134,15 +136,16 @@ end
     physics.addBody( right, "static" )
     physics.addBody( top, "static")
 
-    local controlBar = display.newRect (sceneGroup, display.contentCenterX, display.contentHeight- 25, display.contentWidth, 50)
-    controlBar:setFillColor(1, 1, 1, 0.01)
-    controlBar:addEventListener("touch", move)
+    -- local controlBar = display.newRect (sceneGroup, display.contentCenterX, display.contentHeight- 25, display.contentWidth, 75)
+    -- controlBar:setFillColor(1, 1, 1, 0.01)
+    -- self.player.shape:addEventListener("touch", move)
 
-    self.player = entity:new({ x = display.contentCenterX, y = display.contentHeight - 25, tag = "player" })
+
+    self.player = entity:new({ x = display.contentCenterX, y = display.contentHeight - 25, tag = "player", isPlayer = true})
     self.player:spawn(sceneGroup)
     self.player.shape.markX = self.player.x
     
-
+   
     self.bgScoreText = display.newText(
       {
         parent = sceneGroup,
@@ -186,10 +189,8 @@ end
     end
 
     if event.phase == "did" then
-      if self.gameTimer then timer.cancel(self.gameTimer) end
-      self.gameTimer = timer.performWithDelay(timeLimit, gameOver)
-    end
  end
+end
 
  -- "scene:hide()"
  function scene:hide( event )

@@ -11,7 +11,7 @@ if not Entity then
         height = 50,
         shape = nil,
         path = {},
-        isAst = false,
+        isPlayer = false,
         pathIndex = nil,
         pathLoop = true,
         transition = nil,
@@ -51,10 +51,31 @@ end
 -- Entity:spawn(grp)
 -- Spawns an Entity's DisplayObject, adding it to DisplayGroup grp if provided
 function Entity:spawn(grp)
-    if self.shapePath == nil then
+    if self.isPlayer then
+        self.shape = display.newImageRect("Player.png", self.width, self.height)
+        self.shape.x = self.x
+        self.shape.y = self.y
+        originalX = self.x
+        originalY = self.y
+        self.shape:addEventListener("touch", self);
+    elseif self.shapePath == nil then
         self.shape = display.newRect(self.x, self.y, self.width, self.height)
     else
-        self.shape = display.newPolygon(self.x, self.y, self.shapePath)
+        local random = math.random(3)
+        print(random)
+        if random == 1 then
+            self.shape = display.newImageRect("Astroid1.png", self.width, self.height)
+            self.shape.x = self.x
+            self.shape.y = self.y
+        elseif random == 2 then
+            self.shape = display.newImageRect("Astroid2.png", self.width, self.height)
+            self.shape.x = self.x
+            self.shape.y = self.y
+        elseif random == 3 then
+            self.shape = display.newImageRect("Astroid3.png", self.width, self.height)
+            self.shape.x = self.x
+            self.shape.y = self.y
+        end
     end
 
     self.shape:setFillColor(unpack(self.color))
@@ -131,6 +152,24 @@ function Entity:collision(event)
         end
     end
 
+end
+
+function Entity:touch(event)
+    if event.phase == "began" then
+        self.shape.markX = self.shape.x;
+        self.shape.markY = self.shape.y;
+        elseif event.phase == "moved" then
+        local x = (event.x - event.xStart) +   
+        self.shape.markX
+        local y = (event.y - event.yStart) +  
+        self.shape.markY
+        if x < display.contentWidth - 25 and y < display.contentHeight then
+            if x > 25 and y > 0 then
+                self.shape.x = x;
+                self.shape.y = y;
+            end
+        end
+    end
 end
 
 
