@@ -1,7 +1,11 @@
-event = {}
-
-function event.effect(self) 
-    globalTemp = globalTemp - 10
+Eclipse = {}
+function Eclipse.start(self,durration)
+    Eclipse.durration = durration
 end
 
-return event
+function Eclipse.effect(self) 
+    globalTemp = globalTemp - 10
+    Eclipse.durration  - 1
+end
+
+return Eclipse
