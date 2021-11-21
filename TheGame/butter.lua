@@ -129,7 +129,6 @@ function butterBuilder.tick(self)
     elseif(between(self.temp,100,105)) then --melt 6 ALL IS LOST ANYWAY
         self.life = 14
     end
-    print(self.temp)
 
     butterState = mapButter(self.life)
     self:setSequence(butterState)
