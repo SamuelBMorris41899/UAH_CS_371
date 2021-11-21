@@ -3,7 +3,7 @@ local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
 local level0 = nil
-dogeCoinTotal = 100
+dogeCoinTotal = 200
 
 
 function scene:resumeGame()

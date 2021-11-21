@@ -22,10 +22,13 @@ function builder.init(self,x,y)
     new = display.newSprite(spriteSheetData, stateManager)
     new = deepAppend(builder,new)
     new:changeAnim()
+    new.level = 1
     new.x = x
     new.y = y
-    new.level = 1
+    new.xScale = .75
+    new.yScale = .75
     new:addEventListener("touch",new.turnOnOff)
+    new:toBack()
     return new
 end
 

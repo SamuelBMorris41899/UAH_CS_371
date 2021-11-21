@@ -25,9 +25,9 @@ function cooler_Builder.init(self,x,y)
     new = display.newSprite(spriteSheetData, stateManager)
     new = deepAppend(cooler_Builder,new)
     new:changeAnim()
-    new.x = 100
-    new.y = display.contentCenterY + 25
     new.level = 1
+    new.x = x
+    new.y = y
     new.xScale = .75
     new.yScale = .75
     new:addEventListener("touch",new.turnOnOff)

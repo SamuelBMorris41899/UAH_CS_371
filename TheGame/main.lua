@@ -22,7 +22,6 @@ butter:hide()
 
 effects = require("effects")
 
---TEST AREA
 coolerBuilder = require("items.cooler")
 heaterBuilder = require("items.heater")
 
