@@ -138,7 +138,6 @@ function heaterBought(event)
 
         heaterRect = display.newRect(display.contentCenterX, 383, display.contentWidth + 5, 45)
         heaterRect:setFillColor(0.36, 0.36, 0.36, 0.9)
-        print("test")
         shopGroup:insert(heaterRect)
 
 

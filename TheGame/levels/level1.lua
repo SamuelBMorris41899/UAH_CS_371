@@ -4,8 +4,6 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 
 dogeCoinTotal = 100
-currentTemp = 75
-
 function scene:resumeGame()
    bgDogeCoinNum.text = tostring(dogeCoinTotal)
    dogeCoinNum.text = tostring(dogeCoinTotal)
@@ -281,29 +279,29 @@ end
      globalTempText:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(globalTempText)
  
-     bgGlobalTempNum = display.newText(
+     sceneGroup.bgGlobalTempNum = display.newText(
         {
            x = display.contentCenterX + 103,
            y = display.contentCenterY + 150,
-           text = tostring(currentTemp),
+           text = tostring(globalTemp),
            font = native.systemFontBold,
            fontSize = 30
         }
      )
-     bgGlobalTempNum:setFillColor(0.36)
-     sceneGroup:insert(bgGlobalTempNum)
+     sceneGroup.bgGlobalTempNum:setFillColor(0.36)
+     sceneGroup:insert(sceneGroup.bgGlobalTempNum)
  
-     globalTempNum = display.newText(
+     sceneGroup.globalTempNum = display.newText(
         {
            x = display.contentCenterX + 100,
            y = display.contentCenterY + 150,
-           text = tostring(currentTemp),
+           text = tostring(globalTemp),
            font = native.systemFontBold,
            fontSize = 30
         }
      )
-     globalTempNum:setFillColor(0.98, 0.99, 0.45)
-     sceneGroup:insert(globalTempNum)
+     sceneGroup.globalTempNum:setFillColor(0.98, 0.99, 0.45)
+     sceneGroup:insert(sceneGroup.globalTempNum)
 
     local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
     tempRect:setFillColor( 0.51 )
@@ -333,7 +331,7 @@ end
     tempText:setFillColor( 0.98, 0.99, 0.45)
     sceneGroup:insert(tempText)
 
-    bgTempNum = display.newText(
+    sceneGroup.bgTempNum = display.newText(
       {
          x = display.contentCenterX + 103,
          y = display.contentCenterY + 210,
@@ -342,10 +340,10 @@ end
          fontSize = 30
       }
    )
-   bgTempNum:setFillColor(0.36)
-   sceneGroup:insert(bgTempNum)
+   sceneGroup.bgTempNum:setFillColor(0.36)
+   sceneGroup:insert(sceneGroup.bgTempNum)
 
-   tempNum = display.newText(
+   sceneGroup.tempNum = display.newText(
       {
          x = display.contentCenterX + 100,
          y = display.contentCenterY + 210,
@@ -354,8 +352,8 @@ end
          fontSize = 30
       }
    )
-   tempNum:setFillColor(0.98, 0.99, 0.45)
-   sceneGroup:insert(tempNum)
+   sceneGroup.tempNum:setFillColor(0.98, 0.99, 0.45)
+   sceneGroup:insert(sceneGroup.tempNum)
 
  end
 

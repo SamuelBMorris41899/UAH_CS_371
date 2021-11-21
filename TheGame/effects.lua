@@ -21,10 +21,7 @@ end
 
 function effects.globalTick(self)
     for _,v in ipairs(self.list) do
-        print("DOING SOMETHING!!")
         v:effect()
-        --globalTemp = globalTemp + v.effect 
-        print(globalTemp)
     end
 end
 
