@@ -2,7 +2,7 @@ print("Shop")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-local buttonComposer = require("shopButton")
+local buttonComposer = require("GUI_Objects.shopButton")
 local itemList = require("Items.items")
 
 coolerIsVisible = false
