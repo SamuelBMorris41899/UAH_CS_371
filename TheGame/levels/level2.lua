@@ -7,6 +7,11 @@ local scene = composer.newScene()
 dogeCoinTotal = 100
 currentTemp = 75
 
+function scene:resumeGame()
+   bgDogeCoinNum.text = tostring(dogeCoinTotal)
+   dogeCoinNum.text = tostring(dogeCoinTotal)
+end
+
 local function pauseListener( event )
     if event.phase == "began" then
         local options = {
@@ -28,6 +33,17 @@ local function shopListener( event )
          composer.showOverlay( "shop", options )
    end
  end 
+
+ local function goToAstroSmash (event)
+   if event.phase == "began" then
+      local options = {
+         isModal = true,
+         effect = "fade",
+         time = 400
+      }
+      composer.showOverlay("astroSmash", options)
+   end
+end
 
  -- "scene:create()"
  function scene:create( event )
@@ -214,6 +230,12 @@ local function shopListener( event )
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(perfectTempNum)
 
+     local rect = display.newRect(display.contentCenterX - 113, display.contentCenterY - 70, 100, 50)
+     rect:setFillColor(0.51)
+     rect:addEventListener("touch", goToAstroSmash)
+     sceneGroup:insert(rect)
+
+     
      butter.x = display.contentCenterX + 20
      butter.y = display.contentCenterY + 50 
      sceneGroup:insert(butter)
@@ -272,6 +294,7 @@ local function shopListener( event )
      )
      globalTempNum:setFillColor(0.98, 0.99, 0.45)
      sceneGroup:insert(globalTempNum)
+
 
     local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
     tempRect:setFillColor( 0.51 )
