@@ -235,13 +235,12 @@ end
      )
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
      level0:insert(perfectTempNum)
-     
-     local rect = display.newRect(display.contentCenterX - 113, display.contentCenterY - 70, 100, 50)
-     rect:setFillColor(0.51)
-     rect:addEventListener("touch", goToAstroSmash)
-     level0:insert(rect)
 
-
+     local astroSmashIcon = display.newImage("Player.png")
+     astroSmashIcon.x = display.contentCenterX - 120
+     astroSmashIcon.y = display.contentCenterY - 100
+     astroSmashIcon:addEventListener("touch", goToAstroSmash)
+     level0:insert(astroSmashIcon)
 
      butter.x = display.contentCenterX + 100
      butter.y = display.contentCenterY + 80
