@@ -5,29 +5,28 @@ local scene = composer.newScene()
 
 
 
-local function backEvent( event )
+local function backEvent( event )--function to go back to main screen scene
   if event.phase == "began" then
     composer.gotoScene( "GUI_Scenes.mainScreen" )
   end
 end
 
-local function creditsEvent( event )
+local function creditsEvent( event )--function to go to credits scene
   if event.phase == "began" then
     composer.gotoScene( "GUI_Scenes.credits" )
   end
 end
 
-local function musicVolumeListener(event)
-        musicVolume = event.value
-        backgroundMusicChannel=musicVolume
-        trueSong=backgroundMusicChannel/100
-        backgroundMusicChannel=audio.setVolume(trueSong,{channel=1})
-        print(musicVolume)
+local function musicVolumeListener(event)--function to change volume of music
+        musicVolume = event.value --slider amount is converted to global musicVolume 
+        backgroundMusicChannel=musicVolume --
+        trueSong=backgroundMusicChannel/100--truesong variable changes the 0-100 to 0-1
+        backgroundMusicChannel=audio.setVolume(trueSong,{channel=1})--audio is changed to that amonunt
         
 end
 
-local function soundVolumeListener(event)
-        soundVolume=event.value
+local function soundVolumeListener(event)--function for the tap sound audio
+        soundVolume=event.value--code similar to musicVolumeListener but for sound
         tapToSound=soundVolume
         trueSound=tapToSound/100
         tapToSound=audio.setVolume(trueSound,{channel=2});
@@ -38,7 +37,7 @@ end
     local sceneGroup = self.view
 
     local bg1 = display.newImage("Background_startScreen_with_Button_bigger.png")
-    bg1.x = display.contentCenterX
+    bg1.x = display.contentCenterX--creates the background and positioning.
     bg1.y = display.contentCenterY
      bg1.width = display.contentWidth
      bg1.height = display.contentHeight
@@ -56,7 +55,7 @@ end
        bgsettingsText:setFillColor( 0.36, 0.36, 0.36)
        sceneGroup:insert(bgsettingsText)
 
-     local settingsText = display.newText(
+     local settingsText = display.newText(--settings text to label settings 
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 200,
@@ -67,15 +66,12 @@ end
        )
        settingsText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(settingsText)
-    
-    --   musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 250,100, 5)
-    -- musicVolumeRect:setFillColor( 0.51 )
-    -- sceneGroup:insert(musicVolumeRect)
+
     local musicVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY - 100, 300, 75, 10)
     musicVolumeRect:setFillColor( 0.51 )
-    sceneGroup:insert(musicVolumeRect)
+    sceneGroup:insert(musicVolumeRect)-- rectangle for the music slider
         
-    local musicVolumeSlider = widget.newSlider(
+    local musicVolumeSlider = widget.newSlider(-- music slider 
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 90,
@@ -86,7 +82,7 @@ end
     )
     sceneGroup:insert(musicVolumeSlider)
 
-    local musicVolumeText = display.newText(
+    local musicVolumeText = display.newText(-- music text label
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 115,
@@ -97,22 +93,11 @@ end
        )
        sceneGroup:insert(musicVolumeText)
 
-    --    soundVolumeRect = display.newRoundedRect(
-    --     {
-    --         x = display.contentCenterX,
-    --         y = display.contentCenterY,
-    --         width = 250,
-    --         height = 100,
-    --         cornerRadius= 5,
-    --     }
-    -- )
-    -- soundVolumeRect:setFillColor( 0.51 )
-    -- sceneGroup:insert(soundVolumeRect)
     local soundVolumeRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 5, 300, 75, 10)
-    soundVolumeRect:setFillColor( 0.51 )
+    soundVolumeRect:setFillColor( 0.51 )--rectangle for the slider
     sceneGroup:insert(soundVolumeRect)
 
-    local soundVolumeSlider = widget.newSlider(
+    local soundVolumeSlider = widget.newSlider(-- volume slider
         {
           x = display.contentCenterX,
           y = display.contentCenterY + 15,
@@ -124,7 +109,7 @@ end
     sceneGroup:insert(soundVolumeSlider)
 
 
-    local soundVolumeText = display.newText(
+    local soundVolumeText = display.newText(-- the text for soundVolume
         {
           x = display.contentCenterX,
           y = display.contentCenterY - 5,
@@ -135,7 +120,7 @@ end
        )
        sceneGroup:insert(soundVolumeText)
 
-      local creditsButton = widget.newButton(
+      local creditsButton = widget.newButton(--button to go to credits with creditevent
         {
             label = "Credits",
             fontSize = 35,
@@ -154,7 +139,7 @@ end
     sceneGroup:insert(creditsButton)
     
     
-    local backButton = widget.newButton(
+    local backButton = widget.newButton(-- back button 
     {
         label = "Go Back",
         fontSize = 35,

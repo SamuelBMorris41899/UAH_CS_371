@@ -1,9 +1,9 @@
 require("utility")
 require("butter")
 
-eventInfo ={}
+eventInfo ={}--table
 
-function eventInfo.createEvent (self, params)
+function eventInfo.createEvent (self, params)-- creates event
     local tempNum = params.number or 0
     local eventName = params.name or "NO NAME"
     local increaseorDecrease = params.increaseorDecrease or " "
@@ -13,7 +13,7 @@ function eventInfo.createEvent (self, params)
 
 
     butter.temp = butter.temp + tempNum
-    local eventWarning = display.newText(
+    local eventWarning = display.newText(-- warning method
         {
             x = display.contentCenterX,
             y = display.contentCenterY - 100,

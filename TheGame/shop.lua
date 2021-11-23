@@ -5,14 +5,14 @@ local scene = composer.newScene()
 local buttonComposer = require("GUI_Objects.shopButton")
 local itemList = require("Items.items")
 
-coolerIsVisible = false
+coolerIsVisible = false-- visibility of sprites or heater and cooler are false
 heaterIsVisible = false
 
 
 
 shopGroup = ""
 
-local function exitListener( event )
+local function exitListener( event )-- exit function to get out of shop
   if event.phase == "began" then
     composer.hideOverlay("fade", 400)
   end
@@ -21,9 +21,9 @@ local function exitListener( event )
 
  -- "scene:create()"
  function scene:create( event )
-    shopGroup = self.view   
+    shopGroup = self.view   --shopgroup
 
-    local bg1 = display.newImage("ShopBackground.png")
+    local bg1 = display.newImage("ShopBackground.png")-- dispays the shop background
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY
     bg1.width = display.contentWidth
@@ -31,7 +31,7 @@ local function exitListener( event )
     shopGroup:insert(bg1)
 
 
-    local bgShopText = display.newText(
+    local bgShopText = display.newText(-- text for the shop background 
         {
           x = display.contentCenterX - 18,
           y = display.contentCenterY - 250,
@@ -43,7 +43,7 @@ local function exitListener( event )
        bgShopText:setFillColor( 0.36, 0.36, 0.36)
        shopGroup:insert(bgShopText)
 
-     local shopText = display.newText(
+     local shopText = display.newText(--text for shop
         {
           x = display.contentCenterX - 25,
           y = display.contentCenterY - 250,
@@ -55,13 +55,13 @@ local function exitListener( event )
        shopText:setFillColor( 0.98, 0.99, 0.45)
        shopGroup:insert(shopText)
     
-       local exitShop = display.newImage("x.png")
+       local exitShop = display.newImage("x.png")--displays an x as the exit out of shop button
        exitShop.x = display.contentCenterX + 125
        exitShop.y = display.contentCenterY - 250
        exitShop.width = exitShop.width*2
        exitShop.height = exitShop.height*2
-       exitShop:addEventListener("touch", exitListener)
-       shopGroup:insert(exitShop)
+       exitShop:addEventListener("touch", exitListener)-- eventlistener to exit
+       shopGroup:insert(exitShop)--groups
 
 
 
@@ -81,8 +81,8 @@ local function exitListener( event )
           
 
       count = 1
-      for _,v in ipairs(itemList) do 
-        itemButton = buttonComposer:newButton(v)
+      for _,v in ipairs(itemList) do --for ipairs on item list
+        itemButton = buttonComposer:newButton(v)--new button to press and add the item
         itemButton.x = ITEM_LIST_X_POS
         itemButton.y = ITEM_LIST_Y_POS_START + count *  ITEM_LIST_HEIGHT + SPACE_BTWN_ITEMS           --BS
         itemButton.width = ITEM_LIST_WIDTH

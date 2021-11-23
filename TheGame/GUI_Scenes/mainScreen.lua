@@ -2,7 +2,7 @@ local widget = require( "widget" )
 
 local composer = require( "composer" )
 local scene = composer.newScene()
-musicVolume = 50
+musicVolume = 50 --sliders at settigns and pause start at 50
 soundVolume = 50
  
 ---------------------------------------------------------------------------------
@@ -15,25 +15,25 @@ soundVolume = 50
 ---------------------------------------------------------------------------------
  
 
-local function playGameEvent( event )
-  if event.phase == "began" then
+local function playGameEvent( event )-- function to send to level selection
+  if event.phase == "began" then-- if the event is pressed for start game
    composer.gotoScene( "GUI_Scenes.levelSelection" )
   end
  end
 
- local function settingsEvent( event )
-  if event.phase == "began" then
+ local function settingsEvent( event )--function t send to settings scene if touch event 
+  if event.phase == "began" then--for settings button
    composer.gotoScene( "GUI_Scenes.settings" )
   end
  end
 
- local function howToPlayEvent( event )
+ local function howToPlayEvent( event )-- function to send to howtoplay scene if button is pressed
   if event.phase == "began" then
    composer.gotoScene( "GUI_Scenes.howToPlay" )
   end
  end
 
- local function exitEvent(event)
+ local function exitEvent(event)--function to exit app if exit button pressed
   if event.phase == "began" then
     os.exit()
   end
@@ -45,23 +45,20 @@ end
 
 -- "scene:create()"
 function scene:create( event )
-  backgroundSong=audio.loadSound("snailhouseSong.mp3");
-  tappingSound=audio.loadSound("boopSound.wav");
-  local backgroundMusicChannel = audio.play( backgroundSong, { channel=1, loops=-1, fadein=5000 } )
-   local sceneGroup = self.view
+  backgroundSong=audio.loadSound("snailhouseSong.mp3");--initates the music
+  tappingSound=audio.loadSound("boopSound.wav");--initiates the boop sound
+  local backgroundMusicChannel = audio.play( backgroundSong, { channel=1, loops=-1, fadein=5000 } )--continously loops song beause -1
+   local sceneGroup = self.view--initiates local group
 
-   print(channel1MaxVolume)
-   print(cannel1MinVolume);
-  print(channel1Volume);
 
    local bg1 = display.newImage("Background_startScreen_with_Button_bigger.png")
-   bg1.x = display.contentCenterX
+   bg1.x = display.contentCenterX--dsplays and positions background
    bg1.y = display.contentCenterY
     bg1.width = display.contentWidth
     bg1.height = display.contentHeight
     sceneGroup:insert(bg1)
 
-    local bgButterMeltText = display.newText(
+    local bgButterMeltText = display.newText(--text for buttermelt background
       {
         x = display.contentCenterX + 7,
         y = display.contentCenterY - 200,
@@ -73,7 +70,7 @@ function scene:create( event )
      bgButterMeltText:setFillColor( 0.36, 0.36, 0.36)
      sceneGroup:insert(bgButterMeltText)
 
-   local butterMeltText = display.newText(
+   local butterMeltText = display.newText(-- butter melt tital text
       {
         x = display.contentCenterX,
         y = display.contentCenterY - 200,
@@ -159,8 +156,8 @@ function scene:create( event )
     local function tapSound(event)
       local tapToSound = audio.play( tappingSound, {channel=2,} )
     end
-    sceneGroup:insert(exitButton)
-    Runtime:addEventListener("tap",tapSound)
+    sceneGroup:insert(exitButton)--exitbutton grouping 
+    Runtime:addEventListener("tap",tapSound)--event listener for tap anywhere on screen to make a sound
     
 end
 

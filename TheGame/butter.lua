@@ -1,10 +1,10 @@
-require("utility")
+require("utility")--uses utility for this
 butterBuilder = {}
 butterBuilder.temp = 10
 
 butterBuilder.inited = false
 
-local frameInfo = { 
+local frameInfo = { --butter frames
     frames = {
         
         {x = 2, y = 2, width = 195, height = 97}, --full            1
@@ -27,7 +27,7 @@ local butterSheet = graphics.newImageSheet( "Butter_Stages.png", frameInfo )
 
 
 --This is the controller for the sprite animations
-local butterStateManager ={
+local butterStateManager ={-- initiates sprite player
     {name="full", start=1, count=1, time=1, loopCount=1},
     {name="melt1", start=5, count=1, time=1, loopCount=1},
     {name="melt2", start=2, count=1, time=1, loopCount=1},
@@ -47,7 +47,7 @@ local butterStateManager ={
 
 
 
-local function mapButter(number)
+local function mapButter(number)--function to change butter as temperature changes
     if     number == 1 then return "freeze7"
     elseif number == 2 then return "freeze6"
     elseif number == 3 then return "freeze5"
@@ -68,7 +68,7 @@ end
 
 
 
-function butterBuilder.init(self) 
+function butterBuilder.init(self) --sets the position and start of butter
     
     if(self.inited == true) then 
         return self
@@ -93,7 +93,7 @@ function butterBuilder.init(self)
 
 end
 
-function butterBuilder.tick(self) 
+function butterBuilder.tick(self) --compaes the tempurature counter and 
     if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
     elseif (self.temp > globalTemp) then 
@@ -131,27 +131,27 @@ function butterBuilder.tick(self)
     end
     print(self.temp)
 
-    butterState = mapButter(self.life)
-    self:setSequence(butterState)
+    butterState = mapButter(self.life)--sets the sprite to the self.life
+    self:setSequence(butterState)-- sets the butter sequence 
 end
 
-MIN_TARGET_TEMP = 65
+MIN_TARGET_TEMP = 65 --global target temperatures
 MAX_TARGET_TEMP = 67
 PERFECT_TEMP = 66
 
-function butterBuilder.isIdealTemp(self) 
+function butterBuilder.isIdealTemp(self) --ideal temperature function
     return between(self.temp, MIN_TARGET_TEMP, MAX_TARGET_TEMP)
 end
 
-function butterBuilder.isPerfectTemp(self) 
+function butterBuilder.isPerfectTemp(self) -- perfect temperature function 
     return (self.temp == PERFECT_TEMP)
 end
 
-function butterBuilder.hide(self) 
+function butterBuilder.hide(self) --hides self
     self.isVisible = false;
 end
 
-function butterBuilder.show(self) 
+function butterBuilder.show(self) --shows self object
     self.isVisible = true;
 end
 
