@@ -31,7 +31,13 @@ function tick()
     updateScene()
 end
 
+function eventStartLoop()
+    
+end
+
 gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
+
+eventLoopTimer = timer.performWithDelay( 10000, tick, 0) --let there be an even once every 10 seconds of so...
 
 
 

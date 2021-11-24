@@ -385,7 +385,8 @@ end
  end
 
  -- "scene:destroy()"
- function scene:destroy( event )
+ function scene:destroy( event )+
+   
 
     local sceneGroup = self.view
 

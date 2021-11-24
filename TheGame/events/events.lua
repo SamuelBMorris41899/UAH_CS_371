@@ -7,9 +7,10 @@ table.insert( events, eclipse )
 solarFlare =require("SolarStorm")
 table.insert( events, solarFlare )
 
-
 function getRandomEvent()
-    return events[math.random(#myTable)]
+    event = events[math.random(#myTable)]
+    event:start() 
+    return event
 end
 
-return events;
+return events
