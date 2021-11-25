@@ -37,7 +37,7 @@ end
 
 function updateScene()
     if(currentLevelGroup == nil or currentLevelGroup.globalTempNum == nil) then
-        print("the level is NIL!")
+        
     else
         currentLevelGroup.bgGlobalTempNum.text = tostring(globalTemp)
         currentLevelGroup.globalTempNum.text = tostring(globalTemp)

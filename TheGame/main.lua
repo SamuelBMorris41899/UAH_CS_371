@@ -21,9 +21,14 @@ butter = butterBuilder:init()
 butter:hide()
 
 effects = require("effects")
-
+events = require("events.events")
 coolerBuilder = require("items.cooler")
 heaterBuilder = require("items.heater")
+
+
+
+
+
 
 function tick()
     butter:tick()
@@ -31,13 +36,22 @@ function tick()
     updateScene()
 end
 
-function eventStartLoop()
+secondsBetweenEvents = 10
+
+MINIMUM_EVENT_DURRATION = 1
+MAXIMUM_EVENT_DURRATION = 10
+MINIMUM_EVENT_SEVERITY = 1
+MAXIMUM_EVENT_SEVERITY = 5
+
+function eventStartLoop(e)
     
+    newEvent = events:startRandomEvent(MINIMUM_EVENT_DURRATION,MAXIMUM_EVENT_DURRATION,MINIMUM_EVENT_SEVERITY,MAXIMUM_EVENT_SEVERITY)
+    
+    effects:addEvent(newEvent)
 end
 
 gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
-
-eventLoopTimer = timer.performWithDelay( 10000, tick, 0) --let there be an even once every 10 seconds of so...
+eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
 
 
 

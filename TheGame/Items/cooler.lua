@@ -62,7 +62,7 @@ end
 function cooler_Builder.effect(self) 
     
     if(self.On) then 
-        globalTemp = globalTemp - 5 * self.level
+        globalTemp = globalTemp - 5
     end
 end
 

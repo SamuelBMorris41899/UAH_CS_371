@@ -31,12 +31,23 @@ function effects.addHeater(self)
 end
 
 function effects.addEvent (self,event)
-    table.insert(self.events,event)
+    table.insert(self.list,event)
 end
 
 function effects.globalTick(self)
-    for _,v in ipairs(self.list) do
+    local toRemove = {}
+    for i,v in ipairs(self.list) do
         v:effect()
+        --if this is an event....
+        if(v.type ~= nil and v.type == "event") then 
+            if(v:isOver()) then 
+                table.insert( toRemove, i )
+            end
+        end
+    end
+
+    for _,v in ipairs(toRemove) do 
+        table.remove( effects.list, v)
     end
 end
 
