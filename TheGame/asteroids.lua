@@ -43,7 +43,6 @@ end
 
 function Asteroid:bringToFront()
         Asteroid:toFront()
-        print("to front")
     return true
 end
 

@@ -62,7 +62,7 @@ function Entity:spawn(grp)
         self.shape = display.newRect(self.x, self.y, self.width, self.height)
     else
         local random = math.random(3)
-        print(random)
+
         if random == 1 then
             self.shape = display.newImageRect("Astroid1.png", self.width, self.height)
             self.shape.x = self.x
@@ -140,7 +140,7 @@ end
 -- Check event.name to ensure proper behavior
 function Entity:collision(event)
     if event.name == "collision" then
-        print(event.other.tag)
+        
 
         if self.destroyOnCollide[event.other.tag] then
             if event.other.tag == "player" then
