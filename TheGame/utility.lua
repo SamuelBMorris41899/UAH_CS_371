@@ -41,7 +41,7 @@ function updateScene()
     else
         currentLevelGroup.bgGlobalTempNum.text = tostring(globalTemp)
         currentLevelGroup.globalTempNum.text = tostring(globalTemp)
-        currentLevelGroup.bgTempNum.text =  tostring(butter.temp)
-        currentLevelGroup.tempNum.text = tostring(butter.temp)
+        -- currentLevelGroup.bgTempNum.text =  tostring(butter.temp)
+        -- currentLevelGroup.tempNum.text = tostring(butter.temp)
     end
 end

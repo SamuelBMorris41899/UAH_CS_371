@@ -247,14 +247,14 @@ end
      level0:insert(butter)
      butter:show()
 
-    local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
+    local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
     globalTempRect:setFillColor( 0.51 )
     level0:insert(globalTempRect)
 
     local bgGlobalTempText = display.newText(
         {
             x = display.contentCenterX - 37,
-            y = display.contentCenterY + 150,
+            y = display.contentCenterY + 210,
             text = "Global Temp: ",
             font = native.systemFontBold,
             fontSize = 30
@@ -267,7 +267,7 @@ end
     local globalTempText = display.newText(
         {
             x = display.contentCenterX - 40,
-            y = display.contentCenterY + 150,
+            y = display.contentCenterY + 210,
             text = "Global Temp: ",
             font = native.systemFontBold,
             fontSize = 30
@@ -302,9 +302,9 @@ end
     level0.globalTempNum:setFillColor(0.98, 0.99, 0.45)
     level0:insert(level0.globalTempNum)
     
-    local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
-    tempRect:setFillColor( 0.51 )
-    level0:insert(tempRect)
+   --  local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
+   --  tempRect:setFillColor( 0.51 )
+   --  level0:insert(tempRect)
     
    --  level0.bgTempText = display.newText(
    --      {

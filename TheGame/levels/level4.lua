@@ -250,7 +250,7 @@ end
      sceneGroup:insert(butter)
      butter:show()
 
-     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
+     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
      globalTempRect:setFillColor( 0.51 )
      sceneGroup:insert(globalTempRect)
  
