@@ -59,11 +59,16 @@ end
       --  sceneGroup:insert(exitOverlay)
 
        -- The options and frames of the Ryu sprite sheet.
+       
+       local happyCat = display.newImageRect( "happyCat.jpg", -175, -130 )
+       happyCat.x = 100
+       happyCat.y = 125
+       sceneGroup:insert(happyCat)
 
        dancingDoge.anchorX = 0 -- Anchor the sprite to the left x
        dancingDoge.anchorY = 1 -- Anchor the sprite to the right x
        
-       dancingDoge.x = display.contentCenterX - 45 -- Change the sprite x location
+       dancingDoge.x = display.contentCenterX + 45 -- Change the sprite x location
        dancingDoge.y = display.contentCenterY - 25 -- Change the sprite y location
        dancingDoge.xScale = 1.35
        dancingDoge.yScale = 1.35
