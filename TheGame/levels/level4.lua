@@ -2,6 +2,7 @@ print("Level 4")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local butter = require("butter")
+require("utility")
 local scene = composer.newScene()
 
 gameTimer = timer.performWithDelay(180000, gameWon, 1)
@@ -396,7 +397,7 @@ end
     local phase = event.phase
 
     if ( phase == "will" ) then
-
+      resetLevel()
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 

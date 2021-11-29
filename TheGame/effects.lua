@@ -42,12 +42,12 @@ function effects.globalTick(self)
         v:effect()
         --if this is an event....
         if(v.type ~= nil and v.type == "event") then 
-            if(v:isOver()) then 
+            if(v:isOver()) then --make expired events for deletion 
                 table.insert( toRemove, i )
             end
         end
     end
-
+    --del events
     for _,v in ipairs(toRemove) do 
         table.remove( effects.list, v)
     end

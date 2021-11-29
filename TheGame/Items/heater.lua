@@ -75,7 +75,7 @@ function builder.effect(self)
         if(heaterDisable) then 
             return
         end
-        globalTemp = globalTemp + 2.5
+        globalTemp = globalTemp + (5 * self.level)
     end
 end
 
