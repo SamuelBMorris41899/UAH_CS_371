@@ -49,6 +49,12 @@ end
 
 local function TEMPLost(event)
    if event.phase == "began" then
+      timer.cancel(gameLoopTimer)
+      gameLoopTimer = nil
+      timer.cancel(eventLoopTimer)
+      eventLoopTimer = nil
+      timer.cancel(gameTimer)
+      gameTimer = nil
       local options = {
          isModal = true,
          effect = "fade",

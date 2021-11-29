@@ -41,6 +41,12 @@ local function pauseListener( event )
 
  local function TEMPWin(event)
    if event.phase == "began" then
+      timer.cancel(gameLoopTimer)
+      gameLoopTimer = nil
+      timer.cancel(eventLoopTimer)
+      eventLoopTimer = nil
+      timer.cancel(gameTimer)
+      gameTimer = nil
       local options = {
          isModal = true,
          effect = "fade",
