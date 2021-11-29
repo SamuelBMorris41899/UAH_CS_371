@@ -46,10 +46,18 @@ function updateScene()
     end
 end
 
-function resetLevel () 
+function resetLevel (level) 
     heaterLevel = 1
     coolerLevel = 1
     Cooler.name = "Cooler "
     Heater.name = "Heater "
     
+    if(currentLevelGroup.heater ~= nil) then 
+        currentLevelGroup.heater:removeSelf()
+        currentLevelGroup.heater=nil;
+    end
+    if(currentLevelGroup.cooler ~= nil) then 
+        currentLevelGroup.cooler:removeSelf()
+        currentLevelGroup.cooler=nil;
+    end
 end
