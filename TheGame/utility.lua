@@ -1,4 +1,5 @@
 
+
 function deepCopy (orgional)
     local copy = {}
     for key, value in pairs(orgional) do
@@ -49,15 +50,18 @@ end
 function resetLevel (level) 
     heaterLevel = 1
     coolerLevel = 1
-    Cooler.name = "Cooler "
-    Heater.name = "Heater "
+    Heater.name = "Heater"
+    Cooler.name = "Cooler"
     
     if(currentLevelGroup.heater ~= nil) then 
-        currentLevelGroup.heater:removeSelf()
+        
         currentLevelGroup.heater=nil;
     end
     if(currentLevelGroup.cooler ~= nil) then 
-        currentLevelGroup.cooler:removeSelf()
+        
         currentLevelGroup.cooler=nil;
     end
+    effects.cooler = nil
+    effects.heater = nil 
+
 end

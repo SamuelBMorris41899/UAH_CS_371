@@ -310,6 +310,7 @@ end
 
     if ( phase == "will" ) then
       if not gameTimer then
+         currentLevelGroup = sceneGroup
          gameTimer = timer.performWithDelay(180000, gameWon, 1)
          dogeCoinTotal = 100
          bgDogeCoinNum.text = tostring(dogeCoinTotal)
@@ -340,7 +341,7 @@ end
     local phase = event.phase
 
     if ( phase == "will" ) then
-      resetLevel()
+      resetLevel(sceneGroup)
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 

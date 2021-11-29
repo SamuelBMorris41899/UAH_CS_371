@@ -2,11 +2,12 @@ effects = {
     list = {},
 }
 
+
 function effects.addCooler(self)
     newCooler = nil 
     if(self.cooler == nil ) then 
         newCooler = coolerBuilder:init(100,300)
-        newCooler:toFront()
+        self.cooler = newCooler
         table.insert(self.list,newCooler)
     else
         self.cooler:upgrade()
@@ -18,9 +19,10 @@ end
 function effects.addHeater(self)
     print("add heater")
 
-        newHeater = nil
+    newHeater = nil
     if(self.heater == nil) then 
         newHeater = heaterBuilder:init(150,200)
+        self.heater = newHeater
         table.insert(self.list,newHeater)
     else
         self.heater:upgrade()
@@ -28,7 +30,7 @@ function effects.addHeater(self)
     end
 
     table.insert(self.list,newHeater)
-
+    
     return newHeater
 end
 

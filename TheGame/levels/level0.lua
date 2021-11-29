@@ -329,6 +329,7 @@ end
 
     if ( phase == "will" ) then
       print("hello")
+      currentLevelGroup = level0
          if not gameTimer then
             gameTimer = timer.performWithDelay(180000, gameWon, 1)
             dogeCoinTotal = 100

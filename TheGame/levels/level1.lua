@@ -328,6 +328,7 @@ end
 
     if ( phase == "will" ) then
       if not gameTimer then
+         currentLevelGroup = sceneGroup
          gameTimer = timer.performWithDelay(180000, gameWon, 1)
          dogeCoinTotal = 100
          bgDogeCoinNum.text = tostring(dogeCoinTotal)
