@@ -91,7 +91,7 @@ function butterBuilder.init(self)
     return self
 end
 
-function butter.reset(self) 
+function butterBuilder.reset(self) 
     self.inited = false
     self = butterBuilder:init()
     
