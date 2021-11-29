@@ -46,7 +46,6 @@ end
 
  -- "scene:create()"
  function scene:create( event )
-   levelLost = false;
    local sceneGroup = self.view
    currentLevelGroup = sceneGroup
     local bg1 = display.newImage("Deep Space.png")
@@ -241,8 +240,7 @@ end
      sceneGroup:insert(butter)
      butter:show()
 
-     butter:reset()
-     effects.list = {}
+
      
      local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
      globalTempRect:setFillColor( 0.51 )
@@ -374,33 +372,9 @@ end
 
     if ( phase == "will" ) then
 
-      effects.list = {}
-      butter:reset()
-     
-      if(currentLevelGroup.heater~= nil) then
-        print("Has Cooler")
-        currentLevelGroup.heater.isVisible = false
-  
-      end
-      if(currentLevelGroup.cooler ~= nil) then
-        print("Has Heater")
-        currentLevelGroup.cooler.isVisible = false
-      end
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
-      effects.list = {}
-      butter:reset()
-     
-      if(currentLevelGroup.heater~= nil) then
-        print("Has Cooler")
-        currentLevelGroup.heater.isVisible = false
-  
-      end
-      if(currentLevelGroup.cooler ~= nil) then
-        print("Has Heater")
-        currentLevelGroup.cooler.isVisible = false
-      end
     end
  end
 
@@ -408,16 +382,7 @@ end
  function scene:destroy( event )
 
     local sceneGroup = self.view
-    effects.list = {}
-    butter:reset()
-   
-    if(currentLevelGroup.heater~= nil) then
-      currentLevelGroup.heater:hide()
 
-    end
-    if(currentLevelGroup.cooler ~= nil) then
-      currentLevelGroup.cooler:hide()
-    end
  end
 
  ---------------------------------------------------------------------------------

@@ -21,7 +21,7 @@ end
    local sceneGroup = self.view
 
     local rect = display.newRect(display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
-    rect:setFillColor(0.15, 0.15, 0.15, 0.9)
+    rect:setFillColor(0.15, 0.15, 0.15, 0.8)
     sceneGroup:insert(rect)
 
     local bgLevelWonText = display.newText(
