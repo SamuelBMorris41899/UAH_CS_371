@@ -47,6 +47,17 @@ local function shopListener( event )
    end
 end
 
+local function TEMPLost(event)
+   if event.phase == "began" then
+      local options = {
+         isModal = true,
+         effect = "fade",
+         time = 400,
+      }  
+         composer.showOverlay( "levels.levelLost", options )
+   end
+end
+
  -- "scene:create()"
  function scene:create( event )
    local sceneGroup = self.view
@@ -71,14 +82,9 @@ end
      dogeCoin.y = display.contentCenterY - 210
      dogeCoin.width = dogeCoin.width/25
      dogeCoin.height = dogeCoin.height/25
+     dogeCoin:addEventListener(TEMPLost)
      sceneGroup:insert(dogeCoin)
 
-         local dogeCoin = display.newImage("Coin.png")
-     dogeCoin.x = display.contentCenterX - 130
-     dogeCoin.y = display.contentCenterY - 210
-     dogeCoin.width = dogeCoin.width/25
-     dogeCoin.height = dogeCoin.height/25
-     sceneGroup:insert(dogeCoin)
 
      local bgDogeCoinX = display.newText(
       {
@@ -304,58 +310,6 @@ end
      )
      sceneGroup.globalTempNum:setFillColor(0.98, 0.99, 0.45)
      sceneGroup:insert(sceneGroup.globalTempNum)
-
-   --  local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
-   --  tempRect:setFillColor( 0.51 )
-   --  sceneGroup:insert(tempRect)
-   --  local bgTempText = display.newText(
-   --      {
-   --          x = display.contentCenterX - 37,
-   --          y = display.contentCenterY + 210,
-   --          text = "Temperature: ",
-   --          font = native.systemFontBold,
-   --          fontSize = 30
-   --      }
-    
-   --  )
-   --  bgTempText:setFillColor( 0.36, 0.36, 0.36)
-   --  sceneGroup:insert(bgTempText)
-
-   --  local tempText = display.newText(
-   --      {
-   --          x = display.contentCenterX - 40,
-   --          y = display.contentCenterY + 210,
-   --          text = "Temperature: ",
-   --          font = native.systemFontBold,
-   --          fontSize = 30
-   --      }
-   --  )
-   --  tempText:setFillColor( 0.98, 0.99, 0.45)
-   --  sceneGroup:insert(tempText)
-
-   --  sceneGroup.bgTempNum = display.newText(
-   --    {
-   --       x = display.contentCenterX + 103,
-   --       y = display.contentCenterY + 210,
-   --       text = tostring(currentTemp),
-   --       font = native.systemFontBold,
-   --       fontSize = 30
-   --    }
-   -- )
-   -- sceneGroup.bgTempNum:setFillColor(0.36)
-   -- sceneGroup:insert(sceneGroup.bgTempNum)
-
-   -- sceneGroup.tempNum = display.newText(
-   --    {
-   --       x = display.contentCenterX + 100,
-   --       y = display.contentCenterY + 210,
-   --       text = tostring(currentTemp),
-   --       font = native.systemFontBold,
-   --       fontSize = 30
-   --    }
-   -- )
-   -- sceneGroup.tempNum:setFillColor(0.98, 0.99, 0.45)
-   -- sceneGroup:insert(sceneGroup.tempNum)
 
  end
 

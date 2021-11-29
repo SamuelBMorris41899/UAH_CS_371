@@ -47,27 +47,6 @@ end
        levelLostText:setFillColor( 0.98, 0.99, 0.45)
        sceneGroup:insert(levelLostText)
 
-    --    local exitOverlay = display.newImage("x.png")
-    --    exitOverlay.x = display.contentCenterX + 125
-    --    exitOverlay.y = display.contentCenterY - 200
-    --    exitOverlay.width = exitOverlay.width*2
-    --    exitOverlay.height = exitOverlay.height*2
-    --    exitOverlay:addEventListener("touch", backEvent)
-    --    sceneGroup:insert(exitOverlay)
-
-       -- The options and frames of the Ryu sprite sheet.
-
-    --    dancingDoge.anchorX = 0 -- Anchor the sprite to the left x
-    --    dancingDoge.anchorY = 1 -- Anchor the sprite to the right x
-       
-    --    dancingDoge.x = display.contentCenterX - 45 -- Change the sprite x location
-    --    dancingDoge.y = display.contentCenterY - 25 -- Change the sprite y location
-    --    dancingDoge.xScale = 1.35
-    --    dancingDoge.yScale = 1.35
-
-    --   sceneGroup:insert(dancingDoge)
-       
-
         local exitLevelButton = widget.newButton(
         {
             label = "Exit Level",

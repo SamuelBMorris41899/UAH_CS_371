@@ -153,26 +153,6 @@ function heaterBought(event)
 end 
 
 
-Cat = {
-    name="Peanut",
-    amount = "+"..1,
-    cost = 10,
-    action=function (event) itemBought(event,{printValue = " bought"}) end,
-    tapAction="tap",
-    spriteLocation = ""
-}
-
-table.insert( itemList, Cat)
-
-Dodge = {
-    name="Dodge",
-    amount = -1,
-    cost=10,
-    action=function (event) itemBought(event,{printValue = " bought",item = "Dodge"}) end,
-    tapAction="tap",
-    spriteLocation = ""
-}
-table.insert( itemList, Dodge)
 
 Heater = {
     name = "Heater",

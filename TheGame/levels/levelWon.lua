@@ -91,7 +91,7 @@ end
            {
                x = display.contentCenterX + 100,
                y = display.contentCenterY,
-               text = "3 mins", 
+               text = " 3 mins", 
                font = native.systemFont,
                fontSize = 25,
            }
@@ -122,6 +122,9 @@ end
                fontSize = 25,
            }
         )
+        if timeInRangePts.text == tostring(nil) then
+            timeInRangePts.text = " 100"
+        end
         sceneGroup:insert(timeInRangePts)
 
         local timeInTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 130, 310, 50, 10)
