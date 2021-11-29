@@ -1,4 +1,4 @@
-print("Level Won")
+print("Level Lost")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -24,49 +24,49 @@ end
     rect:setFillColor(0.15, 0.15, 0.15, 0.8)
     sceneGroup:insert(rect)
 
-    local bgLevelWonText = display.newText(
+    local bgLevelLostText = display.newText(
         {
           x = display.contentCenterX - 15,
           y = display.contentCenterY - 200,
-          text = "Level Won!!", 
+          text = "Level Lost :(", 
           font = native.systemFontBold,
           fontSize = 40,
         }
        )
-       bgLevelWonText:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgLevelWonText)
+       bgLevelLostText:setFillColor( 0.36, 0.36, 0.36)
+       sceneGroup:insert(bgLevelLostText)
 
-     local levelWonText = display.newText(
+     local levelLostText = display.newText(
         {
           x = display.contentCenterX - 20,
           y = display.contentCenterY - 200,
-          text = "Level Won!!", 
+          text = "Level Lost :(", 
           font = native.systemFontBold,
           fontSize = 40,
         }
        )
-       levelWonText:setFillColor( 0.98, 0.99, 0.45)
-       sceneGroup:insert(levelWonText)
+       levelLostText:setFillColor( 0.98, 0.99, 0.45)
+       sceneGroup:insert(levelLostText)
 
-      --  local exitOverlay = display.newImage("x.png")
-      --  exitOverlay.x = display.contentCenterX + 125
-      --  exitOverlay.y = display.contentCenterY - 200
-      --  exitOverlay.width = exitOverlay.width*2
-      --  exitOverlay.height = exitOverlay.height*2
-      --  exitOverlay:addEventListener("touch", backEvent)
-      --  sceneGroup:insert(exitOverlay)
+    --    local exitOverlay = display.newImage("x.png")
+    --    exitOverlay.x = display.contentCenterX + 125
+    --    exitOverlay.y = display.contentCenterY - 200
+    --    exitOverlay.width = exitOverlay.width*2
+    --    exitOverlay.height = exitOverlay.height*2
+    --    exitOverlay:addEventListener("touch", backEvent)
+    --    sceneGroup:insert(exitOverlay)
 
        -- The options and frames of the Ryu sprite sheet.
 
-       dancingDoge.anchorX = 0 -- Anchor the sprite to the left x
-       dancingDoge.anchorY = 1 -- Anchor the sprite to the right x
+    --    dancingDoge.anchorX = 0 -- Anchor the sprite to the left x
+    --    dancingDoge.anchorY = 1 -- Anchor the sprite to the right x
        
-       dancingDoge.x = display.contentCenterX - 45 -- Change the sprite x location
-       dancingDoge.y = display.contentCenterY - 25 -- Change the sprite y location
-       dancingDoge.xScale = 1.35
-       dancingDoge.yScale = 1.35
+    --    dancingDoge.x = display.contentCenterX - 45 -- Change the sprite x location
+    --    dancingDoge.y = display.contentCenterY - 25 -- Change the sprite y location
+    --    dancingDoge.xScale = 1.35
+    --    dancingDoge.yScale = 1.35
 
-      sceneGroup:insert(dancingDoge)
+    --   sceneGroup:insert(dancingDoge)
        
        local totalPtsRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY, 310, 50, 10)
 

@@ -26,16 +26,17 @@ coolerBuilder = require("items.cooler")
 heaterBuilder = require("items.heater")
 
 
-
-
-
-
 function tick()
     butter:tick()
     effects:globalTick()
     updateScene()
     if(butter:gameLost()) then 
-        --go to lose screen
+        local options = {
+            isModal = true,
+            effect = "fade",
+            time = 400,
+        } 
+        composer.showOverlay( "loseScreen.lua", options )
     end 
 end
 
