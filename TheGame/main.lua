@@ -57,8 +57,6 @@ end
 gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
 eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
 
-gameTimer = timer.performWithDelay( 1000, tick, 1,onStart = (),onCompleate = ())
-gameTimer.pause()
 
 
 require("rocketEnviroment"); -- this will start the model...
