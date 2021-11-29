@@ -34,6 +34,9 @@ function tick()
     butter:tick()
     effects:globalTick()
     updateScene()
+    if(butter:gameLost()) then 
+        --go to lose screen
+    end 
 end
 
 secondsBetweenEvents = 30
