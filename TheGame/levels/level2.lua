@@ -1,7 +1,7 @@
 print("Level 2")
 local widget = require( "widget" )
 local composer = require( "composer" )
-local butter = require("butter")
+
 local scene = composer.newScene()
 require("utility")
 gameTimer = timer.performWithDelay(180000, gameWon, 1)
@@ -239,9 +239,7 @@ end
      astroSmashIcon:addEventListener("touch", goToAstroSmash)
      sceneGroup:insert(astroSmashIcon)
 
-     
-     butter = butter:new({})
-     butter:init(sceneGroup)
+     sceneGroup:insert(butter)
      butter:reset()
      butter:show()
 
@@ -368,6 +366,11 @@ end
          bgDogeCoinNum.text = tostring(dogeCoinTotal)
          dogeCoinNum.text = tostring(dogeCoinTotal)
          butter:reset()
+
+         sceneGroup:insert(butter)
+         butter:reset()
+         butter:show()
+
       end
       if not gameLoopTimer then
          gameLoopTimer = timer.performWithDelay( 1000, tick, 0) 
