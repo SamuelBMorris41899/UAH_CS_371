@@ -2,6 +2,7 @@ print("Pause")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local heater = require("Items.heater")
+local cooler = require("Items.cooler")
 local scene = composer.newScene()
 
 
@@ -20,6 +21,7 @@ local function exitLevelEvent(event)
     timer.cancel(gameTimer)
     gameTimer = nil
     heater:removeHeater()
+    cooler:removeCooler()
     composer.gotoScene("GUI_Scenes.levelSelection")
   end
 end

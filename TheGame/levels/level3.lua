@@ -1,8 +1,11 @@
 print("Level 3")
 local widget = require( "widget" )
+local butter = require("butter")
 local composer = require( "composer" )
 local scene = composer.newScene()
-
+gameTimer = timer.performWithDelay(180000, gameWon, 1)
+gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
+eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
 dogeCoinTotal = 100
 currentTemp = 75
 
@@ -162,7 +165,7 @@ end
       {
         x = display.contentCenterX + 112,
         y = display.contentCenterY - 130,
-        text = "85F-65F", 
+        text = "80F-70F", 
         font = native.systemFontBold,
         fontSize = 23,
       }
@@ -174,7 +177,7 @@ end
       {
         x = display.contentCenterX + 110,
         y = display.contentCenterY - 130,
-        text = "85F-65F", 
+        text = "80F-70F", 
         font = native.systemFontBold,
         fontSize = 23,
       }
@@ -236,11 +239,10 @@ end
      astroSmashIcon:addEventListener("touch", goToAstroSmash)
      sceneGroup:insert(astroSmashIcon)
 
-     butter.x = display.contentCenterX + 20
-     butter.y = display.contentCenterY + 50
-     sceneGroup:insert(butter)
+     butter = butter:new({})
+     butter:init(sceneGroup)
+     butter:reset()
      butter:show()
-
 
      
      local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
@@ -276,7 +278,7 @@ end
         {
            x = display.contentCenterX + 103,
            y = display.contentCenterY + 210,
-           text = tostring(currentTemp),
+           text = tostring(globalTemp),
            font = native.systemFontBold,
            fontSize = 30
         }
@@ -288,7 +290,7 @@ end
         {
            x = display.contentCenterX + 100,
            y = display.contentCenterY + 210,
-           text = tostring(currentTemp),
+           text = tostring(globalTemp),
            font = native.systemFontBold,
            fontSize = 30
         }
@@ -359,6 +361,19 @@ end
     local phase = event.phase
 
     if ( phase == "will" ) then
+      if not gameTimer then
+         gameTimer = timer.performWithDelay(180000, gameWon, 1)
+         dogeCoinTotal = 100
+         bgDogeCoinNum.text = tostring(dogeCoinTotal)
+         dogeCoinNum.text = tostring(dogeCoinTotal)
+         butter:reset()
+      end
+      if not gameLoopTimer then
+         gameLoopTimer = timer.performWithDelay( 1000, tick, 0) 
+      end
+      if not eventLoopTimer then
+         eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
+      end
 
     elseif ( phase == "did" ) then
 

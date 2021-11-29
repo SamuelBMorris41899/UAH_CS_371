@@ -3,6 +3,8 @@ local cooler_Builder = {}
 
 cooler_Builder.On = true
 
+
+
 local frameInfo = { 
     frames = {
         {x = 1, y = 2, width = 87, height = 131}, --1
@@ -22,21 +24,34 @@ local stateManager ={
 
 
 function cooler_Builder.init(self,x,y)
-    new = display.newSprite(spriteSheetData, stateManager)
-    new = deepAppend(cooler_Builder,new)
-    new:changeAnim()
-    new.level = 1
-    new.x = x
-    new.y = y
-    new.xScale = .75
-    new.yScale = .75
-    new:addEventListener("touch",new.turnOnOff)
+    coolerDisable = false
+    coolerNew = display.newSprite(spriteSheetData, stateManager)
+    coolerNew = deepAppend(cooler_Builder,coolerNew)
+    coolerNew:changeAnim()
+    coolerNew.level = 1
+    coolerNew.x = x
+    coolerNew.y = y
+    coolerNew.xScale = .75
+    coolerNew.yScale = .75
+    coolerNew:addEventListener("touch",coolerNew.turnOnOff)
     
-    return new
+    return coolerNew
 end
 
 function cooler_Builder.upgrade(self)
     self.level = self.level + 1
+end
+
+function cooler_Builder.removeCooler(self)
+    print("cooler removed")
+    if coolerNew == nil then
+        print("cooler failure")
+        return
+    end
+    coolerNew.isVisible = false
+    coolerNew:removeSelf()
+    coolerNew = nil
+    coolerDisable = true
 end
 
 function cooler_Builder.changeAnim(self)
@@ -60,7 +75,9 @@ function cooler_Builder.turnOnOff(event)
 end
 
 function cooler_Builder.effect(self) 
-    
+    if(coolerDisable) then 
+        return
+    end
     if(self.On) then 
         globalTemp = globalTemp - 5
     end

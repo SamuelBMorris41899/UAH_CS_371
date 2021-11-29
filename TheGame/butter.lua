@@ -1,8 +1,18 @@
 require("utility")
-butterBuilder = {}
+-- butterBuilder = {}
+
+
+if not butterBuilder then
+    butterBuilder = {
+        x = display.contentCenterX + 100, 
+        y = display.contentCenterY + 80
+    }
+end
+
 butterBuilder.temp = 75
 
 butterBuilder.inited = false
+
 
 local frameInfo = { 
     frames = {
@@ -44,7 +54,16 @@ local butterStateManager ={
     {name="freeze7", start=8, count=1, time=1, loopCount=1},
     
 }
+function butterBuilder:new(o, args)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
 
+    args = args or {}
+    -- o:setup(args)
+
+    return o
+end
 
 
 local function mapButter(number)
@@ -68,8 +87,7 @@ end
 
 
 
-function butterBuilder.init(self) 
-    print("Butterinited: ".. tostring(self.inited))
+function butterBuilder.init(self, grp) 
     if(self.inited == true) then 
         return self
     end
@@ -83,11 +101,14 @@ function butterBuilder.init(self)
     butterState = mapButter(newButter.life)
     newButter:setSequence( butterState )  
     newButter:play()  -- play the new sequence
-    newButter.x = 100
-    newButter.y = 100
+    newButter.x = self.x
+    newButter.y = self.x
     newButter.width = newButter.width*2
     self = newButter
     self.inited = true
+
+    if grp then grp:insert(self) end
+
     return self
 end
 
@@ -100,43 +121,44 @@ function butterBuilder.reset(self)
 end 
 function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
-        self.temp = self.temp + 1
+        self.temp = self.temp + 5
         print("Butter Temp: "..self.temp)
     elseif (self.temp > globalTemp) then 
-        self.temp = self.temp - 1
+        self.temp = self.temp - 5
         print("Butter Temp: "..self.temp)
     end
+    print("self.life: " ..self.life )
 
-    if(between(self.temp,0,24)) then --frozen 7 ALL IS LOST ANYWAY
+    if(self.temp >= 0 and self.temp <= 24) then --frozen 7 ALL IS LOST ANYWAY
         self.life = 1
-    elseif(between(self.temp,25,45)) then --frozen 6
+    elseif(self.temp >= 25 and self.temp <= 45) then --frozen 6
         self.life = 2
-    elseif(between(self.temp,46,50)) then --frozen 5
+    elseif(self.temp >= 46 and self.temp <= 50) then --frozen 5
         self.life = 3
-    elseif(between(self.temp,51,55)) then --frozen 4
+    elseif(self.temp >= 51 and self.temp <= 55) then --frozen 4
         self.life = 4
-    elseif(between(self.temp,56,60)) then --frozen 3
+    elseif(self.temp >= 56 and self.temp <= 60) then --frozen 3
         self.life = 5
-    elseif(between(self.temp,61,65)) then --frozen 2
+    elseif(self.temp >= 61 and self.temp <= 65) then --frozen 2
         self.life = 6
-    elseif(between(self.temp,66,70)) then --frozen 1
+    elseif(self.temp >= 66 and self.temp <= 70) then --frozen 1
         self.life = 7
-    elseif(between(self.temp,70,80)) then --perfect 
+    elseif(self.temp >= 70 and self.temp <= 90) then --perfect 
         self.life = 8
-    elseif(between(self.temp,81,85)) then --melt 1
+    elseif(self.temp >= 81 and self.temp <= 85) then --melt 1
         self.life = 9
-    elseif(between(self.temp,86,90)) then --melt 2
+    elseif(self.temp >= 86 and self.temp <= 90) then --melt 2
         self.life = 10
-    elseif(between(self.temp,91,95)) then --melt 3
+    elseif(self.temp >= 91 and self.temp <= 95) then --melt 3
         self.life = 11
-    elseif(between(self.temp,96,100)) then --melt 4
+    elseif(self.temp >= 96 and self.temp <= 100) then --melt 4
         self.life = 12
-    elseif(between(self.temp,101,105)) then --melt 5
+    elseif(self.temp >= 101 and self.temp <= 105) then --melt 5
         self.life = 13
-    elseif(between(self.temp,106,110)) then --melt 6 ALL IS LOST ANYWAY
+    elseif(self.temp >= 106 and self.temp <= 110) then --melt 6 ALL IS LOST ANYWAY
         self.life = 14
     end
-
+    
     butterState = mapButter(self.life)
     self:setSequence(butterState)
 end

@@ -1,10 +1,10 @@
 print("Level 0")
 local widget = require( "widget" )
+local butter = require("butter")
 local composer = require( "composer" )
-local heater = require("Items.heater")
 local scene = composer.newScene()
 local level0 = nil
-dogeCoinTotal = 200
+dogeCoinTotal = 100
 
 gameTimer = timer.performWithDelay(180000, gameWon, 1)
 gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
@@ -175,7 +175,7 @@ end
       {
         x = display.contentCenterX + 107,
         y = display.contentCenterY - 130,
-        text = "70F-80F", 
+        text = "80F-70F", 
         font = native.systemFontBold,
         fontSize = 23,
       }
@@ -187,7 +187,7 @@ end
       {
         x = display.contentCenterX + 105,
         y = display.contentCenterY - 130,
-        text = "70F-80F", 
+        text = "80F-70F", 
         font = native.systemFontBold,
         fontSize = 23,
       }
@@ -249,10 +249,11 @@ end
      astroSmashIcon:addEventListener("touch", goToAstroSmash)
      level0:insert(astroSmashIcon)
 
-     butter.x = display.contentCenterX + 100
-     butter.y = display.contentCenterY + 80
-     level0:insert(butter)
+     butter = butter:new({})
+     butter:init(level0)
+     butter:reset()
      butter:show()
+
 
     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
     globalTempRect:setFillColor( 0.51 )
@@ -377,10 +378,10 @@ end
       print("hello")
          if not gameTimer then
             gameTimer = timer.performWithDelay(180000, gameWon, 1)
-            dogeCoinTotal = 200
+            dogeCoinTotal = 100
             bgDogeCoinNum.text = tostring(dogeCoinTotal)
             dogeCoinNum.text = tostring(dogeCoinTotal)
-            butter:reset(butter)
+            butter:reset()
          end
          if not gameLoopTimer then
             gameLoopTimer = timer.performWithDelay( 1000, tick, 0) 
