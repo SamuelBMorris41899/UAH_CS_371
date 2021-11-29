@@ -66,9 +66,9 @@ end
         sceneGroup:insert(exitLevelButton)
 
          
-        local happyCat = display.newImageRect( "madCat.jpg", -175, -130 )
-        happyCat.x = 100
-        happyCat.y = 125
+        local happyCat = display.newImageRect( "madCat.jpg", 300, 300 )
+        happyCat.x = display.contentCenterX
+        happyCat.y = display.contentCenterY
         sceneGroup:insert(happyCat)
  end
 
