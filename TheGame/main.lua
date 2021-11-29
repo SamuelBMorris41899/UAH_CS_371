@@ -39,7 +39,7 @@ function tick()
     end 
 end
 
-secondsBetweenEvents = 30
+secondsBetweenEvents = 1
 
 MINIMUM_EVENT_DURRATION = 1
 MAXIMUM_EVENT_DURRATION = 10
