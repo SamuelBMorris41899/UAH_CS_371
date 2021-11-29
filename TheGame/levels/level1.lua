@@ -54,7 +54,7 @@ local function TEMPLost(event)
          effect = "fade",
          time = 400,
       }  
-         composer.showOverlay( "levels.levelLost", options )
+         composer.showOverlay( "loseScreen", options )
    end
 end
 
@@ -82,7 +82,7 @@ end
      dogeCoin.y = display.contentCenterY - 210
      dogeCoin.width = dogeCoin.width/25
      dogeCoin.height = dogeCoin.height/25
-     dogeCoin:addEventListener(TEMPLost)
+     dogeCoin:addEventListener("touch", TEMPLost)
      sceneGroup:insert(dogeCoin)
 
 
