@@ -87,7 +87,7 @@ end
 
 
 
-function butterBuilder.init(self, grp) 
+function butterBuilder.init(self) 
     if(self.inited == true) then 
         return self
     end
@@ -107,11 +107,8 @@ function butterBuilder.init(self, grp)
     self = newButter
     self.inited = true
 
-    if grp then grp:insert(self) end
-
     return self
 end
-
 function butterBuilder.reset(self) 
     globalTemp = 75
     self.temp = globalTemp
@@ -160,6 +157,7 @@ function butterBuilder.tick(self)
     end
     
     butterState = mapButter(self.life)
+    print(butterState)
     self:setSequence(butterState)
 end
 

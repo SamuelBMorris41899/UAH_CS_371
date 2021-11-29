@@ -1,7 +1,7 @@
 print("Level 3")
 local widget = require( "widget" )
-local butter = require("butter")
 local composer = require( "composer" )
+require("utility")
 local scene = composer.newScene()
 gameTimer = timer.performWithDelay(180000, gameWon, 1)
 gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
@@ -238,11 +238,10 @@ end
      astroSmashIcon.y = display.contentCenterY - 100
      astroSmashIcon:addEventListener("touch", goToAstroSmash)
      sceneGroup:insert(astroSmashIcon)
-
-     butter = butter:new({})
-     butter:init(sceneGroup)
+     sceneGroup:insert(butter)
      butter:reset()
      butter:show()
+
 
      
      local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
@@ -366,7 +365,10 @@ end
          dogeCoinTotal = 100
          bgDogeCoinNum.text = tostring(dogeCoinTotal)
          dogeCoinNum.text = tostring(dogeCoinTotal)
+         sceneGroup:insert(butter)
          butter:reset()
+         butter:show()
+
       end
       if not gameLoopTimer then
          gameLoopTimer = timer.performWithDelay( 1000, tick, 0) 
@@ -387,7 +389,7 @@ end
     local phase = event.phase
 
     if ( phase == "will" ) then
-
+      resetLevel()
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 

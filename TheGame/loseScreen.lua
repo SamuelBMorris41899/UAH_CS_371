@@ -2,7 +2,6 @@ print("Level Lost")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-local dancingDoge = require("GUI_Objects.dancingDoge")
 
 local function backEvent( event )
   if event.phase == "began" then
