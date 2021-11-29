@@ -38,9 +38,9 @@ function tick()
         eventLoopTimer = nil
         timer.cancel(gameTimer)
         gameTimer = nil
-        
         heater:removeHeater()
         cooler:removeCooler()
+
         local options = {
             isModal = true,
             effect = "fade",
@@ -74,9 +74,9 @@ function gameWon()
     eventLoopTimer = nil
     timer.cancel(gameTimer)
     gameTimer = nil
-    
     heater:removeHeater()
     cooler:removeCooler()
+    
     local options = {
         isModal = true,
         effect = "fade",

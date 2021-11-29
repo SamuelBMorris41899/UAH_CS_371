@@ -7,10 +7,39 @@ for fields in f:lines() do
     local e = {
         name = fields.Name,
         durration = 1,
+        global = fields.global,
         type = "event"
     }
 
     function e.start(self,durration,severity)
+        local g = display.newGroup()
+        local bgEventText = display.newText(
+        {
+            x = display.contentCenterX + 2,
+            y = display.contentCenterY - 125,
+            text = "ALERT! ".. self.name .." incoming!\n"
+            .. fields.global .." change in temperature!",
+            font = display.systemFontBold,
+            fontSize = 20,
+        }
+        )
+        bgEventText:setFillColor(0.36, 0.36, 0.36)
+        g:insert(bgEventText)
+
+        local eventText = display.newText(
+            {
+                x = display.contentCenterX,
+                y = display.contentCenterY - 125,
+                text = "ALERT! ".. self.name .." incoming!\n"
+                .. fields.global .." change in temperature!",
+                font = display.systemFontBold,
+                fontSize = 20,
+            }
+        )
+        eventText:setFillColor( 0.98, 0.21, 0.21)
+        g:insert(eventText)
+
+        transition.fadeOut( g, {time = 10000} )
         self.durration = durration
     end
 

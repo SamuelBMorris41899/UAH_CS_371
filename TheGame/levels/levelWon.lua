@@ -1,6 +1,8 @@
 print("Level Won")
 local widget = require( "widget" )
 local composer = require( "composer" )
+local heater = require("Items.heater")
+local cooler = require("Items.cooler")
 local scene = composer.newScene()
 local dancingDoge = require("GUI_Objects.dancingDoge")
 
