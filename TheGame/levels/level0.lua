@@ -360,7 +360,7 @@ end
     local phase = event.phase
 
     if ( phase == "will" ) then
-      resetLevel()
+      resetLevel(level0)
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 

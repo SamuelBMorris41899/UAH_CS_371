@@ -69,8 +69,8 @@ function coolerBought(event)
         shopGroup:insert(coolerRect)
 
 
-
-        currentLevelGroup:insert(effects:addCooler())
+        currentLevelGroup.cooler = effects:addCooler() 
+        currentLevelGroup:insert(currentLevelGroup.cooler)
         coolerLevel = coolerLevel + 1
         
         Cooler.name = "Cooler " .. coolerLevel
@@ -145,7 +145,10 @@ function heaterBought(event)
         shopGroup:insert(heaterRect)
 
 
-        currentLevelGroup:insert(effects:addHeater())
+
+        currentLevelGroup.heater = effects:addHeater() 
+        currentLevelGroup:insert(currentLevelGroup.heater)
+
         heaterLevel = heaterLevel + 1
         Heater.name = "Heater " .. heaterLevel
     end
