@@ -52,7 +52,9 @@ function builder.turnOnOff(event)
 end
 
 function builder.effect(self) 
-    globalTemp = globalTemp + 5 * self.level
+    if(self.On) then 
+        globalTemp = globalTemp + 2.5
+    end
 end
 
 return builder

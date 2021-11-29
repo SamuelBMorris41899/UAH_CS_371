@@ -4,11 +4,11 @@ events = {}
 eclipse = require("events.Eclipse")
 table.insert( events, eclipse )
 
-solarFlare =require("events.SolarStorm")
+solarFlare = require("events.SolarStorm")
 table.insert( events, solarFlare )
 
-
-
+--Name,globalTempEffect,butterTempEffect,Min durr,Max durr
+ 
 function events.startRandomEvent(self,minDuration,maxDuration,minServerity,maxServerity)
     print(#events)
     eventNum = math.random(#events)

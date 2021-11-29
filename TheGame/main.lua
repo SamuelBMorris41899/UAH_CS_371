@@ -36,7 +36,7 @@ function tick()
     updateScene()
 end
 
-secondsBetweenEvents = 10
+secondsBetweenEvents = 30
 
 MINIMUM_EVENT_DURRATION = 1
 MAXIMUM_EVENT_DURRATION = 10

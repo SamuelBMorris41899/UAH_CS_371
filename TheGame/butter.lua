@@ -92,7 +92,11 @@ function butterBuilder.init(self)
     return self
 
 end
-
+function butter.reset(self) 
+    self.inited = false
+    self = butterBuilder:init()
+    
+end 
 function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
