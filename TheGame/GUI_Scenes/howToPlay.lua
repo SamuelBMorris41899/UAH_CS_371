@@ -60,18 +60,19 @@ end
             "butter to the moon for Elon's\n"..
             "birthday to do this you must\n"..
             "keep the butter at the perfect\n"..
-            "temperature\n"..
-            "If you keep the butter's \n"..
-            "temp in a specific range\n"..
-            "you will earn dodge coin \n"..
-            "which you can spend at\n"..
-            "the shop to make your \n"..
-            "task easier if you have\n"..
-            "the butter at the perfect\n"..
-            "temperature  then you can \n"..
-            "earn double the dodge coin!\n"
+            "temperature. To keep the butter\n"..
+            "in the perfect range, you buy \n"..
+            "items from the shop with dogecoin\n"..
+            "these items will either heat\n"..
+            "or cool the butter. To earn the\n"..
+            "dogecoin, click on the rocket to \n"..
+            "play astrosmash. To earn the \n"..
+            "dogecoin avoid the asterioids\n"..
+            "coiming towards the ship if you\n"..
+            "successfully avade the asteroid\n".. 
+            "you get a coin!\n"
             , 
-           font = native.systemFontBold,
+           font = native.systemFont,
            fontSize = 20,
          }
         )

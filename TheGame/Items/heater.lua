@@ -1,5 +1,5 @@
 require("utility")
-builder = {}
+local builder = {}
 
 builder.On = true
 
@@ -18,19 +18,21 @@ local stateManager ={
     {name="on", start=2, count=2, time=700, loopCount=1},
 }
 
-
-
 function builder.init(self,x,y)
     new = display.newSprite(spriteSheetData, stateManager)
     new = deepAppend(builder,new)
     new:changeAnim()
+    new.level = 1
     new.x = x
     new.y = y
+    new.xScale = .75
+    new.yScale = .75
+    new:addEventListener("touch",new.turnOnOff)
+    new:toBack()
     return new
 end
 
 function builder.changeAnim(self)
-
     if (self.On) then 
         print("ON!")
         self:setSequence("on")
@@ -41,13 +43,18 @@ function builder.changeAnim(self)
     self:play()
 end
 
-function builder.turnOnOff(self) 
-    self.On = not self.On
-    self:changeAnim()
+function builder.turnOnOff(event)
+    if (event.phase == "ended") then 
+        self = event.target
+        self.On = not self.On
+        self:changeAnim()
+    end
 end
 
 function builder.effect(self) 
-    globalTemp = globalTemp + 5
+    if(self.On) then 
+        globalTemp = globalTemp + 2.5
+    end
 end
 
 return builder

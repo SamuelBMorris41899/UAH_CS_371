@@ -34,3 +34,14 @@ end
 function between(number,min,max) 
     return (number > min and number < max);
 end
+
+function updateScene()
+    if(currentLevelGroup == nil or currentLevelGroup.globalTempNum == nil) then
+        
+    else
+        currentLevelGroup.bgGlobalTempNum.text = tostring(globalTemp)
+        currentLevelGroup.globalTempNum.text = tostring(globalTemp)
+        -- currentLevelGroup.bgTempNum.text =  tostring(butter.temp)
+        -- currentLevelGroup.tempNum.text = tostring(butter.temp)
+    end
+end

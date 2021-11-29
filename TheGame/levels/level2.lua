@@ -230,10 +230,11 @@ end
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(perfectTempNum)
 
-     local rect = display.newRect(display.contentCenterX - 113, display.contentCenterY - 70, 100, 50)
-     rect:setFillColor(0.51)
-     rect:addEventListener("touch", goToAstroSmash)
-     sceneGroup:insert(rect)
+     local astroSmashIcon = display.newImage("Player.png")
+     astroSmashIcon.x = display.contentCenterX - 120
+     astroSmashIcon.y = display.contentCenterY - 100
+     astroSmashIcon:addEventListener("touch", goToAstroSmash)
+     sceneGroup:insert(astroSmashIcon)
 
      
      butter.x = display.contentCenterX + 20
@@ -242,14 +243,14 @@ end
      butter:show()
 
 
-     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
+     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
      globalTempRect:setFillColor( 0.51 )
      sceneGroup:insert(globalTempRect)
  
      local bgGlobalTempText = display.newText(
          {
              x = display.contentCenterX - 37,
-             y = display.contentCenterY + 150,
+             y = display.contentCenterY + 210,
              text = "Global Temp: ",
              font = native.systemFontBold,
              fontSize = 30
@@ -262,7 +263,7 @@ end
      local globalTempText = display.newText(
          {
              x = display.contentCenterX - 40,
-             y = display.contentCenterY + 150,
+             y = display.contentCenterY + 210,
              text = "Global Temp: ",
              font = native.systemFontBold,
              fontSize = 30
@@ -271,82 +272,82 @@ end
      globalTempText:setFillColor( 0.98, 0.99, 0.45)
      sceneGroup:insert(globalTempText)
  
-     bgGlobalTempNum = display.newText(
+     sceneGroup.bgGlobalTempNum = display.newText(
         {
            x = display.contentCenterX + 103,
-           y = display.contentCenterY + 150,
+           y = display.contentCenterY + 210,
            text = tostring(currentTemp),
            font = native.systemFontBold,
            fontSize = 30
         }
      )
-     bgGlobalTempNum:setFillColor(0.36)
-     sceneGroup:insert(bgGlobalTempNum)
+     sceneGroup.bgGlobalTempNum:setFillColor(0.36)
+     sceneGroup:insert(sceneGroup.bgGlobalTempNum)
  
-     globalTempNum = display.newText(
+     sceneGroup.globalTempNum = display.newText(
         {
            x = display.contentCenterX + 100,
-           y = display.contentCenterY + 150,
+           y = display.contentCenterY + 210,
            text = tostring(currentTemp),
            font = native.systemFontBold,
            fontSize = 30
         }
      )
-     globalTempNum:setFillColor(0.98, 0.99, 0.45)
-     sceneGroup:insert(globalTempNum)
+     sceneGroup.globalTempNum:setFillColor(0.98, 0.99, 0.45)
+     sceneGroup:insert(sceneGroup.globalTempNum)
 
 
-    local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
-    tempRect:setFillColor( 0.51 )
-    sceneGroup:insert(tempRect)
-    local bgTempText = display.newText(
-        {
-            x = display.contentCenterX - 37,
-            y = display.contentCenterY + 210,
-            text = "Temperature: ",
-            font = native.systemFontBold,
-            fontSize = 30
-        }
+   --  local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
+   --  tempRect:setFillColor( 0.51 )
+   --  sceneGroup:insert(tempRect)
+   --  local bgTempText = display.newText(
+   --      {
+   --          x = display.contentCenterX - 37,
+   --          y = display.contentCenterY + 210,
+   --          text = "Temperature: ",
+   --          font = native.systemFontBold,
+   --          fontSize = 30
+   --      }
     
-    )
-    bgTempText:setFillColor( 0.36, 0.36, 0.36)
-    sceneGroup:insert(bgTempText)
+   --  )
+   --  bgTempText:setFillColor( 0.36, 0.36, 0.36)
+   --  sceneGroup:insert(bgTempText)
 
-    local tempText = display.newText(
-        {
-            x = display.contentCenterX - 40,
-            y = display.contentCenterY + 210,
-            text = "Temperature: ",
-            font = native.systemFontBold,
-            fontSize = 30
-        }
-    )
-    tempText:setFillColor( 0.98, 0.99, 0.45)
-    sceneGroup:insert(tempText)
+   --  local tempText = display.newText(
+   --      {
+   --          x = display.contentCenterX - 40,
+   --          y = display.contentCenterY + 210,
+   --          text = "Temperature: ",
+   --          font = native.systemFontBold,
+   --          fontSize = 30
+   --      }
+   --  )
+   --  tempText:setFillColor( 0.98, 0.99, 0.45)
+   --  sceneGroup:insert(tempText)
 
-    bgTempNum = display.newText(
-      {
-         x = display.contentCenterX + 103,
-         y = display.contentCenterY + 210,
-         text = tostring(currentTemp),
-         font = native.systemFontBold,
-         fontSize = 30
-      }
-   )
-   bgTempNum:setFillColor(0.36)
-   sceneGroup:insert(bgTempNum)
+   --  sceneGroup.bgTempNum = display.newText(
+   --    {
+   --       x = display.contentCenterX + 103,
+   --       y = display.contentCenterY + 210,
+   --       text = tostring(currentTemp),
+   --       font = native.systemFontBold,
+   --       fontSize = 30
+   --    }
+   -- )
+   -- sceneGroup.bgTempNum:setFillColor(0.36)
+   -- sceneGroup:insert(sceneGroup.bgTempNum)
 
-   tempNum = display.newText(
-      {
-         x = display.contentCenterX + 100,
-         y = display.contentCenterY + 210,
-         text = tostring(currentTemp),
-         font = native.systemFontBold,
-         fontSize = 30
-      }
-   )
-   tempNum:setFillColor(0.98, 0.99, 0.45)
-   sceneGroup:insert(tempNum)
+   -- sceneGroup.tempNum = display.newText(
+   --    {
+   --       x = display.contentCenterX + 100,
+   --       y = display.contentCenterY + 210,
+   --       text = tostring(currentTemp),
+   --       font = native.systemFontBold,
+   --       fontSize = 30
+   --    }
+   -- )
+   -- sceneGroup.tempNum:setFillColor(0.98, 0.99, 0.45)
+   -- sceneGroup:insert(sceneGroup.tempNum)
 
  end
 

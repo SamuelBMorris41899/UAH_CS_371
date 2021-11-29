@@ -1,6 +1,6 @@
 require("utility")
 butterBuilder = {}
-butterBuilder.temp = 10
+butterBuilder.temp = 75
 
 butterBuilder.inited = false
 
@@ -80,7 +80,6 @@ function butterBuilder.init(self)
 
     newButter.life = 8
 
-
     butterState = mapButter(newButter.life)
     newButter:setSequence( butterState )  
     newButter:play()  -- play the new sequence
@@ -90,9 +89,13 @@ function butterBuilder.init(self)
     self = newButter
     self.inited = true
     return self
-
 end
 
+function butterBuilder.reset(self) 
+    self.inited = false
+    self = butterBuilder:init()
+    
+end 
 function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
@@ -129,7 +132,6 @@ function butterBuilder.tick(self)
     elseif(between(self.temp,100,105)) then --melt 6 ALL IS LOST ANYWAY
         self.life = 14
     end
-    print(self.temp)
 
     butterState = mapButter(self.life)
     self:setSequence(butterState)
@@ -141,6 +143,10 @@ PERFECT_TEMP = 66
 
 function butterBuilder.isIdealTemp(self) 
     return between(self.temp, MIN_TARGET_TEMP, MAX_TARGET_TEMP)
+end
+--Returns true if all is lost!
+function butterBuilder.gameLost(self) 
+    return (self.life == 14 or self.left == 1);
 end
 
 function butterBuilder.isPerfectTemp(self) 

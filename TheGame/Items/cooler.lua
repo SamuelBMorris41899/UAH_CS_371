@@ -1,7 +1,7 @@
 require("utility")
-builder = {}
+local cooler_Builder = {}
 
-builder.On = true
+cooler_Builder.On = true
 
 local frameInfo = { 
     frames = {
@@ -10,6 +10,7 @@ local frameInfo = {
         {x = 187, y = 2, width = 87, height = 131},--3
     }
 }
+
 local spriteSheetData = graphics.newImageSheet( "Items\\Cooler.png", frameInfo )
 
 --This is the controller for the sprite animations
@@ -20,16 +21,25 @@ local stateManager ={
 
 
 
-function builder.init(self,x,y)
+function cooler_Builder.init(self,x,y)
     new = display.newSprite(spriteSheetData, stateManager)
-    new = deepAppend(builder,new)
+    new = deepAppend(cooler_Builder,new)
     new:changeAnim()
+    new.level = 1
     new.x = x
     new.y = y
+    new.xScale = .75
+    new.yScale = .75
+    new:addEventListener("touch",new.turnOnOff)
+    
     return new
 end
 
-function builder.changeAnim(self)
+function cooler_Builder.upgrade(self)
+    self.level = self.level + 1
+end
+
+function cooler_Builder.changeAnim(self)
 
     if (self.On) then 
         print("ON!")
@@ -41,13 +51,19 @@ function builder.changeAnim(self)
     self:play()
 end
 
-function builder.turnOnOff(self) 
-    self.On = not self.On
-    self:changeAnim()
+function cooler_Builder.turnOnOff(event)
+    if (event.phase == "ended") then 
+        self = event.target     
+        self.On = not self.On
+        self:changeAnim()
+    end
 end
 
-function builder.effect(self) 
-    globalTemp = globalTemp - 5
+function cooler_Builder.effect(self) 
+    
+    if(self.On) then 
+        globalTemp = globalTemp - 5
+    end
 end
 
-return builder
+return cooler_Builder

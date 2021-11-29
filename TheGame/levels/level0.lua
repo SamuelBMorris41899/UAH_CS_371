@@ -2,15 +2,15 @@ print("Level 0")
 local widget = require( "widget" )
 local composer = require( "composer" )
 local scene = composer.newScene()
-
-dogeCoinTotal = 100
-currentTemp = 75
+local level0 = nil
+dogeCoinTotal = 200
 
 
 function scene:resumeGame()
    bgDogeCoinNum.text = tostring(dogeCoinTotal)
    dogeCoinNum.text = tostring(dogeCoinTotal)
 end
+
 local function pauseListener( event )
    if event.phase == "began" then
       local options = {
@@ -57,14 +57,14 @@ end
 
  -- "scene:create()"
  function scene:create( event )
-   local sceneGroup = self.view
-   currentLevelGroup = sceneGroup
+   level0 = self.view
+   currentLevelGroup = level0
     local bg1 = display.newImage("level0_lab.png")
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY
      bg1.width = display.contentWidth
      bg1.height = display.contentHeight
-     sceneGroup:insert(bg1)
+     level0:insert(bg1)
 
      local dogeCoin = display.newImage("Coin.png")
      dogeCoin.x = display.contentCenterX - 130
@@ -72,7 +72,7 @@ end
      dogeCoin.width = dogeCoin.width/25
      dogeCoin.height = dogeCoin.height/25
      dogeCoin:addEventListener("touch", TEMPWin)
-     sceneGroup:insert(dogeCoin)
+     level0:insert(dogeCoin)
 
      local bgDogeCoinX = display.newText(
       {
@@ -84,7 +84,7 @@ end
       }
      )
      bgDogeCoinX:setFillColor( 0.36, 0.36, 0.36)
-     sceneGroup:insert(bgDogeCoinX)
+     level0:insert(bgDogeCoinX)
 
    local dogeCoinX = display.newText(
       {
@@ -97,7 +97,7 @@ end
       }
   )
   dogeCoinX:setFillColor( 0.98, 0.99, 0.45)
-  sceneGroup:insert(dogeCoinX)
+  level0:insert(dogeCoinX)
 
     bgDogeCoinNum = display.newText(
         {
@@ -109,7 +109,7 @@ end
         }
        )
        bgDogeCoinNum:setFillColor( 0.36, 0.36, 0.36)
-       sceneGroup:insert(bgDogeCoinNum)
+       level0:insert(bgDogeCoinNum)
 
      dogeCoinNum = display.newText(
         {
@@ -121,16 +121,16 @@ end
         }
     )
     dogeCoinNum:setFillColor( 0.98, 0.99, 0.45)
-    sceneGroup:insert(dogeCoinNum)
+    level0:insert(dogeCoinNum)
 
     local pauseIcon = display.newImage("PauseIcon.png")
     pauseIcon.x = display.contentCenterX + 125
     pauseIcon.y = display.contentCenterY - 210
-    sceneGroup:insert(pauseIcon) 
+    level0:insert(pauseIcon) 
     pauseIcon.width = pauseIcon.width/2
     pauseIcon.height = pauseIcon.height/2
     pauseIcon:addEventListener("touch", pauseListener)
-    sceneGroup:insert(pauseIcon)
+    level0:insert(pauseIcon)
 
     local shopIcon = display.newImage("ShopIcon.png")
     shopIcon.x = display.contentCenterX + 80
@@ -138,7 +138,7 @@ end
     shopIcon.width = shopIcon.width/2
     shopIcon.height = shopIcon.height/2
     shopIcon:addEventListener("touch", shopListener)
-    sceneGroup:insert(shopIcon)
+    level0:insert(shopIcon)
 
     local bgTempRangeText = display.newText(
       {
@@ -150,7 +150,7 @@ end
       }
      )
      bgTempRangeText:setFillColor( 0.36, 0.36, 0.36)
-     sceneGroup:insert(bgTempRangeText)
+     level0:insert(bgTempRangeText)
 
    local tempRangeText = display.newText(
       {
@@ -162,7 +162,7 @@ end
       }
   )
   tempRangeText:setFillColor( 0.98, 0.99, 0.45)
-  sceneGroup:insert(tempRangeText)
+  level0:insert(tempRangeText)
 
   local bgTempRangeNum = display.newText(
       {
@@ -174,7 +174,7 @@ end
       }
      )
      bgTempRangeNum:setFillColor( 0.36, 0.36, 0.36)
-     sceneGroup:insert(bgTempRangeNum)
+     level0:insert(bgTempRangeNum)
 
      local tempRangeNum = display.newText(
       {
@@ -186,7 +186,7 @@ end
       }
      )
      tempRangeNum:setFillColor( 0.98, 0.99, 0.45)
-     sceneGroup:insert(tempRangeNum)
+     level0:insert(tempRangeNum)
 
   local bgPerfectTempText = display.newText(
      {
@@ -198,7 +198,7 @@ end
      }
   )
   bgPerfectTempText:setFillColor( 0.36, 0.36, 0.36)
-  sceneGroup:insert(bgPerfectTempText)
+  level0:insert(bgPerfectTempText)
 
   local perfectTempText = display.newText(
      {
@@ -210,7 +210,7 @@ end
      }
   )
   perfectTempText:setFillColor( 0.98, 0.99, 0.45)
-  sceneGroup:insert(perfectTempText)
+  level0:insert(perfectTempText)
 
   local bgPerfectTempNum = display.newText(
       {
@@ -222,7 +222,7 @@ end
       }
      )
      bgPerfectTempNum:setFillColor( 0.36, 0.36, 0.36)
-     sceneGroup:insert(bgPerfectTempNum)
+     level0:insert(bgPerfectTempNum)
 
      local perfectTempNum = display.newText(
       {
@@ -234,28 +234,27 @@ end
       }
      )
      perfectTempNum:setFillColor( 0.98, 0.99, 0.45)
-     sceneGroup:insert(perfectTempNum)
-     
-     local rect = display.newRect(display.contentCenterX - 113, display.contentCenterY - 70, 100, 50)
-     rect:setFillColor(0.51)
-     rect:addEventListener("touch", goToAstroSmash)
-     sceneGroup:insert(rect)
+     level0:insert(perfectTempNum)
 
-
+     local astroSmashIcon = display.newImage("Player.png")
+     astroSmashIcon.x = display.contentCenterX - 120
+     astroSmashIcon.y = display.contentCenterY - 100
+     astroSmashIcon:addEventListener("touch", goToAstroSmash)
+     level0:insert(astroSmashIcon)
 
      butter.x = display.contentCenterX + 100
      butter.y = display.contentCenterY + 80
-     sceneGroup:insert(butter)
+     level0:insert(butter)
      butter:show()
 
-    local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
+    local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
     globalTempRect:setFillColor( 0.51 )
-    sceneGroup:insert(globalTempRect)
+    level0:insert(globalTempRect)
 
     local bgGlobalTempText = display.newText(
         {
             x = display.contentCenterX - 37,
-            y = display.contentCenterY + 150,
+            y = display.contentCenterY + 210,
             text = "Global Temp: ",
             font = native.systemFontBold,
             fontSize = 30
@@ -263,105 +262,107 @@ end
     )
 
     bgGlobalTempText:setFillColor( 0.36, 0.36, 0.36)
-    sceneGroup:insert(bgGlobalTempText)
+    level0:insert(bgGlobalTempText)
 
     local globalTempText = display.newText(
         {
             x = display.contentCenterX - 40,
-            y = display.contentCenterY + 150,
+            y = display.contentCenterY + 210,
             text = "Global Temp: ",
             font = native.systemFontBold,
             fontSize = 30
         }
     )
     globalTempText:setFillColor( 0.98, 0.99, 0.45)
-    sceneGroup:insert(globalTempText)
+    level0:insert(globalTempText)
 
-    bgGlobalTempNum = display.newText(
-       {
-          x = display.contentCenterX + 103,
-          y = display.contentCenterY + 150,
-          text = tostring(currentTemp),
-          font = native.systemFontBold,
-          fontSize = 30
-       }
-    )
-    bgGlobalTempNum:setFillColor(0.36)
-    sceneGroup:insert(bgGlobalTempNum)
-
-    globalTempNum = display.newText(
-       {
-          x = display.contentCenterX + 100,
-          y = display.contentCenterY + 150,
-          text = tostring(currentTemp),
-          font = native.systemFontBold,
-          fontSize = 30
-       }
-    )
-    globalTempNum:setFillColor(0.98, 0.99, 0.45)
-    sceneGroup:insert(globalTempNum)
-    
-    local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
-    tempRect:setFillColor( 0.51 )
-    sceneGroup:insert(tempRect)
-    
-    local bgTempText = display.newText(
-        {
-            x = display.contentCenterX - 37,
-            y = display.contentCenterY + 210,
-            text = "Temperature: ",
-            font = native.systemFontBold,
-            fontSize = 30
-        }
-    )
-
-    bgTempText:setFillColor( 0.36, 0.36, 0.36)
-    sceneGroup:insert(bgTempText)
-
-    local tempText = display.newText(
-        {
-            x = display.contentCenterX - 40,
-            y = display.contentCenterY + 210,
-            text = "Temperature: ",
-            font = native.systemFontBold,
-            fontSize = 30
-        }
-    )
-    tempText:setFillColor( 0.98, 0.99, 0.45)
-    sceneGroup:insert(tempText)
-
-    bgTempNum = display.newText(
+    level0.bgGlobalTempNum = display.newText(
        {
           x = display.contentCenterX + 103,
           y = display.contentCenterY + 210,
-          text = tostring(currentTemp),
+          text = tostring(butter.temp),
           font = native.systemFontBold,
           fontSize = 30
        }
     )
-    bgTempNum:setFillColor(0.36)
-    sceneGroup:insert(bgTempNum)
+    
+    level0.bgGlobalTempNum:setFillColor(0.36)
+    level0:insert(level0.bgGlobalTempNum)
 
-    tempNum = display.newText(
+    level0.globalTempNum = display.newText(
        {
           x = display.contentCenterX + 100,
           y = display.contentCenterY + 210,
-          text = tostring(currentTemp),
+          text = tostring(globalTemp),
           font = native.systemFontBold,
           fontSize = 30
        }
     )
-    tempNum:setFillColor(0.98, 0.99, 0.45)
-    sceneGroup:insert(tempNum)
+    
+    level0.globalTempNum:setFillColor(0.98, 0.99, 0.45)
+    level0:insert(level0.globalTempNum)
+    
+   --  local tempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
+   --  tempRect:setFillColor( 0.51 )
+   --  level0:insert(tempRect)
+    
+   --  level0.bgTempText = display.newText(
+   --      {
+   --          x = display.contentCenterX - 37,
+   --          y = display.contentCenterY + 210,
+   --          text = "Temperature: ",
+   --          font = native.systemFontBold,
+   --          fontSize = 30
+   --      }
+   --  )
+
+   --  level0.bgTempText:setFillColor( 0.36, 0.36, 0.36)
+   --  level0:insert(level0.bgTempText)
+
+   --  local tempText = display.newText(
+   --      {
+   --          x = display.contentCenterX - 40,
+   --          y = display.contentCenterY + 210,
+   --          text = "Temperature: ",
+   --          font = native.systemFontBold,
+   --          fontSize = 30
+   --      }
+   --  )
+   --  tempText:setFillColor( 0.98, 0.99, 0.45)
+   --  level0:insert(tempText)
+
+   --  level0.bgTempNum = display.newText(
+   --     {
+   --        x = display.contentCenterX + 103,
+   --        y = display.contentCenterY + 210,
+   --        text = tostring(butter.temp),
+   --        font = native.systemFontBold,
+   --        fontSize = 30
+   --     }
+   --  )
+   --  level0.bgTempNum:setFillColor(0.36)
+   --  level0:insert(level0.bgTempNum)
+
+   --  level0.tempNum = display.newText(
+   --     {
+   --        x = display.contentCenterX + 100,
+   --        y = display.contentCenterY + 210,
+   --        text = tostring(butter.temp),
+   --        font = native.systemFontBold,
+   --        fontSize = 30
+   --     }
+   --  )
+   --  level0.tempNum:setFillColor(0.98, 0.99, 0.45)
+   --  level0:insert(level0.tempNum)
 
 
  end
 
 
  -- "scene:show()"
- function scene:show( event )
+ function scene:show(event)
 
-    local sceneGroup = self.view
+    local level0 = self.view
     local phase = event.phase
 
     if ( phase == "will" ) then
@@ -374,7 +375,7 @@ end
  -- "scene:hide()"
  function scene:hide( event )
 
-    local sceneGroup = self.view
+    local level0 = self.view
     local phase = event.phase
 
     if ( phase == "will" ) then
@@ -388,7 +389,7 @@ end
  -- "scene:destroy()"
  function scene:destroy( event )
 
-    local sceneGroup = self.view
+    local level0 = self.view
 
  end
 
