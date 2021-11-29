@@ -279,7 +279,7 @@ end
     level0.bgGlobalTempNum = display.newText(
        {
           x = display.contentCenterX + 103,
-          y = display.contentCenterY + 150,
+          y = display.contentCenterY + 210,
           text = tostring(butter.temp),
           font = native.systemFontBold,
           fontSize = 30
@@ -292,7 +292,7 @@ end
     level0.globalTempNum = display.newText(
        {
           x = display.contentCenterX + 100,
-          y = display.contentCenterY + 150,
+          y = display.contentCenterY + 210,
           text = tostring(globalTemp),
           font = native.systemFontBold,
           fontSize = 30
@@ -306,54 +306,54 @@ end
     tempRect:setFillColor( 0.51 )
     level0:insert(tempRect)
     
-    level0.bgTempText = display.newText(
-        {
-            x = display.contentCenterX - 37,
-            y = display.contentCenterY + 210,
-            text = "Temperature: ",
-            font = native.systemFontBold,
-            fontSize = 30
-        }
-    )
+   --  level0.bgTempText = display.newText(
+   --      {
+   --          x = display.contentCenterX - 37,
+   --          y = display.contentCenterY + 210,
+   --          text = "Temperature: ",
+   --          font = native.systemFontBold,
+   --          fontSize = 30
+   --      }
+   --  )
 
-    level0.bgTempText:setFillColor( 0.36, 0.36, 0.36)
-    level0:insert(level0.bgTempText)
+   --  level0.bgTempText:setFillColor( 0.36, 0.36, 0.36)
+   --  level0:insert(level0.bgTempText)
 
-    local tempText = display.newText(
-        {
-            x = display.contentCenterX - 40,
-            y = display.contentCenterY + 210,
-            text = "Temperature: ",
-            font = native.systemFontBold,
-            fontSize = 30
-        }
-    )
-    tempText:setFillColor( 0.98, 0.99, 0.45)
-    level0:insert(tempText)
+   --  local tempText = display.newText(
+   --      {
+   --          x = display.contentCenterX - 40,
+   --          y = display.contentCenterY + 210,
+   --          text = "Temperature: ",
+   --          font = native.systemFontBold,
+   --          fontSize = 30
+   --      }
+   --  )
+   --  tempText:setFillColor( 0.98, 0.99, 0.45)
+   --  level0:insert(tempText)
 
-    level0.bgTempNum = display.newText(
-       {
-          x = display.contentCenterX + 103,
-          y = display.contentCenterY + 210,
-          text = tostring(butter.temp),
-          font = native.systemFontBold,
-          fontSize = 30
-       }
-    )
-    level0.bgTempNum:setFillColor(0.36)
-    level0:insert(level0.bgTempNum)
+   --  level0.bgTempNum = display.newText(
+   --     {
+   --        x = display.contentCenterX + 103,
+   --        y = display.contentCenterY + 210,
+   --        text = tostring(butter.temp),
+   --        font = native.systemFontBold,
+   --        fontSize = 30
+   --     }
+   --  )
+   --  level0.bgTempNum:setFillColor(0.36)
+   --  level0:insert(level0.bgTempNum)
 
-    level0.tempNum = display.newText(
-       {
-          x = display.contentCenterX + 100,
-          y = display.contentCenterY + 210,
-          text = tostring(butter.temp),
-          font = native.systemFontBold,
-          fontSize = 30
-       }
-    )
-    level0.tempNum:setFillColor(0.98, 0.99, 0.45)
-    level0:insert(level0.tempNum)
+   --  level0.tempNum = display.newText(
+   --     {
+   --        x = display.contentCenterX + 100,
+   --        y = display.contentCenterY + 210,
+   --        text = tostring(butter.temp),
+   --        font = native.systemFontBold,
+   --        fontSize = 30
+   --     }
+   --  )
+   --  level0.tempNum:setFillColor(0.98, 0.99, 0.45)
+   --  level0:insert(level0.tempNum)
 
 
  end
