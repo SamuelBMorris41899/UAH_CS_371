@@ -80,7 +80,7 @@ end
            {
                x = display.contentCenterX - 35,
                y = display.contentCenterY,
-               text = "Total Doge Coin Made:", 
+               text = "Total Time Survived!:", 
                font = native.systemFontBold,
                fontSize = 20,
            }
@@ -91,7 +91,7 @@ end
            {
                x = display.contentCenterX + 100,
                y = display.contentCenterY,
-               text = "100", 
+               text = "3 mins", 
                font = native.systemFont,
                fontSize = 25,
            }
@@ -106,7 +106,7 @@ end
            {
                x = display.contentCenterX - 35,
                y = display.contentCenterY + 65,
-               text = "Time in Perfect Range:", 
+               text = "Total DogeCoin:", 
                font = native.systemFontBold,
                fontSize = 20,
            }
@@ -117,7 +117,7 @@ end
            {
                x = display.contentCenterX + 100,
                y = display.contentCenterY + 65,
-               text = "100", 
+               text = tostring(totalScore), 
                font = native.systemFont,
                fontSize = 25,
            }
@@ -132,7 +132,7 @@ end
            {
                x = display.contentCenterX - 40,
                y = display.contentCenterY + 130,
-               text = "Time in Perfect Temp:", 
+               text = "Events Survived:", 
                font = native.systemFontBold,
                fontSize = 20,
            }
@@ -143,7 +143,7 @@ end
            {
                x = display.contentCenterX + 100,
                y = display.contentCenterY + 130,
-               text = "100", 
+               text = "6", 
                font = native.systemFont,
                fontSize = 25,
            }

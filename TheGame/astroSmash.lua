@@ -6,7 +6,7 @@ local asteroid = require("asteroids")
 local scene = composer.newScene()
 
 local score = 0
-local timeLimit = 3 * 60000
+totalScore = 100
 local runtime = 0
 local lastAst = 0
 local astChance = 0.0035
@@ -32,6 +32,7 @@ local function backEvent( event )
 
    function scoreUp ()
     score = score + 1
+    totalScore = totalScore + 1
     dogeCoinTotal = dogeCoinTotal + 1
     scene.scoreText.text = "DogeCoin Earned: " .. score
     scene.bgScoreText.text = "DogeCoin Earned: " .. score
