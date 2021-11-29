@@ -49,5 +49,7 @@ end
 function resetLevel () 
     heaterLevel = 1
     coolerLevel = 1
+    Cooler.name = "Cooler "
+    Heater.name = "Heater "
     
 end
