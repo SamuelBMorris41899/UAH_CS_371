@@ -13,6 +13,10 @@ for fields in f:lines() do
 
     function e.start(self,durration,severity)
         local g = display.newGroup()
+
+        local eventRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY-125, 300, 50, 10)
+        eventRect:setFillColor(0.51)
+        g:insert(eventRect)
         local bgEventText = display.newText(
         {
             x = display.contentCenterX + 2,
@@ -39,7 +43,7 @@ for fields in f:lines() do
         eventText:setFillColor( 0.98, 0.21, 0.21)
         g:insert(eventText)
 
-        transition.fadeOut( g, {time = 10000} )
+        transition.fadeOut( g, {time = 5000} )
         self.durration = durration
     end
 
