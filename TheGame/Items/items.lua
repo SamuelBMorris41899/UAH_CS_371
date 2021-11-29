@@ -64,7 +64,7 @@ function coolerBought(event)
         bgDogeCoinNum.text = tostring(dogeCoinTotal)
         dogeCoinNum.text = tostring(dogeCoinTotal)
 
-        coolerRect = display.newRect(display.contentCenterX, 433, display.contentWidth + 5, 45)
+        coolerRect = display.newRect(display.contentCenterX, 333, display.contentWidth + 5, 45)
         coolerRect:setFillColor(0.36, 0.36, 0.36, 0.9)
         shopGroup:insert(coolerRect)
 
@@ -140,7 +140,7 @@ function heaterBought(event)
         bgDogeCoinNum.text = tostring(dogeCoinTotal)
         dogeCoinNum.text = tostring(dogeCoinTotal)
 
-        heaterRect = display.newRect(display.contentCenterX, 383, display.contentWidth + 5, 45)
+        heaterRect = display.newRect(display.contentCenterX, 283, display.contentWidth + 5, 45)
         heaterRect:setFillColor(0.36, 0.36, 0.36, 0.9)
         shopGroup:insert(heaterRect)
 
