@@ -158,11 +158,9 @@ function Entity:touch(event)
     if event.phase == "began" then
         self.shape.markX = self.shape.x;
         self.shape.markY = self.shape.y;
-        elseif event.phase == "moved" then
-        local x = (event.x - event.xStart) +   
-        self.shape.markX
-        local y = (event.y - event.yStart) +  
-        self.shape.markY
+    elseif event.phase == "moved" then
+        local x = (event.x - event.xStart) + self.shape.markX
+        local y = (event.y - event.yStart) + self.shape.markY
         if x < display.contentWidth - 25 and y < display.contentHeight then
             if x > 25 and y > 0 then
                 self.shape.x = x;

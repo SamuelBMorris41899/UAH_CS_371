@@ -93,14 +93,31 @@ function butterBuilder.init(self)
 
 end
 
+<<<<<<< Updated upstream
+=======
+function butterBuilder.reset(self) 
+    globalTemp = 75
+    self.temp = 75
+    self.inited = false
+
+   
+    self.life = 8
+
+    butterState = mapButter(self.life)
+    self:setSequence( butterState )  
+    self:play()  -- play the new sequence
+    
+end 
+>>>>>>> Stashed changes
 function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
-        self.temp = self.temp + 1
+        self.temp = self.temp + (globalTemp - self.temp) / 10
     elseif (self.temp > globalTemp) then 
-        self.temp = self.temp - 1
+        self.temp = self.temp - (self.temp - globalTemp) / 10
     end
 
-    if(between(self.temp,0,20)) then --frozen 7 ALL IS LOST ANYWAY
+    
+    if(between(self.temp,-999999,20)) then --frozen 7 ALL IS LOST ANYWAY
         self.life = 1
     elseif(between(self.temp,20,30)) then --frozen 6
         self.life = 2
@@ -126,7 +143,7 @@ function butterBuilder.tick(self)
         self.life = 12
     elseif(between(self.temp,95,100)) then --melt 5
         self.life = 13
-    elseif(between(self.temp,100,105)) then --melt 6 ALL IS LOST ANYWAY
+    elseif(between(self.temp,100,9999999)) then --melt 6 ALL IS LOST ANYWAY
         self.life = 14
     end
     print(self.temp)

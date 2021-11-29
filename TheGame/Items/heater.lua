@@ -47,7 +47,13 @@ function builder.turnOnOff(self)
 end
 
 function builder.effect(self) 
+<<<<<<< Updated upstream
     globalTemp = globalTemp + 5
+=======
+    if(self.On) then 
+        globalTemp = globalTemp + 5
+    end
+>>>>>>> Stashed changes
 end
 
 return builder

@@ -67,9 +67,8 @@ function coolerBought(event)
         coolerRect:setFillColor(0.36, 0.36, 0.36, 0.9)
         shopGroup:insert(coolerRect)
 
-
-
-        currentLevelGroup:insert(effects:addCooler())
+        currentLevelGroup.cooler = effects:addCooler()
+        currentLevelGroup:insert(currentLevelGroup.cooler)
     end
 end 
 
@@ -141,8 +140,8 @@ function heaterBought(event)
         print("test")
         shopGroup:insert(heaterRect)
 
-
-        currentLevelGroup:insert(effects:addHeater())
+        currentLevelGroup.heater = effects:addHeater() 
+        currentLevelGroup:insert( currentLevelGroup.heater )
     end
     
 end 

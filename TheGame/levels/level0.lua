@@ -11,6 +11,19 @@ function scene:resumeGame()
    bgDogeCoinNum.text = tostring(dogeCoinTotal)
    dogeCoinNum.text = tostring(dogeCoinTotal)
 end
+<<<<<<< Updated upstream
+=======
+
+if(butter:gameLost()) then 
+   local options = {
+       isModal = true,
+       effect = "fade",
+       time = 400,
+   } 
+   composer.showOverlay( "loseScreen", options )
+end 
+
+>>>>>>> Stashed changes
 local function pauseListener( event )
    if event.phase == "began" then
       local options = {
@@ -57,8 +70,15 @@ end
 
  -- "scene:create()"
  function scene:create( event )
+<<<<<<< Updated upstream
    local sceneGroup = self.view
    currentLevelGroup = sceneGroup
+=======
+   effects.list = {}
+   levelLost = false;
+   level0 = self.view
+   currentLevelGroup = level0
+>>>>>>> Stashed changes
     local bg1 = display.newImage("level0_lab.png")
     bg1.x = display.contentCenterX
     bg1.y = display.contentCenterY
@@ -248,7 +268,13 @@ end
      sceneGroup:insert(butter)
      butter:show()
 
+<<<<<<< Updated upstream
     local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 150, 300, 50, 10)
+=======
+     butter:reset()
+      
+    local globalTempRect = display.newRoundedRect(display.contentCenterX, display.contentCenterY + 210, 300, 50, 10)
+>>>>>>> Stashed changes
     globalTempRect:setFillColor( 0.51 )
     sceneGroup:insert(globalTempRect)
 
@@ -379,9 +405,35 @@ end
 
     if ( phase == "will" ) then
 
+      
+    effects.list = {}
+    butter:reset()
+   
+    if(currentLevelGroup.heater~= nil) then
+      print("Has Cooler")
+      currentLevelGroup.heater.isVisible = false
+
+    end
+    if(currentLevelGroup.cooler ~= nil) then
+      print("Has Heater")
+      currentLevelGroup.cooler.isVisible = false
+    end
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
+      
+    effects.list = {}
+    butter:reset()
+   
+    if(currentLevelGroup.heater~= nil) then
+      print("Has Cooler")
+      currentLevelGroup.heater.isVisible = false
+
+    end
+    if(currentLevelGroup.cooler ~= nil) then
+      print("Has Heater")
+      currentLevelGroup.cooler.isVisible = false
+    end
     end
  end
 
@@ -389,6 +441,19 @@ end
  function scene:destroy( event )
 
     local sceneGroup = self.view
+
+    effects.list = {}
+    butter:reset()
+   
+    if(currentLevelGroup.heater~= nil) then
+      print("Has Cooler")
+      currentLevelGroup.heater:hide()
+
+    end
+    if(currentLevelGroup.cooler ~= nil) then
+      print("Has Heater")
+      currentLevelGroup.cooler:hide()
+    end
 
  end
 

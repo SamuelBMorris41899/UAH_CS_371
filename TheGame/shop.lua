@@ -5,13 +5,6 @@ local scene = composer.newScene()
 local buttonComposer = require("GUI_Objects.shopButton")
 local itemList = require("Items.items")
 
-coolerIsVisible = false
-heaterIsVisible = false
-
-
-
-shopGroup = ""
-
 local function exitListener( event )
   if event.phase == "began" then
     composer.hideOverlay("fade", 400)
