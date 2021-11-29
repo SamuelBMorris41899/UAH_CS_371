@@ -45,3 +45,9 @@ function updateScene()
         -- currentLevelGroup.tempNum.text = tostring(butter.temp)
     end
 end
+
+function resetLevel () 
+    heaterLevel = 1
+    coolerLevel = 1
+    
+end

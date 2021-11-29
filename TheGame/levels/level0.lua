@@ -2,6 +2,7 @@ print("Level 0")
 local widget = require( "widget" )
 local butter = require("butter")
 local composer = require( "composer" )
+require("utility")
 local scene = composer.newScene()
 local level0 = nil
 dogeCoinTotal = 100
@@ -402,7 +403,7 @@ end
     local phase = event.phase
 
     if ( phase == "will" ) then
-
+      resetLevel()
        transition.cancel(scene1)
     elseif ( phase == "did" ) then
 

@@ -2,7 +2,7 @@ require("utility")
 local cooler_Builder = {}
 
 cooler_Builder.On = true
-
+cooler_Builder.level = 1
 
 
 local frameInfo = { 
@@ -79,7 +79,7 @@ function cooler_Builder.effect(self)
         return
     end
     if(self.On) then 
-        globalTemp = globalTemp - 5
+        globalTemp = globalTemp - (5 * self.level)
     end
 end
 
