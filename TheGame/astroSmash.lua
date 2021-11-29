@@ -116,12 +116,16 @@ end
 
     --- Arena
     local top = display.newRect(sceneGroup, 0, 100, display.contentWidth, 10)
-    local left = display.newRect(sceneGroup, 0, 0, 5, display.contentHeight)
-    local right = display.newRect(sceneGroup, display.contentWidth - 20, 0, 5, display.contentHeight)
-
     top:setFillColor(1,1,1,0)
-    left:setFillColor(1,1,1,0)
-    right:setFillColor(1,1,1,0)
+
+
+    self.left = entity:new({x = 0, y = 0, width = 5,height = display.contentHeight, color = {1,1,1,0}, physics = {"static", {}}, tag = "bottom"})
+    self.left:spawn(sceneGroup)
+    self.left.shape.markX = self.left.x
+
+    self.right = entity:new({x = display.contentWidth - 20, y = 0, widht = 5, height = display.contentHeight, color = {1,1,1,0}, physics = {"static", {}}, tag = "bottom"})
+    self.right:spawn(sceneGroup)
+    self.right.shape.markX = self.right.x
 
     self.bottom = entity:new({x = display.contentCenterX, y = display.contentHeight - 25, width = display.contentWidth, height =  20, color = {0.8, 0.8, 0.8, 0}, physics = {"static", {}}, tag = "bottom"})
     self.bottom:spawn(sceneGroup)
@@ -129,11 +133,6 @@ end
 
 
     top.anchorX = 0; top.anchorY = 0
-    left.anchorX = 0; left.anchorY = 0
-    right.anchorX = 0; right.anchorY = 0
-
-    physics.addBody( left, "static" )
-    physics.addBody( right, "static" )
     physics.addBody( top, "static")
 
     -- local controlBar = display.newRect (sceneGroup, display.contentCenterX, display.contentHeight- 25, display.contentWidth, 75)

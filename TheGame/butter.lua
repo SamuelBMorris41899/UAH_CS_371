@@ -69,7 +69,7 @@ end
 
 
 function butterBuilder.init(self) 
-    
+    print("Butterinited: ".. tostring(self.inited))
     if(self.inited == true) then 
         return self
     end
@@ -92,44 +92,48 @@ function butterBuilder.init(self)
 end
 
 function butterBuilder.reset(self) 
-    self.inited = false
-    self = butterBuilder:init()
+    globalTemp = 75
+    self.temp = globalTemp
+    -- self.inited = false
+    -- self = butterBuilder:init()
     
 end 
 function butterBuilder.tick(self) 
     if(self.temp < globalTemp) then 
         self.temp = self.temp + 1
+        print("Butter Temp: "..self.temp)
     elseif (self.temp > globalTemp) then 
         self.temp = self.temp - 1
+        print("Butter Temp: "..self.temp)
     end
 
-    if(between(self.temp,0,20)) then --frozen 7 ALL IS LOST ANYWAY
+    if(between(self.temp,0,24)) then --frozen 7 ALL IS LOST ANYWAY
         self.life = 1
-    elseif(between(self.temp,20,30)) then --frozen 6
+    elseif(between(self.temp,25,45)) then --frozen 6
         self.life = 2
-    elseif(between(self.temp,30,40)) then --frozen 5
+    elseif(between(self.temp,46,50)) then --frozen 5
         self.life = 3
-    elseif(between(self.temp,40,50)) then --frozen 4
+    elseif(between(self.temp,51,55)) then --frozen 4
         self.life = 4
-    elseif(between(self.temp,50,55)) then --frozen 3
+    elseif(between(self.temp,56,60)) then --frozen 3
         self.life = 5
-    elseif(between(self.temp,55,60)) then --frozen 2
+    elseif(between(self.temp,61,65)) then --frozen 2
         self.life = 6
-    elseif(between(self.temp,60,65)) then --frozen 1
+    elseif(between(self.temp,66,70)) then --frozen 1
         self.life = 7
-    elseif(between(self.temp,65,70)) then --perfect
+    elseif(between(self.temp,70,80)) then --perfect 
         self.life = 8
-    elseif(between(self.temp,70,75)) then --melt 1
+    elseif(between(self.temp,81,85)) then --melt 1
         self.life = 9
-    elseif(between(self.temp,75,80)) then --melt 2
+    elseif(between(self.temp,86,90)) then --melt 2
         self.life = 10
-    elseif(between(self.temp,80,85)) then --melt 3
+    elseif(between(self.temp,91,95)) then --melt 3
         self.life = 11
-    elseif(between(self.temp,90,95)) then --melt 4
+    elseif(between(self.temp,96,100)) then --melt 4
         self.life = 12
-    elseif(between(self.temp,95,100)) then --melt 5
+    elseif(between(self.temp,101,105)) then --melt 5
         self.life = 13
-    elseif(between(self.temp,100,105)) then --melt 6 ALL IS LOST ANYWAY
+    elseif(between(self.temp,106,110)) then --melt 6 ALL IS LOST ANYWAY
         self.life = 14
     end
 

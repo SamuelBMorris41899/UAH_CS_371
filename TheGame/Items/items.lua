@@ -1,6 +1,5 @@
 itemList = {}
 
-
 function coolerBought(event) 
 
     local g = display.newGroup()

@@ -1,9 +1,15 @@
 print("Level 0")
 local widget = require( "widget" )
 local composer = require( "composer" )
+local heater = require("Items.heater")
 local scene = composer.newScene()
 local level0 = nil
 dogeCoinTotal = 200
+
+gameTimer = timer.performWithDelay(180000, gameWon, 1)
+gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
+eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
+ 
 
 
 function scene:resumeGame()
@@ -58,6 +64,7 @@ end
  -- "scene:create()"
  function scene:create( event )
    level0 = self.view
+  
    currentLevelGroup = level0
     local bg1 = display.newImage("level0_lab.png")
     bg1.x = display.contentCenterX
@@ -168,7 +175,7 @@ end
       {
         x = display.contentCenterX + 107,
         y = display.contentCenterY - 130,
-        text = "100F-50F", 
+        text = "70F-80F", 
         font = native.systemFontBold,
         fontSize = 23,
       }
@@ -180,7 +187,7 @@ end
       {
         x = display.contentCenterX + 105,
         y = display.contentCenterY - 130,
-        text = "100F-50F", 
+        text = "70F-80F", 
         font = native.systemFontBold,
         fontSize = 23,
       }
@@ -365,7 +372,22 @@ end
     local level0 = self.view
     local phase = event.phase
 
+
     if ( phase == "will" ) then
+      print("hello")
+         if not gameTimer then
+            gameTimer = timer.performWithDelay(180000, gameWon, 1)
+            dogeCoinTotal = 200
+            bgDogeCoinNum.text = tostring(dogeCoinTotal)
+            dogeCoinNum.text = tostring(dogeCoinTotal)
+            butter:reset(butter)
+         end
+         if not gameLoopTimer then
+            gameLoopTimer = timer.performWithDelay( 1000, tick, 0) 
+         end
+         if not eventLoopTimer then
+            eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
+         end
 
     elseif ( phase == "did" ) then
 

@@ -25,17 +25,26 @@ heaterBuilder = require("items.heater")
 
 
 function tick()
+    local i = 0
+    print ("i: ".. i)
     butter:tick()
     effects:globalTick()
     updateScene()
     if(butter:gameLost()) then 
+        timer.cancel(gameLoopTimer)
+        gameLoopTimer = nil
+        timer.cancel(eventLoopTimer)
+        eventLoopTimer = nil
+        timer.cancel(gameTimer)
+        gameTimer = nil
         local options = {
             isModal = true,
             effect = "fade",
             time = 400,
         } 
-        composer.showOverlay( "loseScreen.lua", options )
+        composer.showOverlay( "loseScreen", options )
     end 
+    i = i +1
 end
 
 secondsBetweenEvents = 30
@@ -46,17 +55,30 @@ MINIMUM_EVENT_SEVERITY = 1
 MAXIMUM_EVENT_SEVERITY = 5
 
 function eventStartLoop(e)
-    
+    local j = 0
+    print("j: "..j)
     newEvent = events:startRandomEvent(MINIMUM_EVENT_DURRATION,MAXIMUM_EVENT_DURRATION,MINIMUM_EVENT_SEVERITY,MAXIMUM_EVENT_SEVERITY)
     
     effects:addEvent(newEvent)
 end
 
-gameLoopTimer = timer.performWithDelay( 1000, tick, 0)
-eventLoopTimer = timer.performWithDelay( secondsBetweenEvents * 1000, eventStartLoop, 0) --let there be an even once every 10 seconds of so...
 
--- gameTimer = timer.performWithDelay( 1000, tick, 1,onStart == (),onCompleate == ())
--- gameTimer.pause()
+function gameWon()
+    timer.cancel(gameLoopTimer)
+    gameLoopTimer = nil
+    timer.cancel(eventLoopTimer)
+    eventLoopTimer = nil
+    timer.cancel(gameTimer)
+    gameTimer = nil
+    local options = {
+        isModal = true,
+        effect = "fade",
+        time = 400,
+     }  
+    composer.showOverlay( "levels.levelWon", options )
+end
+
+
 
 
 require("rocketEnviroment"); -- this will start the model...

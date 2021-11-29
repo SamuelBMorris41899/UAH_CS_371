@@ -1,6 +1,7 @@
 print("Pause")
 local widget = require( "widget" )
 local composer = require( "composer" )
+local heater = require("Items.heater")
 local scene = composer.newScene()
 
 
@@ -12,6 +13,13 @@ local function backEvent( event )
 
 local function exitLevelEvent(event)
   if event.phase == "began" then
+    timer.cancel(gameLoopTimer)
+    gameLoopTimer = nil
+    timer.cancel(eventLoopTimer)
+    eventLoopTimer = nil
+    timer.cancel(gameTimer)
+    gameTimer = nil
+    heater:removeHeater()
     composer.gotoScene("GUI_Scenes.levelSelection")
   end
 end
@@ -190,7 +198,6 @@ end
 
     if ( phase == "will" ) then
 
-       transition.cancel(scene1)
     elseif ( phase == "did" ) then
 
     end

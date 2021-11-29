@@ -16,8 +16,10 @@ function effects.addCooler(self)
 end
 
 function effects.addHeater(self)
-    newHeater = nil 
-    if(self.heater == nil ) then 
+    print("add heater")
+
+        newHeater = nil
+    if(self.heater == nil) then 
         newHeater = heaterBuilder:init(150,200)
         table.insert(self.list,newHeater)
     else

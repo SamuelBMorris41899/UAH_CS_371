@@ -3,10 +3,14 @@ local builder = {}
 
 builder.On = true
 
+removeHeater = false
+print("I AM IN HEATER.LUA")
+
+
 local frameInfo = { 
     frames = {
-        {x = 1, y = 2, width = 111, height = 138},      --off
-        {x = 122, y = 2, width = 110, height = 138},    --on
+        {x = 1, y = 2, width = 110, height = 138},      --off
+        {x = 120, y = 2, width = 110, height = 138},    --on
     }
 }
 
@@ -30,6 +34,11 @@ function builder.init(self,x,y)
     new:addEventListener("touch",new.turnOnOff)
     new:toBack()
     return new
+end
+
+function builder.removeHeater(self)
+    self.new = nil
+    self.new.isVisible(false)
 end
 
 function builder.changeAnim(self)
